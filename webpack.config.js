@@ -1,6 +1,6 @@
 module.exports = {
   // 1
-  entry: "./src/index.js",
+  entry: "./server/index.js",
   // 2
   module: {
     rules: [
@@ -22,5 +22,11 @@ module.exports = {
   // 3
   devServer: {
     contentBase: "./dist",
+  },
+  node: {
+    fs: "empty",
+    net: "empty",
+    tls: "empty",
+    dns: "empty",
   },
 };
