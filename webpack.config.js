@@ -1,7 +1,5 @@
 module.exports = {
-  // 1
-  entry: "./src/index.js",
-  // 2
+  entry: "./server/index.js",
   module: {
     rules: [
       {
@@ -19,8 +17,13 @@ module.exports = {
     publicPath: "/",
     filename: "bundle.js",
   },
-  // 3
   devServer: {
     contentBase: "./dist",
+  },
+  node: {
+    fs: "empty",
+    net: "empty",
+    tls: "empty",
+    dns: "empty",
   },
 };
