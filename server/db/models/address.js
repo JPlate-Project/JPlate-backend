@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
-const db = require('./db ');
+const db = require('../db');
 
 const Address = db.define('address', {
   id : {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
