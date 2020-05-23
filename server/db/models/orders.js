@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const db = require("./db");
+const db = require("../db");
 
 const Order = db.define("order", {
   id: {
@@ -12,7 +12,7 @@ const Order = db.define("order", {
     allowNull: false,
   },
   items: {
-    type: Sequelize.ARRAY(String),
+    type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: false,
   },
   total: {

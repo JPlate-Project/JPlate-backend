@@ -3,7 +3,7 @@ const db = require("../db");
 
 const Product = db.define("product", {
   id: {
-    type: Sequlize.INTEGER,
+    type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
