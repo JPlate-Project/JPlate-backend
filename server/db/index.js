@@ -12,3 +12,4 @@ Orders.belongsTo(Users)
 Orders.hasMany(Products)
 
 db.sync()
+console.log('Synced DB')
