@@ -166,3 +166,12 @@ table {
   /* width: 460px;
   margin: auto; */
 }
+#footer{
+  justify-content:space-between;
+  padding: 20px;
+  background:   rgba(0, 0, 0, 0.75);
+  color: white;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
