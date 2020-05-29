@@ -33,7 +33,7 @@
       "git add"
     ]
   },
-  "author": "Fullstack Academy of Code",
+  "author": "Joshua Melo",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
