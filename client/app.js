@@ -1,7 +1,13 @@
 import React from 'react';
+import Header from './components/Header.jsx';
 
 const App = () => {
-  return <div>Hello there, the angel from my nightmare.</div>;
+  return (
+    <div>
+      <Header />
+      Middle of the page stuff
+    </div>
+  );
 };
 
 export default App;
