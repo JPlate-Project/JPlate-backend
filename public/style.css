@@ -24,145 +24,33 @@ body {
   align-items: center;
 }
 
-.cart {
-  background: #eb8713;
-  padding: 30px;
-  color: rgb(238, 100, 50);
-}
-
-img {
-  max-height: 300px;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.productCard {
-  display: flex;
-  height: 200px;
-  width: auto;
-}
-
-.allProducts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.singleProduct {
-  display: row;
-  color: rgb(238, 100, 50);
-}
-
-nav a {
-  display: row;
-  font-size: 17px;
-  justify-self: center;
-  padding: 0 10px;
-}
-
-button {
-  padding: 0.5em 1em;
-  background-color: #eb8713;
+#footer{
+  justify-content:space-between;
+  padding: 20px;
+  background:   rgba(0, 0, 0, 0.75);
   color: white;
-  font-size: 1em;
-  transition: all 0.1s ease;
-  border-radius: 10px;
-}
-
-button:hover {
-  background-color: rgb(238, 100, 50);
-}
-
-.allNavLinks {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 35px;
-}
-
-.navLinks {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.cartLink {
-  display: flex;
-  justify-content: flex-end;
-  vertical-align: middle;
-  align-items: center;
-}
-
-.cartIcon {
-  max-height: 35px;
-  max-width: auto;
-  margin-right: none;
-}
-
-.warning {
-  font-size: 10px;
-  color: red;
-}
-
-.product-desc {
-  font-style: italic;
-}
-
-/* Cart Component */
-#cartComponent {
-  /* display: flex;
-  justify-content: space-between; */
-  color: rgb(238, 100, 50);
-}
-
-#table-header {
   font-size: 12px;
-  color: rgb(238, 100, 50);
-  font-weight: bold;
-}
-
-.cart-row {
-  vertical-align: middle;
-  border-bottom: 1px solid grey;
-}
-
-/* .checkoutSection {
-  position: absolute;
-  right: 0px;
-  width: 320px;
-} */
-
-table {
-  border-collapse: collapse;
   width: 100%;
+  text-align: center;
 }
 
-.cart-item-img {
-  max-width: 150px;
+#header {
+  display:flex;
+  justify-content:space-between;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 90%;
+  margin-left: 4%;
 }
-
-.minus-quantity-button {
-  padding: 0.25em 0.6em;
-  border-radius: 50%;
+.headerLinks {
+  align-self:flex-end;
+  display:flex;
 }
-
-.plus-quantity-button {
-  padding: 0.25em 0.5em;
-  border-radius: 50%;
-}
-
-.orderConfirmation {
-  color: rgb(238, 100, 50);
-}
-
-#logo {
-  display: flex;
-  align-content: center;
-  max-height: 280px;
-  width: 490px;
-  margin: auto;
-}
-
-#logo-image {
-  /* width: 460px;
-  margin: auto; */
+.linkItem{
+  justify-content: space-between;
+  padding: 10px;
 }
