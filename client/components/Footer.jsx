@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
-    <div id ="footer">
-      This will be the footer
+    <div id="footer">
+      © {year} Jplate LLC. All rights reserved.
     </div>
   );
-}
+};
 
 export default Footer;

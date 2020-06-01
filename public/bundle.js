@@ -148,9 +148,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Footer = function Footer() {
+  var year = new Date().getFullYear();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "footer"
-  }, "This will be the footer");
+  }, "\xA9 ", year, " Jplate LLC. All rights reserved.");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);

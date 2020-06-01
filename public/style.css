@@ -1,11 +1,9 @@
 * {
   box-sizing: border-box;
-  margin: 5px;
-  background-color: #c8e4fd;
+  background-color: #1d1d1d;
 }
 
 h1 {
-  padding: 1%;
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -22,16 +20,6 @@ a:hover {
 body {
   font-family: 'Open Sans', arial, sans-serif;
   align-items: center;
-}
-
-#footer{
-  justify-content:space-between;
-  padding: 20px;
-  background:   rgba(0, 0, 0, 0.75);
-  color: white;
-  font-size: 12px;
-  width: 100%;
-  text-align: center;
 }
 
 #header {
@@ -53,4 +41,17 @@ body {
 .linkItem{
   justify-content: space-between;
   padding: 10px;
+}
+
+#footer{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: rgb(26, 26, 26);
+  color: rgb(235,135,19);
+
 }
