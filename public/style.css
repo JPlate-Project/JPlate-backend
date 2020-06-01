@@ -22,7 +22,7 @@ body {
 #header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  margin: 10px;
   text-align: center;
   background-color: rgb(26, 26, 26);
   color: white;
@@ -30,7 +30,6 @@ body {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-
 }
 .headerLinks {
   align-self: flex-end;
