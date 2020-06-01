@@ -1,11 +1,5 @@
-* {
-  box-sizing: border-box;
-  margin: 5px;
-  background-color: #c8e4fd;
-}
 
 h1 {
-  padding: 1%;
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -20,37 +14,54 @@ a:hover {
 }
 
 body {
+  background-color: #1d1d1d;
   font-family: 'Open Sans', arial, sans-serif;
   align-items: center;
 }
 
-#footer{
-  justify-content:space-between;
-  padding: 20px;
-  background:   rgba(0, 0, 0, 0.75);
-  color: white;
-  font-size: 12px;
-  width: 100%;
-  text-align: center;
-}
-
 #header {
-  display:flex;
-  justify-content:space-between;
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
   text-align: center;
+  background-color: rgb(26, 26, 26);
   color: white;
   font-size: 12px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  width: 90%;
-  margin-left: 4%;
+  width: 100%;
 }
 .headerLinks {
-  align-self:flex-end;
-  display:flex;
+  align-self: flex-end;
+  display: flex;
 }
-.linkItem{
+.linkItem {
   justify-content: space-between;
   padding: 10px;
+}
+
+#footer {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: rgb(26, 26, 26);
+  color: rgb(235, 135, 19);
+}
+.plateContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.singlePlate {
+  border-style: solid;
+  border-color: lightblue;
+  padding: 5px;
+  border-radius: 4px;
+  color: white;
+  background-color: rgb(123, 111, 236);
 }

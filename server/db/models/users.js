@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
-const db = require("../db");
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-const User = db.define("user", {
+const User = db.define('user', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -19,7 +19,7 @@ const User = db.define("user", {
     },
     unique: {
       args: true,
-      msg: "This email is registered with an existing account.",
+      msg: 'This email is registered with an existing account.',
     },
   },
   password: {
@@ -28,4 +28,4 @@ const User = db.define("user", {
   },
 });
 
-module.exports = User
+module.exports = User;

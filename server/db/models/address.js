@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Address = db.define('address', {
-  id : {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -11,6 +11,6 @@ const Address = db.define('address', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-})
+});
 
 module.exports = Address;
