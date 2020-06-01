@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-  background-color: #1d1d1d;
-}
 
 h1 {
   text-align: center;
@@ -18,32 +14,34 @@ a:hover {
 }
 
 body {
+  background-color: #1d1d1d;
   font-family: 'Open Sans', arial, sans-serif;
   align-items: center;
 }
 
 #header {
-  display:flex;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
   padding: 20px;
   text-align: center;
+  background-color: rgb(26, 26, 26);
   color: white;
   font-size: 12px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  width: 90%;
-  margin-left: 4%;
+  width: 100%;
+
 }
 .headerLinks {
-  align-self:flex-end;
-  display:flex;
+  align-self: flex-end;
+  display: flex;
 }
-.linkItem{
+.linkItem {
   justify-content: space-between;
   padding: 10px;
 }
 
-#footer{
+#footer {
   width: 100%;
   text-align: center;
   position: absolute;
@@ -52,6 +50,19 @@ body {
   padding-top: 20px;
   padding-bottom: 40px;
   background-color: rgb(26, 26, 26);
-  color: rgb(235,135,19);
-
+  color: rgb(235, 135, 19);
+}
+.plateContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.singlePlate {
+  border-style: solid;
+  border-color: lightblue;
+  padding: 5px;
+  border-radius: 4px;
+  color: white;
+  background-color: rgb(123, 111, 236);
 }
