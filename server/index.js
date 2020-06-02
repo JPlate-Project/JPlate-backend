@@ -1,14 +1,12 @@
 const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
-// const compression = require('compression')
-// const session = require('express-session')
+const getPlates = require('../server/api/getPlates')
+
 const passport = require('passport')
-// const SequelizeStore = require('connect-session-sequelize')(session.Store)
-// const db = require('./db')
-// const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8092
 const app = express()
+app.use(getPlates)
 // const socketio = require('socket.io')
 module.exports = app
 
@@ -45,7 +43,7 @@ const createApp = () => {
 
   // body parsing middleware
   app.use(express.json())
-  app.use(express.urlencoded({extended: true}))
+  app.use(express.urlencoded({ extended: true }))
 
   // compression middleware
   // app.use(compression())
@@ -100,8 +98,8 @@ const startListening = () => {
   )
 
   // set up our socket control center
-//   const io = socketio(server)
-//   require('./socket')(io)
+  //   const io = socketio(server)
+  //   require('./socket')(io)
 }
 
 // const syncDb = () => db.sync()
