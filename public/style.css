@@ -43,7 +43,6 @@ body {
 #footer {
   width: 100%;
   text-align: center;
-  position: absolute;
   bottom: 0;
   left: 0;
   padding-top: 20px;
@@ -54,14 +53,21 @@ body {
 .plateContainer {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px;
   margin-left: 50px;
   margin-right: 50px;
 }
 .singlePlate {
-  border-style: solid;
-  border-color: lightblue;
+
+  font-family: 'Gill Sans';
   padding: 5px;
-  border-radius: 4px;
-  color: white;
-  background-color: rgb(123, 111, 236);
+  margin: 10px;
+  color: black;
+  background-color: white;
+}
+button{
+  text-align: center;
+  background-color: white;
+  float: right;
 }
