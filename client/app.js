@@ -9,10 +9,8 @@ class App extends React.Component {
     this.state = {
       plates: null
     }
-
   }
   async componentDidMount() {
-
     const response = await axios.get('/getPlates')
     this.setState({
       plates: response.data
@@ -24,17 +22,9 @@ class App extends React.Component {
     if (this.state.plates) {
       return (
         <div>
-
           <Header />
           <div className="plateContainer">
             {this.state.plates.map(plate => { return <Plate currentPlate={plate} /> })}
-
-
-
-
-
-
-
           </div>
           <Footer />
         </div>

@@ -12,10 +12,9 @@ const Plate = (props) => {
           width='200px'
         />
         <br></br>
+
         <h4>  {props.currentPlate.name}</h4>
         {props.currentPlate.description}
-
-
         <br></br>
 
         <button><img src='https://previews.123rf.com/images/aguiters/aguiters1711/aguiters171100033/90038691-shopping-cart-icon-vector.jpg' height='20px' width='20px' /></button>
