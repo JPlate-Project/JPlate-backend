@@ -210,11 +210,9 @@ var App = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "toggleCart",
-    value: function toggleCart(event) {
-      console.log(event);
-      event.preventDefault();
+    value: function toggleCart() {
       this.setState({
-        showCart: true
+        showCart: !this.state.showCart
       });
     }
   }, {
@@ -224,7 +222,8 @@ var App = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.showCart) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Cart__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          cart: this.state.cart
+          cart: this.state.cart,
+          toggleCart: this.toggleCart
         }));
       } else if (this.state.plates) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -270,10 +269,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Cart = function Cart(props) {
-  {
-    console.log(props.cart);
-  }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.cart.map(function (item) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: props.toggleCart
+  }, "Back"), props.cart.map(function (item) {
     console.log(item);
   }));
 };

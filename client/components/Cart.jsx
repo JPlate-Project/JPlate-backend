@@ -6,6 +6,7 @@ const Cart = (props) => {
 
   return (
     <div>
+      <button onClick={props.toggleCart}>Back</button>
       {props.cart.map(item => { console.log(item) })}
     </div>
   )

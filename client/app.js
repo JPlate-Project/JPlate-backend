@@ -27,11 +27,9 @@ class App extends React.Component {
       cart: [...this.state.cart, currentItem]
     })
   }
-  toggleCart(event) {
-    console.log(event)
-    event.preventDefault()
+  toggleCart() {
     this.setState({
-      showCart: true
+      showCart: !this.state.showCart
     })
   }
 
@@ -39,7 +37,7 @@ class App extends React.Component {
     if (this.state.showCart) {
       return (
         <div>
-          <Cart cart={this.state.cart} />
+          <Cart cart={this.state.cart} toggleCart={this.toggleCart} />
         </div>
       )
     } else if (this.state.plates) {
