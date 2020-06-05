@@ -272,7 +272,7 @@ var Cart = function Cart(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: props.toggleCart
   }, "Back"), props.cart.map(function (item) {
-    console.log(item);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.name);
   }));
 };
 
