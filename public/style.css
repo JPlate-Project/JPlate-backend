@@ -71,3 +71,15 @@ button{
   background-color: white;
   float: right;
 }
+#cart{
+  position: absolute;
+  background-color: white;
+  width: 80%;
+  left: 10%;
+}
+.cartItems{
+  width: 100%;
+  background-color: white;
+
+
+}

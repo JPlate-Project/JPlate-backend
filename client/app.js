@@ -2,8 +2,8 @@ import React from 'react';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Plate from './components/Plate.jsx';
-import Cart from './components/Cart'
 import axios from 'axios'
+import Cart from './components/Cart'
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -34,18 +34,12 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.showCart) {
+    if (this.state.plates) {
       return (
         <div>
-          <Cart cart={this.state.cart} toggleCart={this.toggleCart} />
-        </div>
-      )
-    } else if (this.state.plates) {
-      return (
-        <div>
-
           <Header numCartItems={this.state.cart.length} cart={this.state.cart} toggleCart={this.toggleCart} />
           <div className="plateContainer">
+            {this.state.showCart ? <Cart cart={this.state.cart} toggleCart={this.toggleCart} /> : console.log('yeah')}
             {this.state.plates.map(plate => { return <Plate currentPlate={plate} cartFunction={this.addToCart} /> })}
           </div>
           <Footer />
