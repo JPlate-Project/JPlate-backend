@@ -6,30 +6,31 @@ h1 {
 
 a {
   text-decoration: none;
-  color: #eb8713;
+  color:rgb(119, 93, 119);
 }
 
-a:hover {
-  color: rgb(238, 100, 50);
-}
+
 
 body {
-  background-color: #1d1d1d;
+  /* background:url('https://previews.123rf.com/images/tovovan/tovovan1111/tovovan111101944/11333263-seamless-background-of-white-plates-with-colorful-elements-.jpg'); */
+  background-color: whitesmoke2;
+  background-size: auto;
   font-family: 'Open Sans', arial, sans-serif;
   align-items: center;
+
 }
 
 #header {
   display: flex;
   justify-content: space-between;
-  margin: 10px;
   text-align: center;
-  background-color: rgb(26, 26, 26);
-  color: white;
+  background-color: rgb(255, 253, 232);
+  color:rgb(119, 93, 119);
   font-size: 12px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
+  padding: 6px;
 }
 .headerLinks {
   align-self: flex-end;
@@ -47,14 +48,15 @@ body {
   left: 0;
   padding-top: 20px;
   padding-bottom: 40px;
-  background-color: rgb(26, 26, 26);
-  color: rgb(235, 135, 19);
+  background-color: rgb(255, 253, 232);
+  color:rgb(119, 93, 119);
 }
 .plateContainer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 10px;
+
   margin-left: 50px;
   margin-right: 50px;
 }
@@ -64,7 +66,7 @@ body {
   padding: 5px;
   margin: 10px;
   color: black;
-  background-color: white;
+  background-color: rgb(255, 253, 232);
 }
 button{
   text-align: center;
@@ -72,14 +74,39 @@ button{
   float: right;
 }
 #cart{
-  position: absolute;
+  position: fixed;
   background-color: white;
   width: 80%;
   left: 10%;
+  top: 20%;
+  padding: 10px;
+  border: 1px solid #77aaff;
+  box-shadow:  -1px 1px #77aaff;
+  border-radius: 10px;
+  transition-timing-function: ease-in;
 }
 .cartItems{
+  text-align: center;
   width: 100%;
   background-color: white;
-
-
+}
+table{
+  right: 20%;
+  width: 100%;
+  text-align: left;
+}
+#emptyCart{
+  position: fixed;
+  background-color: white;
+  width: 80%;
+  top: 20%;
+  left: 10%;
+  padding: 10px;
+  border: 1px solid #77aaff;
+  box-shadow:  -1px 1px #77aaff;
+  border-radius: 10px;
+  transition-timing-function: ease-in;
+  text-align: center;
+  font-family: 'Gill Sans';
+  font-size: 2em;
 }

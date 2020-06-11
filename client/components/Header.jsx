@@ -8,7 +8,7 @@ const Header = (props) => {
       <h1>JPlate</h1>
       <div className="headerLinks">
         <div className="linkItem" >
-          <img src='https://www.iconsdb.com/icons/preview/white/shopping-cart-xxl.png' height='40px' width='40px' onClick={props.toggleCart} />
+          <img src='https://image.flaticon.com/icons/svg/25/25619.svg' height='40px' width='40px' onClick={props.toggleCart} />
           {props.numCartItems}
         </div>
         <div className="linkItem">

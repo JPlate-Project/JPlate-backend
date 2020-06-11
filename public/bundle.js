@@ -166,6 +166,7 @@ var App = /*#__PURE__*/function (_React$Component) {
     };
     _this.addToCart = _this.addToCart.bind(_assertThisInitialized(_this));
     _this.toggleCart = _this.toggleCart.bind(_assertThisInitialized(_this));
+    _this.removeFromCart = _this.removeFromCart.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -204,8 +205,26 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "addToCart",
     value: function addToCart(currentItem) {
+      if (this.state.cart.includes(currentItem)) {
+        alert("".concat(currentItem.name, " is already in the cart. Increase the quantity on the cart page."));
+        return;
+      }
+
       this.setState({
         cart: [].concat(_toConsumableArray(this.state.cart), [currentItem])
+      });
+    }
+  }, {
+    key: "removeFromCart",
+    value: function removeFromCart(currentItemIDToDelete) {
+      var tempCart = [];
+      this.state.cart.map(function (currentItem) {
+        if (!(currentItem.id === currentItemIDToDelete)) {
+          tempCart.push(currentItem);
+        }
+      });
+      this.setState({
+        cart: tempCart
       });
     }
   }, {
@@ -229,7 +248,8 @@ var App = /*#__PURE__*/function (_React$Component) {
           className: "plateContainer"
         }, this.state.showCart ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], {
           cart: this.state.cart,
-          toggleCart: this.toggleCart
+          toggleCart: this.toggleCart,
+          removeItem: this.removeFromCart
         }) : console.log('yeah'), this.state.plates.map(function (plate) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
             currentPlate: plate,
@@ -267,6 +287,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Cart = function Cart(props) {
+  console.log(props.cart);
+
+  if (!props.cart.length) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "emptyCart"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: props.toggleCart
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "http://icons.iconarchive.com/icons/icons8/windows-8/256/Arrows-Left-Arrow-icon.png",
+      height: "20px",
+      width: "20px"
+    })), "Cart is empty");
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "cart"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -277,12 +311,20 @@ var Cart = function Cart(props) {
     width: "20px"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "cartItems"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null)), props.cart.map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "10"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null)), props.cart.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: item.imageURL,
       height: "40px",
       width: "40px"
-    }))));
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "-")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: function onClick() {
+        return props.removeItem(item.id);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "https://cdn4.iconfinder.com/data/icons/controls-add-on-flat/48/Contols_-_Add_On-35-512.png",
+      height: "40px",
+      width: "40px"
+    })))));
   }))));
 };
 
@@ -337,7 +379,7 @@ var Header = function Header(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "linkItem"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "https://www.iconsdb.com/icons/preview/white/shopping-cart-xxl.png",
+    src: "https://image.flaticon.com/icons/svg/25/25619.svg",
     height: "40px",
     width: "40px",
     onClick: props.toggleCart

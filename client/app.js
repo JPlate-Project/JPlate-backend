@@ -14,6 +14,7 @@ class App extends React.Component {
     }
     this.addToCart = this.addToCart.bind(this)
     this.toggleCart = this.toggleCart.bind(this)
+    this.removeFromCart = this.removeFromCart.bind(this)
   }
   async componentDidMount() {
     const response = await axios.get('/getPlates')
@@ -23,8 +24,23 @@ class App extends React.Component {
 
   }
   addToCart(currentItem) {
+    if (this.state.cart.includes(currentItem)) {
+      alert(`${currentItem.name} is already in the cart. Increase the quantity on the cart page.`)
+      return
+    }
     this.setState({
       cart: [...this.state.cart, currentItem]
+    })
+  }
+  removeFromCart(currentItemIDToDelete) {
+    const tempCart = []
+    this.state.cart.map(currentItem => {
+      if (!(currentItem.id === currentItemIDToDelete)) {
+        tempCart.push(currentItem)
+      }
+    })
+    this.setState({
+      cart: tempCart
     })
   }
   toggleCart() {
@@ -39,7 +55,7 @@ class App extends React.Component {
         <div>
           <Header numCartItems={this.state.cart.length} cart={this.state.cart} toggleCart={this.toggleCart} />
           <div className="plateContainer">
-            {this.state.showCart ? <Cart cart={this.state.cart} toggleCart={this.toggleCart} /> : console.log('yeah')}
+            {this.state.showCart ? <Cart cart={this.state.cart} toggleCart={this.toggleCart} removeItem={this.removeFromCart} /> : console.log('yeah')}
             {this.state.plates.map(plate => { return <Plate currentPlate={plate} cartFunction={this.addToCart} /> })}
           </div>
           <Footer />
