@@ -1,14 +1,16 @@
 import React from 'react';
+import Home from './components/Home';
 import UserProfile from './components/UserProfile';
-import { Route, Switch } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 
 const Routes = () => {
 
   return (
-    <Switch>
+    <HashRouter>
+      <Route path="/" component={Home} />
       <Route exact path="/account" component={UserProfile} />
-    </Switch>
+    </HashRouter>
   );
 };
 
