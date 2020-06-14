@@ -100,9 +100,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Header.jsx */ "./client/components/Header.jsx");
 /* harmony import */ var _components_Footer_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Footer.jsx */ "./client/components/Footer.jsx");
 /* harmony import */ var _components_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Plate.jsx */ "./client/components/Plate.jsx");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_Cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Cart */ "./client/components/Cart.jsx");
+/* harmony import */ var _components_Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Cart */ "./client/components/Cart.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -166,7 +166,6 @@ var App = /*#__PURE__*/function (_React$Component) {
     };
     _this.addToCart = _this.addToCart.bind(_assertThisInitialized(_this));
     _this.toggleCart = _this.toggleCart.bind(_assertThisInitialized(_this));
-    _this.removeFromCart = _this.removeFromCart.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -180,7 +179,7 @@ var App = /*#__PURE__*/function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/getPlates');
+                return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/getPlates');
 
               case 2:
                 response = _context.sent;
@@ -205,26 +204,8 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "addToCart",
     value: function addToCart(currentItem) {
-      if (this.state.cart.includes(currentItem)) {
-        alert("".concat(currentItem.name, " is already in the cart. Increase the quantity on the cart page."));
-        return;
-      }
-
       this.setState({
         cart: [].concat(_toConsumableArray(this.state.cart), [currentItem])
-      });
-    }
-  }, {
-    key: "removeFromCart",
-    value: function removeFromCart(currentItemIDToDelete) {
-      var tempCart = [];
-      this.state.cart.map(function (currentItem) {
-        if (!(currentItem.id === currentItemIDToDelete)) {
-          tempCart.push(currentItem);
-        }
-      });
-      this.setState({
-        cart: tempCart
       });
     }
   }, {
@@ -239,18 +220,19 @@ var App = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      if (this.state.plates) {
+      if (this.state.showCart) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Cart__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          cart: this.state.cart,
+          toggleCart: this.toggleCart
+        }));
+      } else if (this.state.plates) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
           numCartItems: this.state.cart.length,
           cart: this.state.cart,
           toggleCart: this.toggleCart
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "plateContainer"
-        }, this.state.showCart ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          cart: this.state.cart,
-          toggleCart: this.toggleCart,
-          removeItem: this.removeFromCart
-        }) : console.log('yeah'), this.state.plates.map(function (plate) {
+        }, this.state.plates.map(function (plate) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
             currentPlate: plate,
             cartFunction: _this2.addToCart
