@@ -56,8 +56,8 @@ class Home extends React.Component {
         <div>
           <Header numCartItems={this.state.cart.length} cart={this.state.cart} toggleCart={this.toggleCart} />
           <div className="plateContainer">
-            {this.state.showCart ? <Cart cart={this.state.cart} toggleCart={this.toggleCart} removeItem={this.removeFromCart} /> : console.log('yeah')}
-            {this.state.plates.map(plate => { return <Plate currentPlate={plate} cartFunction={this.addToCart} /> })}
+            {this.state.showCart ? <Cart cart={this.state.cart} toggleCart={this.toggleCart} removeItem={this.removeFromCart} /> : ''}
+            {this.state.plates.map(plate => { return <Plate key={Math.random()} currentPlate={plate} cartFunction={this.addToCart} />; })}
           </div>
           <Footer />
         </div>

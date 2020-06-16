@@ -122,17 +122,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header.jsx */ "./client/components/Header.jsx");
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Footer.jsx */ "./client/components/Footer.jsx");
+/* eslint-disable react/jsx-key */
+
+/* eslint-disable react/button-has-type */
 
 
 
 
 var Cart = function Cart(props) {
-  console.log(props.cart);
-
   if (!props.cart.length) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "emptyCart"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
       onClick: props.toggleCart
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: "http://icons.iconarchive.com/icons/icons8/windows-8/256/Arrows-Left-Arrow-icon.png",
@@ -404,8 +406,9 @@ var Home = /*#__PURE__*/function (_React$Component) {
           cart: this.state.cart,
           toggleCart: this.toggleCart,
           removeItem: this.removeFromCart
-        }) : console.log('yeah'), this.state.plates.map(function (plate) {
+        }) : '', this.state.plates.map(function (plate) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            key: Math.random(),
             currentPlate: plate,
             cartFunction: _this2.addToCart
           });
@@ -434,6 +437,8 @@ var Home = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.jsx");
+
 
 
 var Plate = function Plate(props) {
@@ -446,10 +451,9 @@ var Plate = function Plate(props) {
       height: "200px",
       width: "200px"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "  ", props.currentPlate.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), props.currentPlate.description, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
       id: "addToCart",
-      onClick: function onClick() {
-        return props.cartFunction(props.currentPlate);
-      }
+      onClick: function onClick() {}
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: "https://previews.123rf.com/images/aguiters/aguiters1711/aguiters171100033/90038691-shopping-cart-icon-vector.jpg",
       height: "20px",
