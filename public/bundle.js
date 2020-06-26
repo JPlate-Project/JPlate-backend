@@ -102,7 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_1__["default"], null);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -259,43 +259,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+/* eslint-disable no-return-assign */
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* eslint-disable no-unused-vars */
 
 
 
@@ -303,124 +285,125 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var Home = function Home() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      plates = _useState2[0],
+      setPlates = _useState2[1];
 
-var Home = /*#__PURE__*/function (_React$Component) {
-  _inherits(Home, _React$Component);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var mount = true;
 
-  var _super = _createSuper(Home);
+    function dataFetch() {
+      return _dataFetch.apply(this, arguments);
+    }
 
-  function Home(props) {
-    var _this;
-
-    _classCallCheck(this, Home);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      plates: null,
-      cart: [],
-      showCart: false
-    };
-    _this.addToCart = _this.addToCart.bind(_assertThisInitialized(_this));
-    _this.toggleCart = _this.toggleCart.bind(_assertThisInitialized(_this));
-    _this.removeFromCart = _this.removeFromCart.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Home, [{
-    key: "componentDidMount",
-    value: function () {
-      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    function _dataFetch() {
+      _dataFetch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
         var response;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _context.prev = 0;
+                _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/getPlates');
 
-              case 2:
+              case 3:
                 response = _context.sent;
-                this.setState({
-                  plates: response.data
-                });
+                setPlates(response.data);
+                _context.next = 10;
+                break;
 
-              case 4:
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.error(_context.t0);
+
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, null, [[0, 7]]);
       }));
-
-      function componentDidMount() {
-        return _componentDidMount.apply(this, arguments);
-      }
-
-      return componentDidMount;
-    }()
-  }, {
-    key: "addToCart",
-    value: function addToCart(currentItem) {
-      if (this.state.cart.includes(currentItem)) {
-        alert("".concat(currentItem.name, " is already in the cart. Increase the quantity on the cart page."));
-        return;
-      }
-
-      this.setState({
-        cart: [].concat(_toConsumableArray(this.state.cart), [currentItem])
-      });
+      return _dataFetch.apply(this, arguments);
     }
-  }, {
-    key: "removeFromCart",
-    value: function removeFromCart(currentItemIDToDelete) {
-      var tempCart = [];
-      this.state.cart.map(function (currentItem) {
-        if (!(currentItem.id === currentItemIDToDelete)) {
-          tempCart.push(currentItem);
-        }
-      });
-      this.setState({
-        cart: tempCart
-      });
-    }
-  }, {
-    key: "toggleCart",
-    value: function toggleCart() {
-      this.setState({
-        showCart: !this.state.showCart
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
 
-      if (this.state.plates) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          numCartItems: this.state.cart.length,
-          cart: this.state.cart,
-          toggleCart: this.toggleCart
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "plateContainer"
-        }, this.state.showCart ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          cart: this.state.cart,
-          toggleCart: this.toggleCart,
-          removeItem: this.removeFromCart
-        }) : '', this.state.plates.map(function (plate) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            key: Math.random(),
-            currentPlate: plate,
-            cartFunction: _this2.addToCart
-          });
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...");
-      }
-    }
-  }]);
+    dataFetch();
+    return function () {
+      return mount = false;
+    };
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "plateContainer"
+  }, plates ? plates.map(function (plate) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      key: Math.random(),
+      currentPlate: plate
+    });
+  }) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+}; // class Home extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       plates: null,
+//       cart: [],
+//       showCart: false
+//     };
+//     this.addToCart = this.addToCart.bind(this)
+//     this.toggleCart = this.toggleCart.bind(this)
+//     this.removeFromCart = this.removeFromCart.bind(this)
+//   }
+//   async componentDidMount() {
+//     const response = await axios.get('/getPlates')
+//     this.setState({
+//       plates: response.data
+//     });
+//   }
+//   addToCart(currentItem) {
+//     if (this.state.cart.includes(currentItem)) {
+//       alert(`${currentItem.name} is already in the cart. Increase the quantity on the cart page.`)
+//       return
+//     }
+//     this.setState({
+//       cart: [...this.state.cart, currentItem]
+//     })
+//   }
+//   removeFromCart(currentItemIDToDelete) {
+//     const tempCart = []
+//     this.state.cart.map(currentItem => {
+//       if (!(currentItem.id === currentItemIDToDelete)) {
+//         tempCart.push(currentItem)
+//       }
+//     })
+//     this.setState({
+//       cart: tempCart
+//     })
+//   }
+//   toggleCart() {
+//     this.setState({
+//       showCart: !this.state.showCart
+//     })
+//   }
+//   render() {
+//     if (this.state.plates) {
+//       return (
+//         <div>
+//           <Header numCartItems={this.state.cart.length} cart={this.state.cart} toggleCart={this.toggleCart} />
+//           <div className="plateContainer">
+//             {this.state.showCart ? <Cart cart={this.state.cart} toggleCart={this.toggleCart} removeItem={this.removeFromCart} /> : ''}
+//             {this.state.plates.map(plate => { return <Plate key={Math.random()} currentPlate={plate} cartFunction={this.addToCart} />; })}
+//           </div>
+//           <Footer />
+//         </div>
+//       )
+//     } else {
+//       return (<div>Loading...</div>)
+//     }
+//   }
+// }
 
-  return Home;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 

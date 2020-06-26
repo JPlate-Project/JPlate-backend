@@ -11,4 +11,4 @@ router.get('/getPlates', async (req, res, next) => {
   }
 })
 
-module.exports = router
+module.exports = router;
