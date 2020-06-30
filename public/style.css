@@ -1,4 +1,3 @@
-
 h1 {
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -6,75 +5,105 @@ h1 {
 
 a {
   text-decoration: none;
-  color:rgb(119, 93, 119);
+  color:rgb(98, 216, 187);
 }
 
-button {
+button{
+  text-align: center;
   border: none;
+  background-color: rgb(72, 121, 124, 1);
+  border-radius: 20%;
+  float: right;
 }
 
 body {
   /* background:url('https://previews.123rf.com/images/tovovan/tovovan1111/tovovan111101944/11333263-seamless-background-of-white-plates-with-colorful-elements-.jpg'); */
-  background-color: whitesmoke2;
+  background-color: rgb(58, 58, 58);
+  color: rgb(173, 172, 172);
   background-size: auto;
   font-family: 'Open Sans', arial, sans-serif;
   align-items: center;
-
 }
+
+img {
+  width: 250px;
+  height: 250px;
+}
+
+/*
+Header
+*/
 
 #header {
   display: flex;
   justify-content: space-between;
   text-align: center;
-  background-color: rgb(255, 253, 232);
-  color:rgb(119, 93, 119);
+  background-color: rgb(8, 8, 8,.5);
+  color:rgb(72, 121, 124);
   font-size: 12px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
   width: 100%;
-  padding: 6px;
+  padding: 1em;
+  margin-left: -10px;
+  margin-top: -10px;
 }
+
 .headerLinks {
-  align-self: flex-end;
   display: flex;
+  align-self: flex-end;
 }
+
 .linkItem {
   justify-content: space-between;
   padding: 10px;
 }
 
-#footer {
-  width: 100%;
-  text-align: center;
-  bottom: 0;
-  left: 0;
-  padding-top: 20px;
-  padding-bottom: 40px;
-  background-color: rgb(255, 253, 232);
-  color:rgb(119, 93, 119);
+#headerCart{
+  height: 40px;
+  width: auto;
 }
+
+/*
+Footer
+*/
+
+#footer {
+  width: 100vw;
+  height: 5em;
+  position: relative;
+  margin-left: -1em;
+  text-align: center;
+  padding-top: 2em;
+  background-color: rgb(8, 8, 8);
+}
+
+/*
+HomePage
+*/
+
 .plateContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 10px;
-
   margin-left: 50px;
   margin-right: 50px;
 }
-.singlePlate {
 
+.singlePlate {
   font-family: 'Gill Sans';
+  width: 250px;
+  height: auto;
   padding: 5px;
   margin: 10px;
-  color: black;
-  background-color: rgb(255, 253, 232);
+  color: rgb(233, 225, 225);
+  background-color: rgb(8, 8, 8);
 }
-button{
-  text-align: center;
-  background-color: white;
-  float: right;
+
+#cartButton {
+  width: 30px;
+  height: auto;
 }
+
 #cart{
   position: fixed;
   background-color: white;
@@ -87,16 +116,18 @@ button{
   border-radius: 10px;
   transition-timing-function: ease-in;
 }
+
 .cartItems{
   text-align: center;
   width: 100%;
-  background-color: white;
 }
+
 table{
   right: 20%;
   width: 100%;
   text-align: left;
 }
+
 #emptyCart{
   position: fixed;
   background-color: white;
@@ -112,6 +143,7 @@ table{
   font-family: 'Gill Sans';
   font-size: 2em;
 }
+
 #itemDescriptionContainer{
   position: fixed;
   background-color: white;
@@ -123,16 +155,46 @@ table{
   font-family: 'Gill Sans';
   font-size: 1em;
 }
+
 #itemDescriptionHeader{
   display: flex;
   justify-content: space-between;
 }
+
 #itemDescriptionBody{
   display: flex;
   justify-content: space-between;
 }
+
 #itemDescriptionCenter{
   display: flex;
   justify-content: space-between;
   width: 50%;
+}
+
+/*
+UserProfile
+*/
+
+.welcomeText {
+  font-size: xx-large;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.pastOrders {
+  height: 200px;
+  width: 200px;
+  border: solid white 1px;
+  background-color: black;
+  text-align: center;
+}
+
+.favorite {
+  height: 200px;
+  width: 200px;
+  border: solid white 1px;
+  background-color: black;
+  text-align: center;
 }

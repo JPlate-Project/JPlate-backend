@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Cart from './Cart'
+import React, { useState } from 'react';
 import ItemDescription from './ItemDescription';
 
 const Plate = (props) => {
-  const [showItemDescription, setShowItemDescription] = useState(false)
+  const [showItemDescription, setShowItemDescription] = useState(false);
 
   return (
     <div className="singlePlate">
@@ -22,18 +21,20 @@ const Plate = (props) => {
       {props.currentPlate.description}
       <br />
 
-      <button type="button" id="addToCart" onClick={() => {
-        return setShowItemDescription(!showItemDescription)
-      }}>
+      <button
+        type="button" id="addToCart" onClick={() => {
+          return setShowItemDescription(!showItemDescription);
+        }}>
 
-        <img src="https://previews.123rf.com/images/aguiters/aguiters1711/aguiters171100033/90038691-shopping-cart-icon-vector.jpg" height="20px" width="20px" />
+        <img
+          id="cartButton" src="https://image.flaticon.com/icons/svg/25/25619.svg" height="20px" width="20px" />
       </button>
 
       {`$${props.currentPlate.price}`}
 
     </div>
-  )
-}
+  );
+};
 
 
 export default Plate;
