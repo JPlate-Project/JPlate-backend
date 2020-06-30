@@ -22,7 +22,7 @@ const Plate = (props) => {
         <button type="button" id="addToCart" onClick={() => {
 
         }}>
-          <img src="https://previews.123rf.com/images/aguiters/aguiters1711/aguiters171100033/90038691-shopping-cart-icon-vector.jpg" height="20px" width="20px" />
+          <img id="cartButton" src="https://image.flaticon.com/icons/svg/25/25619.svg" height="20px" width="20px" />
         </button>
 
         {`$${props.currentPlate.price}`}
