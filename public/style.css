@@ -9,7 +9,9 @@ a {
   color:rgb(119, 93, 119);
 }
 
-
+button {
+  border: none;
+}
 
 body {
   /* background:url('https://previews.123rf.com/images/tovovan/tovovan1111/tovovan111101944/11333263-seamless-background-of-white-plates-with-colorful-elements-.jpg'); */
@@ -109,4 +111,28 @@ table{
   text-align: center;
   font-family: 'Gill Sans';
   font-size: 2em;
+}
+#itemDescriptionContainer{
+  position: fixed;
+  background-color: white;
+  width: 80%;
+  top: 20%;
+  left: 10%;
+  padding: 10px;
+  border: 1px solid #77aaff;
+  font-family: 'Gill Sans';
+  font-size: 1em;
+}
+#itemDescriptionHeader{
+  display: flex;
+  justify-content: space-between;
+}
+#itemDescriptionBody{
+  display: flex;
+  justify-content: space-between;
+}
+#itemDescriptionCenter{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
 }

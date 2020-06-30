@@ -6,6 +6,7 @@ import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Axios from 'axios';
 import Cart from './Cart';
+import ItemDescription from './ItemDescription'
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
