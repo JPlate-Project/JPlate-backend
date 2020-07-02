@@ -10,9 +10,9 @@ a {
 
 button{
   text-align: center;
+  background-color: rgb(72, 121, 124, 1);
   border: none;
-  /* background-color: rgb(72, 121, 124, 1); */
-  border-radius: 20%;
+  border-radius: 10px 10px 10px 10px;
   float: right;
 }
 
@@ -211,4 +211,29 @@ UserProfile
   border: solid white 1px;
   background-color: black;
   text-align: center;
+}
+
+/*
+Sign In
+*/
+
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+input {
+  height: 2em;
+  width: 20em;
+
+}
+
+.signInSubmit {
+  width: 15em;
+  height: 3em;
+  color: white;
+  font-size: 1em;
 }
