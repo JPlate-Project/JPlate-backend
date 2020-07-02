@@ -8,7 +8,7 @@ const ItemDescription = (props) => {
         <button type="button" onClick={() => {
           return props.toggleItemDescription(!props.showItemDescription)
         }}>
-          <img src="https://cdn4.iconfinder.com/data/icons/xbox-one-thin-line-set/64/ico-xbx-bttn-x-512.png" height='40px' width='40px' ></img>
+          <img src="https://static.thenounproject.com/png/1600389-200.png" style={{ height: '20px', width: '20px', 'background-color': 'white', border: 'none' }} ></img>
         </button>
       </div>
       <hr />
@@ -16,12 +16,21 @@ const ItemDescription = (props) => {
         <div id="itemDescriptionCenter">
           <img src={props.currentPlate.imageURL} height="300px"
             width="300px"></img>
-          {props.currentPlate.description}
+          <div id="itemDescriptionCenterQuantity">
+            <div>{props.currentPlate.price}</div>
+            <div>
 
+              <button id="minusQuantity" type="button" style={{ height: '50px', width: '50px' }}>-</button>
+
+              <button id="addQuantity" type="button" style={{ height: '50px', width: '50px' }}>+</button>
+              0 
+            </div>
+            <button id="addToCart" type="button" style={{ height: '50px', width: '50px' }}>Add to cart</button>
+          </div>
         </div>
-        <div>more stuffo n the right</div>
+        <div>{props.currentPlate.description}</div>
       </div>
-    </div>
+    </div >
   )
 }
 

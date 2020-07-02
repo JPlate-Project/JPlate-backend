@@ -438,9 +438,13 @@ var ItemDescription = function ItemDescription(props) {
       return props.toggleItemDescription(!props.showItemDescription);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "https://cdn4.iconfinder.com/data/icons/xbox-one-thin-line-set/64/ico-xbx-bttn-x-512.png",
-    height: "40px",
-    width: "40px"
+    src: "https://static.thenounproject.com/png/1600389-200.png",
+    style: {
+      height: '20px',
+      width: '20px',
+      'background-color': 'white',
+      border: 'none'
+    }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "itemDescriptionBody"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -449,7 +453,30 @@ var ItemDescription = function ItemDescription(props) {
     src: props.currentPlate.imageURL,
     height: "300px",
     width: "300px"
-  }), props.currentPlate.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "more stuffo n the right")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "itemDescriptionCenterQuantity"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "minusQuantity",
+    type: "button",
+    style: {
+      height: '50px',
+      width: '50px'
+    }
+  }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "addQuantity",
+    type: "button",
+    style: {
+      height: '50px',
+      width: '50px'
+    }
+  }, "+"), "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "addToCart",
+    type: "button",
+    style: {
+      height: '50px',
+      width: '50px'
+    }
+  }, "Add to cart"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.description)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemDescription);
