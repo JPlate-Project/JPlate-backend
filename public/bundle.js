@@ -300,9 +300,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-/* eslint-disable no-return-assign */
-
-/* eslint-disable no-unused-vars */
 
 
 
@@ -369,67 +366,7 @@ var Home = function Home() {
       currentPlate: plate
     });
   }) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
-}; // class Home extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       plates: null,
-//       cart: [],
-//       showCart: false
-//     };
-//     this.addToCart = this.addToCart.bind(this)
-//     this.toggleCart = this.toggleCart.bind(this)
-//     this.removeFromCart = this.removeFromCart.bind(this)
-//   }
-//   async componentDidMount() {
-//     const response = await axios.get('/getPlates')
-//     this.setState({
-//       plates: response.data
-//     });
-//   }
-//   addToCart(currentItem) {
-//     if (this.state.cart.includes(currentItem)) {
-//       alert(`${currentItem.name} is already in the cart. Increase the quantity on the cart page.`)
-//       return
-//     }
-//     this.setState({
-//       cart: [...this.state.cart, currentItem]
-//     })
-//   }
-//   removeFromCart(currentItemIDToDelete) {
-//     const tempCart = []
-//     this.state.cart.map(currentItem => {
-//       if (!(currentItem.id === currentItemIDToDelete)) {
-//         tempCart.push(currentItem)
-//       }
-//     })
-//     this.setState({
-//       cart: tempCart
-//     })
-//   }
-//   toggleCart() {
-//     this.setState({
-//       showCart: !this.state.showCart
-//     })
-//   }
-//   render() {
-//     if (this.state.plates) {
-//       return (
-//         <div>
-//           <Header numCartItems={this.state.cart.length} cart={this.state.cart} toggleCart={this.toggleCart} />
-//           <div className="plateContainer">
-//             {this.state.showCart ? <Cart cart={this.state.cart} toggleCart={this.toggleCart} removeItem={this.removeFromCart} /> : ''}
-//             {this.state.plates.map(plate => { return <Plate key={Math.random()} currentPlate={plate} cartFunction={this.addToCart} />; })}
-//           </div>
-//           <Footer />
-//         </div>
-//       )
-//     } else {
-//       return (<div>Loading...</div>)
-//     }
-//   }
-// }
-
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
@@ -446,6 +383,8 @@ var Home = function Home() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _QuantityCalc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuantityCalc */ "./client/components/QuantityCalc.jsx");
+
 
 
 var ItemDescription = function ItemDescription(props) {
@@ -463,7 +402,7 @@ var ItemDescription = function ItemDescription(props) {
     style: {
       height: '20px',
       width: '20px',
-      'background-color': 'white',
+      'backgroundColor': 'white',
       border: 'none'
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -474,30 +413,16 @@ var ItemDescription = function ItemDescription(props) {
     src: props.currentPlate.imageURL,
     height: "300px",
     width: "300px"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), props.currentPlate.price, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "itemDescriptionCenterQuantity"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    id: "minusQuantity",
-    type: "button",
-    style: {
-      height: '50px',
-      width: '50px'
-    }
-  }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    id: "addQuantity",
-    type: "button",
-    style: {
-      height: '50px',
-      width: '50px'
-    }
-  }, "+"), "0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuantityCalc__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "addToCart",
     type: "button",
     style: {
       height: '50px',
       width: '50px'
     }
-  }, "Add to cart"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.description)));
+  }, "Add to cart")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.description)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemDescription);
@@ -563,6 +488,62 @@ var Plate = function Plate(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Plate);
+
+/***/ }),
+
+/***/ "./client/components/QuantityCalc.jsx":
+/*!********************************************!*\
+  !*** ./client/components/QuantityCalc.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/utilsFunctions */ "./client/utils/utilsFunctions.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var QuantityCalc = function QuantityCalc() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
+      _useState2 = _slicedToArray(_useState, 2),
+      quantity = _useState2[0],
+      setQuantity = _useState2[1];
+
+  function handleClick(mathOperation) {
+    setQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__["default"])(quantity, mathOperation));
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "minus",
+    type: "button",
+    onClick: function onClick() {
+      handleClick('minus');
+    }
+  }, "-"), quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "add",
+    type: "button",
+    onClick: function onClick() {
+      handleClick('add');
+    }
+  }, "+"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (QuantityCalc);
 
 /***/ }),
 
@@ -715,6 +696,34 @@ var Routes = function Routes() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Routes);
+
+/***/ }),
+
+/***/ "./client/utils/utilsFunctions.js":
+/*!****************************************!*\
+  !*** ./client/utils/utilsFunctions.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return setItemQuantity; });
+function setItemQuantity(currentQuantity, mathOperation) {
+  if (mathOperation === 'add') {
+    if (currentQuantity === 15) {
+      return 15;
+    } else {
+      return currentQuantity + 1;
+    }
+  } else if (mathOperation === 'minus') {
+    if (currentQuantity === 1) {
+      return 1;
+    } else {
+      return currentQuantity - 1;
+    }
+  }
+}
 
 /***/ }),
 
