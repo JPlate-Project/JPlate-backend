@@ -641,11 +641,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SignUp = function SignUp() {
-  // const formRef = useRef(null);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Make An Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: console.log('Hey')
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  var formRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  var passwordRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+
+  function handFormSubmit() {
+    event.preventDefault();
+    console.log(formRef.current[0].value);
+  } // function checkPasswordLevel() {
+  // console.log('Check Password Level');
+  // https://www.enzoic.com/docs-password-strength-meter-quick-start/
+  // }
+
+
+  function checkPasswordMatch(event) {
+    if (event.target.value === passwordRef.current.value) {
+      var passwordEffect = document.getElementById('password2');
+      passwordEffect.style.backgroundColor = 'lightgreen';
+    }
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Make An Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "signUpForm"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handFormSubmit,
+    ref: formRef
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "firstName"
   }, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -668,12 +687,14 @@ var SignUp = function SignUp() {
     htmlFor: "password"
   }, "Choose a password "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
-    id: "password1"
+    id: "password1",
+    ref: passwordRef
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password2"
   }, "Re-type your password "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
-    id: "password2"
+    id: "password2",
+    onChange: checkPasswordMatch
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "signInSubmit",
     type: "submit"
