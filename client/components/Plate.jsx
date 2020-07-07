@@ -22,7 +22,7 @@ const Plate = (props) => {
       <br />
 
       <button
-        type="button" id="addToCart" onClick={() => {
+        type="button" onClick={() => {
           return setShowItemDescription(!showItemDescription);
         }}>
 

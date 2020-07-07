@@ -10,19 +10,17 @@ a {
 
 button{
   text-align: center;
-  background-color: rgb(72, 121, 124, 1);
   border: none;
-  border-radius: 10px 10px 10px 10px;
   float: right;
 }
 
 body {
-  /* background:url('https://previews.123rf.com/images/tovovan/tovovan1111/tovovan111101944/11333263-seamless-background-of-white-plates-with-colorful-elements-.jpg'); */
   background-color: rgb(58, 58, 58);
   color: rgb(173, 172, 172);
   background-size: auto;
   font-family: 'Open Sans', arial, sans-serif;
   align-items: center;
+  box-shadow: 0px 0px 1px 5000px rgba(0,0,0,0.8);
 }
 
 img {
@@ -101,58 +99,23 @@ HomePage
 
 #cartButton {
   width: 30px;
-  height: auto;
+  height: 20px;
 }
 
-#cart{
-  position: fixed;
-  background-color: white;
-  width: 80%;
-  left: 10%;
-  top: 20%;
-  padding: 10px;
-  border: 1px solid #77aaff;
-  box-shadow:  -1px 1px #77aaff;
-  border-radius: 10px;
-  transition-timing-function: ease-in;
-}
-
-.cartItems{
-  text-align: center;
-  width: 100%;
-}
-
-table{
-  right: 20%;
-  width: 100%;
-  text-align: left;
-}
-
-#emptyCart{
-  position: fixed;
-  background-color: white;
-  width: 80%;
-  top: 20%;
-  left: 10%;
-  padding: 10px;
-  border: 1px solid #77aaff;
-  box-shadow:  -1px 1px #77aaff;
-  border-radius: 10px;
-  transition-timing-function: ease-in;
-  text-align: center;
-  font-family: 'Gill Sans';
-  font-size: 2em;
-}
+/*
+Item Description Popup
+*/
 
 #itemDescriptionContainer{
   position: fixed;
-  background-color: gray;
-  color: white;
+  background-color: rgb(8, 8, 8);
+  color:rgb(72, 121, 124);
+  font-weight: bold;
   width: 80%;
   top: 20%;
   left: 10%;
   padding: 10px;
-  border: 1px solid #77aaff;
+  box-shadow: 0 8px 6px -6px black;
   font-size: 1em;
 }
 
@@ -164,6 +127,7 @@ table{
 #itemDescriptionBody{
   display: flex;
   justify-content: space-between;
+
 }
 
 #itemDescriptionCenter{
@@ -174,15 +138,19 @@ table{
 
 #itemDescriptionCenterQuantity{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   align-content: space-around;
   width: 100%;
 }
 
-#itemDescriptionQuantityNumber{
-  display:flex;
-  font-size: 2em;
+#addToCart{
+  height: 50px;
+  width: 100px;
+  color: white;
+  background-color: darksalmon;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /*

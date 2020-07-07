@@ -109,75 +109,6 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./client/components/Cart.jsx":
-/*!************************************!*\
-  !*** ./client/components/Cart.jsx ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* eslint-disable react/jsx-key */
-
-/* eslint-disable react/button-has-type */
-
-
-var Cart = function Cart(props) {
-  var cartItems = props.cartItems;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "cart"
-  }, cartItems ? cartItems.map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: Math.random()
-    }, item.name);
-  }) : "There aare no items in the cart");
-}; // const Cart = (props) => {
-//   if (!(props.cart.length)) {
-//     return (
-//       <div id="emptyCart">
-//         <button type="button" onClick={props.toggleCart}><img src="http://icons.iconarchive.com/icons/icons8/windows-8/256/Arrows-Left-Arrow-icon.png" height="20px" width="20px" /></button>
-//         Cart is empty
-//       </div>
-//     );
-//   }
-//   return (
-//     <div id="cart">
-//       <button onClick={props.toggleCart}><img src="http://icons.iconarchive.com/icons/icons8/windows-8/256/Arrows-Left-Arrow-icon.png" height="20px" width="20px" /></button>
-//       <div id="cartItems">
-//         <table>
-//           <tr>
-//             <th>Name</th>
-//             <th />
-//             <th>Price</th>
-//             <th>Quantity</th>
-//             <th />
-//           </tr>
-//           {props.cart.map(item => {
-//             return (
-//               <React.Fragment>
-//                 <tr>
-//                   <td>{item.name}</td>
-//                   <td><img src={item.imageURL} height="40px" width="40px" /></td>
-//                   <td>${item.price}</td>
-//                   <td>0<button>+</button><button>-</button></td>
-//                   <td><button onClick={() => { return props.removeItem(item.id); }}><img src="https://cdn4.iconfinder.com/data/icons/controls-add-on-flat/48/Contols_-_Add_On-35-512.png" height="40px" width="40px" /></button></td>
-//                 </tr>
-//               </React.Fragment>);
-//           })}
-//         </table>
-//       </div>
-//     </div>
-//   );
-// };
-
-
-/* harmony default export */ __webpack_exports__["default"] = (Cart);
-
-/***/ }),
-
 /***/ "./client/components/Footer.jsx":
 /*!**************************************!*\
   !*** ./client/components/Footer.jsx ***!
@@ -282,8 +213,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Plate_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Plate.jsx */ "./client/components/Plate.jsx");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.jsx");
-/* harmony import */ var _ItemDescription__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ItemDescription */ "./client/components/ItemDescription.jsx");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -306,13 +235,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-
 var Home = function Home() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
       plates = _useState2[0],
       setPlates = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      cart = _useState4[0],
+      addItemToCart = _useState4[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var mount = true;
@@ -413,16 +345,16 @@ var ItemDescription = function ItemDescription(props) {
     src: props.currentPlate.imageURL,
     height: "300px",
     width: "300px"
-  }), props.currentPlate.price, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "itemDescriptionCenterQuantity"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuantityCalc__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuantityCalc__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    currentPrice: props.currentPlate.price
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "addToCart"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "addToCart",
-    type: "button",
-    style: {
-      height: '50px',
-      width: '50px'
-    }
-  }, "Add to cart")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.description)));
+    type: "button"
+  }, "Add to cart")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.description)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemDescription);
@@ -475,7 +407,6 @@ var Plate = function Plate(props) {
     width: "200px"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "  ", props.currentPlate.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), props.currentPlate.description, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
-    id: "addToCart",
     onClick: function onClick() {
       return setShowItemDescription(!showItemDescription);
     }
@@ -518,7 +449,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var QuantityCalc = function QuantityCalc() {
+var QuantityCalc = function QuantityCalc(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
       _useState2 = _slicedToArray(_useState, 2),
       quantity = _useState2[0],
@@ -528,15 +459,23 @@ var QuantityCalc = function QuantityCalc() {
     setQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__["default"])(quantity, mathOperation));
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "$ ", props.currentPrice * quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "minus",
     type: "button",
+    style: {
+      height: '30px',
+      width: '30px'
+    },
     onClick: function onClick() {
       handleClick('minus');
     }
   }, "-"), quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "add",
     type: "button",
+    style: {
+      height: '30px',
+      width: '30px'
+    },
     onClick: function onClick() {
       handleClick('add');
     }

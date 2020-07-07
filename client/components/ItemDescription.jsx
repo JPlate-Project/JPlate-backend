@@ -17,11 +17,12 @@ const ItemDescription = (props) => {
         <div id="itemDescriptionCenter">
           <img src={props.currentPlate.imageURL} height="300px"
             width="300px"></img>
-          {props.currentPlate.price}
           <div id="itemDescriptionCenterQuantity">
-            <QuantityCalc />
+            <QuantityCalc currentPrice={props.currentPlate.price} />
+            <div id="addToCart">
+              <button id="addToCart" type="button">Add to cart</button>
+            </div>
           </div>
-          <button id="addToCart" type="button" style={{ height: '50px', width: '50px' }}>Add to cart</button>
         </div>
         <div>{props.currentPlate.description}</div>
       </div>
