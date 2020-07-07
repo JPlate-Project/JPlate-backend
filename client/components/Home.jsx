@@ -3,12 +3,16 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Axios from 'axios';
+import { addToCart } from '../utils/utilsFunctions';
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
-  const [cart, addItemToCart] = useState([])
+  const [cart, addItemToCart] = useState([]);
 
-  
+  function handleAddToCart(cart, itemToAdd) {
+    return useState(addToCart(cart, itemToAdd));
+  }
+
 
   useEffect(() => {
     let mount = true;
@@ -29,7 +33,7 @@ const Home = () => {
       <Header />
       <div className="plateContainer" >
         {plates ? plates.map(plate => {
-          return (<Plate key={Math.random()} currentPlate={plate} />);
+          return (<Plate key={Math.random()} currentPlate={plate} currentCart={cart} handleAddToCart={handleAddToCart} />);
         }) : ''}
       </div>
       <Footer />

@@ -1,4 +1,4 @@
-export default function setItemQuantity(currentQuantity, mathOperation) {
+export const setItemQuantity = (currentQuantity, mathOperation) => {
 
   if (mathOperation === 'add') {
     if (currentQuantity === 15) {
@@ -13,6 +13,11 @@ export default function setItemQuantity(currentQuantity, mathOperation) {
       return currentQuantity - 1;
     }
   }
-}
+};
 
+export const addToCart = (currentCart, item) => {
+  console.log('hey')
+  // currentCart.push(item);
+  // return currentCart;
+};
 

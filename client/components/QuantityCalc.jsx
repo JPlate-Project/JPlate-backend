@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import setItemQuantity from '../utils/utilsFunctions';
-
+import { setItemQuantity } from '../utils/utilsFunctions';
 
 const QuantityCalc = (props) => {
   const [quantity, setQuantity] = useState(1);

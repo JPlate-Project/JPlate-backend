@@ -20,7 +20,8 @@ const ItemDescription = (props) => {
           <div id="itemDescriptionCenterQuantity">
             <QuantityCalc currentPrice={props.currentPlate.price} />
             <div id="addToCart">
-              <button id="addToCart" type="button">Add to cart</button>
+              {console.log(props.handleAddToCart)}
+              <button id="addToCart" type="button" onClick={() => { return props.handleAddToCart() }}>Add to cart</button>
             </div>
           </div>
         </div>

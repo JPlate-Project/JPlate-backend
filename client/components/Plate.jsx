@@ -6,7 +6,7 @@ const Plate = (props) => {
 
   return (
     <div className="singlePlate">
-      {showItemDescription ? <ItemDescription currentPlate={props.currentPlate} toggleItemDescription={setShowItemDescription} showItemDescription={showItemDescription} /> : ''}
+      {showItemDescription ? <ItemDescription currentCart={props.currentCart} handleAddToCart={props.handleAddToCart} currentPlate={props.currentPlate} toggleItemDescription={setShowItemDescription} showItemDescription={showItemDescription} /> : ''}
 
       <img
         src={props.currentPlate.imageURL}

@@ -213,6 +213,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Plate_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Plate.jsx */ "./client/components/Plate.jsx");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/utilsFunctions */ "./client/utils/utilsFunctions.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -235,6 +236,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Home = function Home() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -245,6 +247,10 @@ var Home = function Home() {
       _useState4 = _slicedToArray(_useState3, 2),
       cart = _useState4[0],
       addItemToCart = _useState4[1];
+
+  function handleAddToCart(cart, itemToAdd) {
+    return Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_5__["addToCart"])(cart, itemToAdd));
+  }
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var mount = true;
@@ -295,7 +301,9 @@ var Home = function Home() {
   }, plates ? plates.map(function (plate) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: Math.random(),
-      currentPlate: plate
+      currentPlate: plate,
+      currentCart: cart,
+      handleAddToCart: handleAddToCart
     });
   }) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
@@ -351,9 +359,12 @@ var ItemDescription = function ItemDescription(props) {
     currentPrice: props.currentPlate.price
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "addToCart"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, console.log(props.handleAddToCart), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "addToCart",
-    type: "button"
+    type: "button",
+    onClick: function onClick() {
+      return props.handleAddToCart();
+    }
   }, "Add to cart")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.description)));
 };
 
@@ -397,6 +408,8 @@ var Plate = function Plate(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "singlePlate"
   }, showItemDescription ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemDescription__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    currentCart: props.currentCart,
+    handleAddToCart: props.handleAddToCart,
     currentPlate: props.currentPlate,
     toggleItemDescription: setShowItemDescription,
     showItemDescription: showItemDescription
@@ -456,7 +469,7 @@ var QuantityCalc = function QuantityCalc(props) {
       setQuantity = _useState2[1];
 
   function handleClick(mathOperation) {
-    setQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__["default"])(quantity, mathOperation));
+    setQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__["setItemQuantity"])(quantity, mathOperation));
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "$ ", props.currentPrice * quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -642,13 +655,14 @@ var Routes = function Routes() {
 /*!****************************************!*\
   !*** ./client/utils/utilsFunctions.js ***!
   \****************************************/
-/*! exports provided: default */
+/*! exports provided: setItemQuantity, addToCart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return setItemQuantity; });
-function setItemQuantity(currentQuantity, mathOperation) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setItemQuantity", function() { return setItemQuantity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToCart", function() { return addToCart; });
+var setItemQuantity = function setItemQuantity(currentQuantity, mathOperation) {
   if (mathOperation === 'add') {
     if (currentQuantity === 15) {
       return 15;
@@ -662,7 +676,11 @@ function setItemQuantity(currentQuantity, mathOperation) {
       return currentQuantity - 1;
     }
   }
-}
+};
+var addToCart = function addToCart(currentCart, item) {
+  console.log('hey'); // currentCart.push(item);
+  // return currentCart;
+};
 
 /***/ }),
 
