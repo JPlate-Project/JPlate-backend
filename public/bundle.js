@@ -246,10 +246,14 @@ var Home = function Home() {
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState4 = _slicedToArray(_useState3, 2),
       cart = _useState4[0],
-      addItemToCart = _useState4[1];
+      setCart = _useState4[1];
 
-  function handleAddToCart(cart, itemToAdd) {
-    return Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_5__["addToCart"])(cart, itemToAdd));
+  function handleAddToCart(currentCart, itemToAdd, quantity, price) {
+    itemToAdd.subQuantity = quantity;
+    itemToAdd.subPrice = price;
+    currentCart.push(itemToAdd);
+    console.log(currentCart);
+    setCart(currentCart);
   }
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -298,7 +302,7 @@ var Home = function Home() {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "plateContainer"
-  }, plates ? plates.map(function (plate) {
+  }, console.log(cart), plates ? plates.map(function (plate) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: Math.random(),
       currentPlate: plate,
@@ -324,10 +328,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _QuantityCalc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuantityCalc */ "./client/components/QuantityCalc.jsx");
+/* harmony import */ var _utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/utilsFunctions */ "./client/utils/utilsFunctions.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
 var ItemDescription = function ItemDescription(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.currentPlate.price),
+      _useState2 = _slicedToArray(_useState, 2),
+      price = _useState2[0],
+      setPrice = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
+      _useState4 = _slicedToArray(_useState3, 2),
+      quantity = _useState4[0],
+      setQuantity = _useState4[1];
+
+  function handleSetPrice() {
+    setPrice(price);
+  }
+
+  function handleClick(mathOperation) {
+    setQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_2__["setItemQuantity"])(quantity, mathOperation));
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "itemDescriptionContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -356,14 +392,17 @@ var ItemDescription = function ItemDescription(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "itemDescriptionCenterQuantity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuantityCalc__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    currentPrice: props.currentPlate.price
+    currentPrice: price,
+    setPrice: handleSetPrice,
+    quantity: quantity,
+    handleClick: handleClick
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "addToCart"
-  }, console.log(props.handleAddToCart), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "addToCart",
     type: "button",
     onClick: function onClick() {
-      return props.handleAddToCart();
+      return props.handleAddToCart(props.currentCart, props.currentPlate, quantity, price);
     }
   }, "Add to cart")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.currentPlate.description)));
 };
@@ -446,33 +485,10 @@ var Plate = function Plate(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/utilsFunctions */ "./client/utils/utilsFunctions.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
 
 
 var QuantityCalc = function QuantityCalc(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
-      _useState2 = _slicedToArray(_useState, 2),
-      quantity = _useState2[0],
-      setQuantity = _useState2[1];
-
-  function handleClick(mathOperation) {
-    setQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__["setItemQuantity"])(quantity, mathOperation));
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "$ ", props.currentPrice * quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "$ ", props.currentPrice * props.quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "minus",
     type: "button",
     style: {
@@ -480,9 +496,9 @@ var QuantityCalc = function QuantityCalc(props) {
       width: '30px'
     },
     onClick: function onClick() {
-      handleClick('minus');
+      props.handleClick('minus');
     }
-  }, "-"), quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "-"), props.quantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "add",
     type: "button",
     style: {
@@ -490,7 +506,7 @@ var QuantityCalc = function QuantityCalc(props) {
       width: '30px'
     },
     onClick: function onClick() {
-      handleClick('add');
+      props.handleClick('add');
     }
   }, "+"));
 };
@@ -678,8 +694,9 @@ var setItemQuantity = function setItemQuantity(currentQuantity, mathOperation) {
   }
 };
 var addToCart = function addToCart(currentCart, item) {
-  console.log('hey'); // currentCart.push(item);
-  // return currentCart;
+  console.log('hey');
+  currentCart.push(item);
+  return currentCart;
 };
 
 /***/ }),

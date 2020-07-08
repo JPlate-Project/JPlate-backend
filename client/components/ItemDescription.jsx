@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import QuantityCalc from './QuantityCalc';
+import { setItemQuantity } from '../utils/utilsFunctions';
 
 const ItemDescription = (props) => {
+  const [price, setPrice] = useState(props.currentPlate.price);
+  const [quantity, setQuantity] = useState(1);
+
+  function handleSetPrice() {
+    setPrice(price);
+  }
+
+  function handleClick(mathOperation) {
+    setQuantity(setItemQuantity(quantity, mathOperation));
+  }
+
   return (
-    <div id="itemDescriptionContainer">
+    < div id="itemDescriptionContainer" >
       <div id="itemDescriptionHeader">
         {props.currentPlate.name}
         <button type="button" onClick={() => {
@@ -18,10 +30,9 @@ const ItemDescription = (props) => {
           <img src={props.currentPlate.imageURL} height="300px"
             width="300px"></img>
           <div id="itemDescriptionCenterQuantity">
-            <QuantityCalc currentPrice={props.currentPlate.price} />
+            <QuantityCalc currentPrice={price} setPrice={handleSetPrice} quantity={quantity} handleClick={handleClick} />
             <div id="addToCart">
-              {console.log(props.handleAddToCart)}
-              <button id="addToCart" type="button" onClick={() => { return props.handleAddToCart() }}>Add to cart</button>
+              <button id="addToCart" type="button" onClick={() => { return props.handleAddToCart(props.currentCart, props.currentPlate, quantity, price) }}>Add to cart</button>
             </div>
           </div>
         </div>

@@ -7,10 +7,16 @@ import { addToCart } from '../utils/utilsFunctions';
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
-  const [cart, addItemToCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  function handleAddToCart(cart, itemToAdd) {
-    return useState(addToCart(cart, itemToAdd));
+  function handleAddToCart(currentCart, itemToAdd, quantity, price) {
+
+    itemToAdd.subQuantity = quantity;
+    itemToAdd.subPrice = price;
+    currentCart.push(itemToAdd);
+    console.log(currentCart);
+    setCart(currentCart);
+
   }
 
 
@@ -32,6 +38,7 @@ const Home = () => {
     <>
       <Header />
       <div className="plateContainer" >
+        {console.log(cart)}
         {plates ? plates.map(plate => {
           return (<Plate key={Math.random()} currentPlate={plate} currentCart={cart} handleAddToCart={handleAddToCart} />);
         }) : ''}

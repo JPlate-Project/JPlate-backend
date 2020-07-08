@@ -1,29 +1,23 @@
-import React, { useState } from 'react';
-import { setItemQuantity } from '../utils/utilsFunctions';
+import React from 'react';
 
 const QuantityCalc = (props) => {
-  const [quantity, setQuantity] = useState(1);
-
-  function handleClick(mathOperation) {
-    setQuantity(setItemQuantity(quantity, mathOperation));
-  }
 
   return (
     <>
-      $ {props.currentPrice * quantity}
+      $ {props.currentPrice * props.quantity}
       <button
         id="minus"
         type="button"
         style={{ height: '30px', width: '30px' }}
-        onClick={() => { handleClick('minus') }}>
+        onClick={() => { props.handleClick('minus') }}>
         -
       </button>
-      {quantity}
+      {props.quantity}
       <button
         id="add"
         type="button"
         style={{ height: '30px', width: '30px' }}
-        onClick={() => { handleClick('add') }}>
+        onClick={() => { props.handleClick('add') }}>
         +
       </button>
 
