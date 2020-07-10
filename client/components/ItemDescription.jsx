@@ -32,7 +32,7 @@ const ItemDescription = (props) => {
           <div id="itemDescriptionCenterQuantity">
             <QuantityCalc currentPrice={price} setPrice={handleSetPrice} quantity={quantity} handleClick={handleClick} />
             <div id="addToCart">
-              <button id="addToCart" type="button" onClick={() => { return props.handleAddToCart(props.currentCart, props.currentPlate, quantity, price) }}>Add to cart</button>
+              <button id="addToCart" type="button" onClick={() => { return props.handleAddToCart(props.currentPlate, quantity) }}>Add to cart</button>
             </div>
           </div>
         </div>

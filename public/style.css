@@ -152,6 +152,21 @@ Item Description Popup
   background-color: darksalmon;
   font-family: Arial, Helvetica, sans-serif;
 }
+/*
+Cart
+*/
+#cartContainer{
+  position: fixed;
+  background-color: rgb(8, 8, 8);
+  color:rgb(72, 121, 124);
+  font-weight: bold;
+  width: 80%;
+  top: 20%;
+  left: 10%;
+  padding: 10px;
+  box-shadow: 0 8px 6px -6px black;
+  font-size: 1em;
+}
 
 /*
 UserProfile

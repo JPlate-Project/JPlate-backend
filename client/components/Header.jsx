@@ -10,7 +10,7 @@ const Header = (props) => {
       <div className="headerLinks">
         <div className="linkItem" >
           <img
-            id="headerCart" src="https://image.flaticon.com/icons/svg/25/25619.svg" onClick={props.toggleCart} />
+            id="headerCart" src="https://image.flaticon.com/icons/svg/25/25619.svg" onClick={props.handleShowCart} />
           {props.numCartItems}
         </div>
         <div className="linkItem">
@@ -19,11 +19,11 @@ const Header = (props) => {
         {!signIn ?
           (<div className="linkItem">
             <h2><Link to="/signin">Sign In</Link></h2>
-           </div> ) :
+          </div>) :
           (<div className="linkItem">
             <h2><Link to="/profile" >Profile</Link></h2>
-           </div>)
-          }
+          </div>)
+        }
       </div>
     </div>
   );

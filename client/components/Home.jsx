@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
+import Cart from './Cart';
 import Axios from 'axios';
-import { addToCart } from '../utils/utilsFunctions';
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
+  const [showCart, setCartShow] = useState(false);
 
-  function handleAddToCart(currentCart, itemToAdd, quantity, price) {
-
-    itemToAdd.subQuantity = quantity;
-    itemToAdd.subPrice = price;
-    currentCart.push(itemToAdd);
-    console.log(currentCart);
-    setCart(currentCart);
-
+  function handleAddToCart(itemToAdd, quantity) {
+    itemToAdd.userSelectedQuantity = quantity;
+    cart.push(itemToAdd);
+    setCart([...cart]);
   }
 
+  function handleShowCart() {
+    setCartShow(!showCart);
+  }
 
   useEffect(() => {
     let mount = true;
@@ -36,11 +36,11 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header numCartItems={cart.length} handleShowCart={handleShowCart} />
       <div className="plateContainer" >
-        {console.log(cart)}
+        {showCart ? <Cart cart={cart} /> : ''}
         {plates ? plates.map(plate => {
-          return (<Plate key={Math.random()} currentPlate={plate} currentCart={cart} handleAddToCart={handleAddToCart} />);
+          return (<Plate key={Math.random()} currentPlate={plate} handleAddToCart={handleAddToCart} />);
         }) : ''}
       </div>
       <Footer />
