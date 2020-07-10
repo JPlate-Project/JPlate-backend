@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <>
-      <Header numCartItems={cart.length} handleShowCart={handleShowCart} />
+      <Header cart={cart} handleShowCart={handleShowCart} />
       <div className="plateContainer" >
         {showCart ? <Cart cart={cart} /> : ''}
         {plates ? plates.map(plate => {

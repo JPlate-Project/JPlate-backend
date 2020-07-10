@@ -3,15 +3,29 @@ import { Link } from 'react-router-dom';
 
 const Header = (props) => {
   const [signIn, setSignIn] = useState(false);
+  const [numItemsInCart, setNumItemsInCart] = useState(0);
+
+  let sum = 0;
+  props.cart.map(item => {
+    console.log(item);
+    sum += item.userSelectedQuantity;
+  });
+
+
+
+
 
   return (
     <div id="header">
       <h1><Link to="/">JPlate</Link></h1>
       <div className="headerLinks">
         <div className="linkItem" >
+
+
+
           <img
             id="headerCart" src="https://image.flaticon.com/icons/svg/25/25619.svg" onClick={props.handleShowCart} />
-          {props.numCartItems}
+          {sum >= 1 ? sum : ''}
         </div>
         <div className="linkItem">
           <h2><Link to="/about">About</Link></h2>

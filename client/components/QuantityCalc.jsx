@@ -2,6 +2,8 @@ import React from 'react';
 
 const QuantityCalc = (props) => {
 
+
+
   return (
     <>
       $ {props.currentPrice * props.quantity}
