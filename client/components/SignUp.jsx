@@ -1,14 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import Axios from 'axios';
 
 const SignUp = () => {
   const formRef = useRef(null);
   const passwordRef = useRef(null);
+  const [passwordMatch, setPasswordMatch] = useState(false);
 
-  function handFormSubmit() {
+  function handleFormSubmit() {
     event.preventDefault();
-    console.log(formRef.current[0].value);
+    const userData = formRef.current;
+    //May need to add a function that checks if the user already exists beforeCreate... seems like a back end function.
+    if (passwordMatch === true) {
+      console.log('true');
+      Axios.post('/users', {
+        firstName: userData[0].value,
+        lastName: userData[1].value,
+        email: userData[2].value,
+        password: userData[4].value,
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
   }
 
   // function checkPasswordLevel() {
@@ -20,16 +36,16 @@ const SignUp = () => {
     if (event.target.value === passwordRef.current.value) {
       const passwordEffect = document.getElementById('password2');
       passwordEffect.style.backgroundColor = 'lightgreen';
+      setPasswordMatch(!passwordMatch);
     }
   }
-
 
   return (
     <div>
       <Header />
       <h1>Make An Account</h1>
       <div className="signUpForm">
-        <form onSubmit={handFormSubmit} ref={formRef}>
+        <form onSubmit={handleFormSubmit} ref={formRef}>
           <label htmlFor="firstName">First Name</label>
           <input type="text" id="firstName" placeholder="Turnip" />
           <label htmlFor="lastName">Last Name</label>

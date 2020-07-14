@@ -1,4 +1,4 @@
 node_modules
 .DS_Store
-bundle.js.map
-bundle.js
+/public/bundle.js.map
+/public/bundle.js
