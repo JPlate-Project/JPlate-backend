@@ -3,16 +3,44 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Cart from './Cart';
+import { setItemQuantity } from '../utils/utilsFunctions';
+
 import Axios from 'axios';
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
+  const [singleItemQuantity, setSingleItemQuantity] = useState(0);
+
+  function handleQuantityClick(mathOperation) {
+    setSingleItemQuantity(setItemQuantity(singleItemQuantity, mathOperation));
+  }
 
   function handleAddToCart(itemToAdd, quantity) {
-    itemToAdd.userSelectedQuantity = quantity;
-    cart.push(itemToAdd);
+    let push = true;
+    cart.map((item, index) => {
+      if (item.id === itemToAdd.id) {
+        cart[index].userSelectedQuantity = quantity + cart[index].userSelectedQuantity;
+        push = false;
+      }
+    });
+    if (push) {
+      itemToAdd.userSelectedQuantity = quantity;
+      cart.push(itemToAdd);
+    }
+
+    setCart([...cart]);
+  }
+
+  function handleCartRemove(itemToRemove) {
+
+    cart.map((item, index) => {
+      if (item.id === itemToRemove.id) {
+        cart.splice(index, 1);
+      }
+    });
+
     setCart([...cart]);
   }
 
@@ -38,7 +66,7 @@ const Home = () => {
     <>
       <Header cart={cart} handleShowCart={handleShowCart} />
       <div className="plateContainer" >
-        {showCart ? <Cart cart={cart} /> : ''}
+        {showCart ? <Cart cart={cart} handleCartRemove={handleCartRemove} handleQuantityClick={handleQuantityClick} /> : ''}
         {plates ? plates.map(plate => {
           return (<Plate key={Math.random()} currentPlate={plate} handleAddToCart={handleAddToCart} />);
         }) : ''}

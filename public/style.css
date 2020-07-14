@@ -106,7 +106,7 @@ HomePage
 Item Description Popup
 */
 
-#itemDescriptionContainer{
+#itemDescriptionContainer {
   position: fixed;
   background-color: rgb(8, 8, 8);
   color:rgb(72, 121, 124);
@@ -119,24 +119,24 @@ Item Description Popup
   font-size: 1em;
 }
 /* asdfasdf */
-#itemDescriptionHeader{
+#itemDescriptionHeader {
   display: flex;
   justify-content: space-between;
 }
 
-#itemDescriptionBody{
+#itemDescriptionBody {
   display: flex;
   justify-content: space-between;
 
 }
 
-#itemDescriptionCenter{
+#itemDescriptionCenter {
   display: flex;
   justify-content: center;
   width: 70%;
 }
 
-#itemDescriptionCenterQuantity{
+#itemDescriptionCenterQuantity {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -145,7 +145,7 @@ Item Description Popup
   width: 100%;
 }
 
-#addToCart{
+#addToCart {
   height: 50px;
   width: 100px;
   color: white;
@@ -157,15 +157,106 @@ Cart
 */
 #cartContainer{
   position: fixed;
-  background-color: rgb(8, 8, 8);
-  color:rgb(72, 121, 124);
-  font-weight: bold;
-  width: 80%;
-  top: 20%;
-  left: 10%;
-  padding: 10px;
-  box-shadow: 0 8px 6px -6px black;
-  font-size: 1em;
+  width: 750px;
+  height: 423px;
+  margin: 80px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#cartTitle {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+.item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+}
+
+.item:nth-child(3) {
+  border-top:  1px solid #E1E8EE;
+  border-bottom:  1px solid #E1E8EE;
+}
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  background: url(&amp;quot;delete-icn.svg&amp;quot;) no-repeat center;
+}
+
+.like-btn {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  background: url('twitter-heart.png');
+  width: 60px;
+  height: 60px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+}
+.image {
+  margin-right: 50px;
+}
+
+.description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 115px;
+}
+
+.description span {
+  display: block;
+  font-size: 14px;
+  color: #43484D;
+  font-weight: 400;
+}
+
+.description span:first-child {
+  margin-bottom: 5px;
+}
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #86939E;
+}
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  background: url(&amp;quot;delete-icn.svg&amp;quot;) no-repeat center;
+}
+
+.like-btn {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  background: url('twitter-heart.png');
+  width: 60px;
+  height: 60px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
 }
 
 /*

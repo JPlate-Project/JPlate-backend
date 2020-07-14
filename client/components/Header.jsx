@@ -7,13 +7,8 @@ const Header = (props) => {
 
   let sum = 0;
   props.cart.map(item => {
-    console.log(item);
     sum += item.userSelectedQuantity;
   });
-
-
-
-
 
   return (
     <div id="header">

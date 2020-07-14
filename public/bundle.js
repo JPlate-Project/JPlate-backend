@@ -141,24 +141,51 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Cart = function Cart(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
       _useState2 = _slicedToArray(_useState, 2),
-      sum = _useState2[0],
-      setSum = _useState2[1];
-
-  function handleQuantityClick(mathOperation) {
-    setQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__["setItemQuantity"])(quantity, mathOperation));
-  }
+      singleItemQuantity = _useState2[0],
+      setSingleItemQuantity = _useState2[1];
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "cartContainer"
-  }, props.cart ? props.cart.map(function (item) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cartTitle"
+  }, "Cart"), props.cart ? props.cart.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: Math.random()
-    }, item.name, item.userSelectedQuantity, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuantityCalc__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: Math.random(),
+      className: "item"
+    }, item.name, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "buttons"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "delete-btn"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      style: {
+        height: '30px',
+        width: '30px'
+      },
+      onClick: function onClick() {
+        props.handleCartRemove(item);
+      }
+    }, "X"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "image"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: item.imageURL,
+      style: {
+        height: '30px',
+        width: '30px'
+      },
+      alt: ""
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "description"
+    }, item.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "quantity"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuantityCalc__WEBPACK_IMPORTED_MODULE_2__["default"], {
       currentPrice: item.price,
-      quantity: item.quantity,
-      handleClick: handleQuantityClick
+      quantity: item.userSelectedQuantity,
+      handleClick: props.handleQuantityClick
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "totalPrice"
     }));
-  }) : "There are no items in the cart", sum);
+  }) : "There are no items in the cart");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Cart);
@@ -229,7 +256,6 @@ var Header = function Header(props) {
 
   var sum = 0;
   props.cart.map(function (item) {
-    console.log(item);
     sum += item.userSelectedQuantity;
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -278,8 +304,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Footer.jsx */ "./client/components/Footer.jsx");
 /* harmony import */ var _Plate_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Plate.jsx */ "./client/components/Plate.jsx");
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.jsx");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/utilsFunctions */ "./client/utils/utilsFunctions.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -311,6 +338,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Home = function Home() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -327,9 +355,38 @@ var Home = function Home() {
       showCart = _useState6[0],
       setCartShow = _useState6[1];
 
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState8 = _slicedToArray(_useState7, 2),
+      singleItemQuantity = _useState8[0],
+      setSingleItemQuantity = _useState8[1];
+
+  function handleQuantityClick(mathOperation) {
+    setSingleItemQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_5__["setItemQuantity"])(singleItemQuantity, mathOperation));
+  }
+
   function handleAddToCart(itemToAdd, quantity) {
-    itemToAdd.userSelectedQuantity = quantity;
-    cart.push(itemToAdd);
+    var push = true;
+    cart.map(function (item, index) {
+      if (item.id === itemToAdd.id) {
+        cart[index].userSelectedQuantity = quantity + cart[index].userSelectedQuantity;
+        push = false;
+      }
+    });
+
+    if (push) {
+      itemToAdd.userSelectedQuantity = quantity;
+      cart.push(itemToAdd);
+    }
+
+    setCart(_toConsumableArray(cart));
+  }
+
+  function handleCartRemove(itemToRemove) {
+    cart.map(function (item, index) {
+      if (item.id === itemToRemove.id) {
+        cart.splice(index, 1);
+      }
+    });
     setCart(_toConsumableArray(cart));
   }
 
@@ -353,7 +410,7 @@ var Home = function Home() {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/getPlates');
+                return axios__WEBPACK_IMPORTED_MODULE_6___default.a.get('/getPlates');
 
               case 3:
                 response = _context.sent;
@@ -387,7 +444,9 @@ var Home = function Home() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "plateContainer"
   }, showCart ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    cart: cart
+    cart: cart,
+    handleCartRemove: handleCartRemove,
+    handleQuantityClick: handleQuantityClick
   }) : '', plates ? plates.map(function (plate) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: Math.random(),
@@ -870,6 +929,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setItemQuantity", function() { return setItemQuantity; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToCart", function() { return addToCart; });
 var setItemQuantity = function setItemQuantity(currentQuantity, mathOperation) {
+  console.log(currentQuantity);
+
   if (mathOperation === 'add') {
     if (currentQuantity === 15) {
       return 15;
@@ -885,7 +946,6 @@ var setItemQuantity = function setItemQuantity(currentQuantity, mathOperation) {
   }
 };
 var addToCart = function addToCart(currentCart, item) {
-  console.log('hey');
   currentCart.push(item);
   return currentCart;
 };

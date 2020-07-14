@@ -1,5 +1,5 @@
 export const setItemQuantity = (currentQuantity, mathOperation) => {
-
+  console.log(currentQuantity)
   if (mathOperation === 'add') {
     if (currentQuantity === 15) {
       return 15;
@@ -16,7 +16,6 @@ export const setItemQuantity = (currentQuantity, mathOperation) => {
 };
 
 export const addToCart = (currentCart, item) => {
-  console.log('hey')
   currentCart.push(item);
   return currentCart;
 };
