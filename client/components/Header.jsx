@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const Header = (props) => {
   const [signIn, setSignIn] = useState(false);
-  const [numItemsInCart, setNumItemsInCart] = useState(0);
 
   let sum = 0;
   if (props.cart) {

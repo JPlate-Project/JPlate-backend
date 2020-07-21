@@ -5,8 +5,6 @@ import { connectAdvanced } from 'react-redux';
 
 const Cart = (props) => {
 
-
-
   return (
     <div id="cartContainer">
       <div className="cartTitle">
@@ -17,26 +15,20 @@ const Cart = (props) => {
           <div key={Math.random()} className="item">
             {item.name}
             <div className="buttons">
-              <span className="delete-btn"><button type="button" style={{ height: '30px', width: '30px' }} onClick={() => { props.handleCartRemove(item); }}>X</button></span>
+              <span className="delete-btn"><button type="button" onClick={() => { props.handleCartRemove(item); }}>X</button></span>
             </div>
             <div className="image">
-              <img src={item.imageURL} style={{ height: '30px', width: '30px' }} alt="" />
+              <img src={item.imageURL} alt="" />
             </div>
             <div className="description">
               {item.description}
             </div>
             <div className="quantity">
-
               <QuantityCalc currentPrice={item.price} quantity={item.userSelectedQuantity} />
-            </div>
-            <div className="totalPrice">
-
-
             </div>
           </div>
         );
       }) : "There are no items in the cart"}
-
     </div >
   );
 };

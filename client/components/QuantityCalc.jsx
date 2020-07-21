@@ -5,7 +5,6 @@ const QuantityCalc = (props) => {
   return (
     <>
       $ {props.currentPrice * props.quantity}
-
       <button
         id="minus"
         type="button"
@@ -21,8 +20,6 @@ const QuantityCalc = (props) => {
         onClick={() => { props.handleClick('add'); }}>
         +
       </button>
-      {console.log(props.quantity)}
-
     </>
   );
 };

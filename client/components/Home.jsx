@@ -3,17 +3,14 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Cart from './Cart';
-
 import Axios from 'axios';
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
-  const [singleItemQuantity, setSingleItemQuantity] = useState(0);
 
   function handleQuantityClick() {
-    console.log('hey')
     setCart([...cart]);
   }
 

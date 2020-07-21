@@ -21,14 +21,13 @@ const ItemDescription = (props) => {
         <button type="button" onClick={() => {
           return props.toggleItemDescription(!props.showItemDescription);
         }}>
-          <img src="https://static.thenounproject.com/png/1600389-200.png" style={{ height: '20px', width: '20px', 'backgroundColor': 'white', border: 'none' }} ></img>
+          <img src="https://static.thenounproject.com/png/1600389-200.png"></img>
         </button>
       </div>
       <hr />
       <div id="itemDescriptionBody">
         <div id="itemDescriptionCenter">
-          <img src={props.currentPlate.imageURL} height="300px"
-            width="300px"></img>
+          <img src={props.currentPlate.imageURL}></img>
           <div id="itemDescriptionCenterQuantity">
             <QuantityCalc currentPrice={price} setPrice={handleSetPrice} quantity={quantity} handleClick={handleClick} />
             <div id="addToCart">
