@@ -6,18 +6,17 @@ const Header = (props) => {
   const [numItemsInCart, setNumItemsInCart] = useState(0);
 
   let sum = 0;
-  props.cart.map(item => {
-    sum += item.userSelectedQuantity;
-  });
+  if (props.cart) {
+    props.cart.map(item => {
+      sum += item.userSelectedQuantity;
+    });
+  }
 
   return (
     <div id="header">
       <h1><Link to="/">JPlate</Link></h1>
       <div className="headerLinks">
         <div className="linkItem" >
-
-
-
           <img
             id="headerCart" src="https://image.flaticon.com/icons/svg/25/25619.svg" onClick={props.handleShowCart} />
           {sum >= 1 ? sum : ''}

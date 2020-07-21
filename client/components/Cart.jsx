@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { setItemQuantity } from '../utils/utilsFunctions';
 import QuantityCalc from './QuantityCalc';
+import { connectAdvanced } from 'react-redux';
 
 const Cart = (props) => {
+
 
 
   return (
@@ -25,7 +27,7 @@ const Cart = (props) => {
             </div>
             <div className="quantity">
 
-              <QuantityCalc currentPrice={item.price} quantity={item.userSelectedQuantity} handleClick={(props.handleQuantityClick)} />
+              <QuantityCalc currentPrice={item.price} quantity={item.userSelectedQuantity} />
             </div>
             <div className="totalPrice">
 
