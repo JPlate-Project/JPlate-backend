@@ -1,5 +1,4 @@
 export const setItemQuantity = (currentQuantity, mathOperation) => {
-  console.log(currentQuantity)
   if (mathOperation === 'add') {
     if (currentQuantity === 15) {
       return 15;

@@ -122,28 +122,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/utilsFunctions */ "./client/utils/utilsFunctions.js");
 /* harmony import */ var _QuantityCalc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuantityCalc */ "./client/components/QuantityCalc.jsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
 
 var Cart = function Cart(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
-      _useState2 = _slicedToArray(_useState, 2),
-      singleItemQuantity = _useState2[0],
-      setSingleItemQuantity = _useState2[1];
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "cartContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -304,9 +287,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Footer.jsx */ "./client/components/Footer.jsx");
 /* harmony import */ var _Plate_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Plate.jsx */ "./client/components/Plate.jsx");
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.jsx");
-/* harmony import */ var _utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/utilsFunctions */ "./client/utils/utilsFunctions.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -338,7 +320,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var Home = function Home() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -360,14 +341,16 @@ var Home = function Home() {
       singleItemQuantity = _useState8[0],
       setSingleItemQuantity = _useState8[1];
 
-  function handleQuantityClick(mathOperation) {
-    setSingleItemQuantity(Object(_utils_utilsFunctions__WEBPACK_IMPORTED_MODULE_5__["setItemQuantity"])(singleItemQuantity, mathOperation));
+  function handleQuantityClick() {
+    console.log('hey');
+    setCart(_toConsumableArray(cart));
   }
 
   function handleAddToCart(itemToAdd, quantity) {
     var push = true;
     cart.map(function (item, index) {
       if (item.id === itemToAdd.id) {
+        //if item is already in cart, update the quantity
         cart[index].userSelectedQuantity = quantity + cart[index].userSelectedQuantity;
         push = false;
       }
@@ -410,7 +393,7 @@ var Home = function Home() {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_6___default.a.get('/getPlates');
+                return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/getPlates');
 
               case 3:
                 response = _context.sent;
@@ -652,7 +635,7 @@ var QuantityCalc = function QuantityCalc(props) {
     onClick: function onClick() {
       props.handleClick('add');
     }
-  }, "+"));
+  }, "+"), console.log(props.quantity));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (QuantityCalc);
@@ -929,8 +912,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setItemQuantity", function() { return setItemQuantity; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToCart", function() { return addToCart; });
 var setItemQuantity = function setItemQuantity(currentQuantity, mathOperation) {
-  console.log(currentQuantity);
-
   if (mathOperation === 'add') {
     if (currentQuantity === 15) {
       return 15;

@@ -4,8 +4,6 @@ import QuantityCalc from './QuantityCalc';
 
 const Cart = (props) => {
 
-  const [singleItemQuantity, setSingleItemQuantity] = useState(0)
-
 
   return (
     <div id="cartContainer">
@@ -27,7 +25,7 @@ const Cart = (props) => {
             </div>
             <div className="quantity">
 
-              <QuantityCalc currentPrice={item.price} quantity={item.userSelectedQuantity} handleClick={props.handleQuantityClick} />
+              <QuantityCalc currentPrice={item.price} quantity={item.userSelectedQuantity} handleClick={(props.handleQuantityClick)} />
             </div>
             <div className="totalPrice">
 

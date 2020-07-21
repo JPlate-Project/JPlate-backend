@@ -2,8 +2,6 @@ import React from 'react';
 
 const QuantityCalc = (props) => {
 
-
-
   return (
     <>
       $ {props.currentPrice * props.quantity}
@@ -23,6 +21,7 @@ const QuantityCalc = (props) => {
         onClick={() => { props.handleClick('add'); }}>
         +
       </button>
+      {console.log(props.quantity)}
 
     </>
   );

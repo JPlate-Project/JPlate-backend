@@ -3,7 +3,6 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Cart from './Cart';
-import { setItemQuantity } from '../utils/utilsFunctions';
 
 import Axios from 'axios';
 
@@ -13,14 +12,15 @@ const Home = () => {
   const [showCart, setCartShow] = useState(false);
   const [singleItemQuantity, setSingleItemQuantity] = useState(0);
 
-  function handleQuantityClick(mathOperation) {
-    setSingleItemQuantity(setItemQuantity(singleItemQuantity, mathOperation));
+  function handleQuantityClick() {
+    console.log('hey')
+    setCart([...cart]);
   }
 
   function handleAddToCart(itemToAdd, quantity) {
     let push = true;
     cart.map((item, index) => {
-      if (item.id === itemToAdd.id) {
+      if (item.id === itemToAdd.id) {//if item is already in cart, update the quantity
         cart[index].userSelectedQuantity = quantity + cart[index].userSelectedQuantity;
         push = false;
       }
@@ -29,7 +29,6 @@ const Home = () => {
       itemToAdd.userSelectedQuantity = quantity;
       cart.push(itemToAdd);
     }
-
     setCart([...cart]);
   }
 
