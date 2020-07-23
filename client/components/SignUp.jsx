@@ -13,17 +13,16 @@ const SignUp = () => {
     const userData = formRef.current;
     //May need to add a function that checks if the user already exists beforeCreate... seems like a back end function.
     if (passwordMatch === true) {
-      console.log('true');
-      Axios.post('/users', {
-        firstName: userData[0].value,
-        lastName: userData[1].value,
-        email: userData[2].value,
-        password: userData[4].value,
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
+      try {
+        Axios.post('/users', {
+          firstName: userData[0].value,
+          lastName: userData[1].value,
+          email: userData[2].value,
+          password: userData[4].value,
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 

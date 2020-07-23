@@ -32,4 +32,10 @@ const User = db.define('user', {
   },
 });
 
+// we should use a beforeCreate function to hash the password
+// User.beforeCreate(async (user, options) => {
+//   //make the password more complicated somehow
+//   user.dataValues.password
+// }
+
 module.exports = User;

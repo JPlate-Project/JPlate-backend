@@ -49,6 +49,7 @@ const Home = () => {
     async function dataFetch() {
       try {
         const response = await Axios.get('/getPlates');
+
         setPlates(response.data);
       } catch (err) {
         console.error(err);
