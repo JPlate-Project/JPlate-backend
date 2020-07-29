@@ -1,23 +1,26 @@
 import React from 'react';
+import { calculate } from '../utils/utilsFunctions';
 
 const QuantityCalc = (props) => {
+  let amount = props.quantity;
+  let setAmount = props.onChange;
 
   return (
     <div id="quantityCalc">
-      {props.quantity}
+      {amount}
       <div className="quantityBtn">
         <button
           id="add"
           type="button"
           onClick={() => {
-            props.handleQuantityClick('add');
+            setAmount(calculate(amount, 'add'));
           }}>+
-          </button>
+        </button>
         <button
           id="minus"
           type="button"
           onClick={() => {
-            props.handleQuantityClick('minus');
+            setAmount(calculate(amount, 'minus'));
           }}>-
         </button>
       </div>

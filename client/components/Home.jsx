@@ -4,17 +4,13 @@ import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Cart from './Cart';
 import Axios from 'axios';
-import { setItemQuantity } from '../utils/utilsFunctions';
+import { calculate } from '../utils/utilsFunctions';
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
-  function handleQuantityClick(mathOperation) {
-    setQuantity(setItemQuantity(quantity, mathOperation));
-  }
 
   function handleAddToCart(itemToAdd, passedQuantity) {
     let push = true;
@@ -32,13 +28,11 @@ const Home = () => {
   }
 
   function handleCartRemove(itemToRemove) {
-
     cart.map((item, index) => {
       if (item.id === itemToRemove.id) {
         cart.splice(index, 1);
       }
     });
-
     setCart([...cart]);
   }
 
@@ -72,7 +66,6 @@ const Home = () => {
           <Cart
             cart={cart}
             handleCartRemove={handleCartRemove}
-            handleQuantityClick={handleQuantityClick}
           />
           : ''}
         {plates ?
@@ -82,7 +75,6 @@ const Home = () => {
                 key={Math.random()}
                 currentPlate={plate}
                 handleAddToCart={handleAddToCart}
-                handleQuantityClick={handleQuantityClick}
                 quantity={quantity}
               />
             );

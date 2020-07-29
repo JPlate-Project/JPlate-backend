@@ -9,12 +9,15 @@ const Cart = (props) => {
         Cart
       </div>
       {props.cart ? props.cart.map(item => {
+        const [amount, setAmount] = useState(item.userSelectedQuantity);
+
         return (
           <div key={Math.random()} className="item">
             {item.name}
             <div className="buttons">
               <div className="delete-btn">
-                <button type="button"
+                <button
+                  type="button"
                   onClick={() => { props.handleCartRemove(item); }}>X
                 </button>
               </div>
@@ -27,13 +30,15 @@ const Cart = (props) => {
             </div>
             <div className="quantity">
               <QuantityCalc
-                handleQuantityClick={props.handleQuantityClick}
-                quantity={item.userSelectedQuantity}
+                quantity={amount}
+                onChange={function handleChange(num) {
+                  setAmount(num);
+                }}
               />
             </div>
           </div>
         );
-      }) : "There are no items in the cart"}
+      }) : 'There are no items in the cart'}
     </div >
   );
 };
