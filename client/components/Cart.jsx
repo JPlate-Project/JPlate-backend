@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { setItemQuantity } from '../utils/utilsFunctions';
 import QuantityCalc from './QuantityCalc';
-import { connectAdvanced } from 'react-redux';
 
 const Cart = (props) => {
 
@@ -15,7 +13,11 @@ const Cart = (props) => {
           <div key={Math.random()} className="item">
             {item.name}
             <div className="buttons">
-              <span className="delete-btn"><button type="button" onClick={() => { props.handleCartRemove(item); }}>X</button></span>
+              <div className="delete-btn">
+                <button type="button"
+                  onClick={() => { props.handleCartRemove(item); }}>X
+                </button>
+              </div>
             </div>
             <div className="image">
               <img src={item.imageURL} alt="" />
@@ -24,7 +26,10 @@ const Cart = (props) => {
               {item.description}
             </div>
             <div className="quantity">
-              <QuantityCalc currentPrice={item.price} quantity={item.userSelectedQuantity} />
+              <QuantityCalc
+                handleQuantityClick={props.handleQuantityClick}
+                quantity={item.userSelectedQuantity}
+              />
             </div>
           </div>
         );

@@ -1,37 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import QuantityCalc from './QuantityCalc';
-import { setItemQuantity } from '../utils/utilsFunctions';
 
 const ItemDescription = (props) => {
-  const [price, setPrice] = useState(props.currentPlate.price);
-  const [quantity, setQuantity] = useState(1);
-
-  function handleSetPrice() {
-    setPrice(price);
-  }
-
-  function handleClick(mathOperation) {
-    setQuantity(setItemQuantity(quantity, mathOperation));
-  }
 
   return (
     < div id="itemDescriptionContainer" >
       <div id="itemDescriptionHeader">
         {props.currentPlate.name}
-        <button type="button" onClick={() => {
-          return props.toggleItemDescription(!props.showItemDescription);
-        }}>
-          <img src="https://static.thenounproject.com/png/1600389-200.png"></img>
-        </button>
       </div>
       <hr />
       <div id="itemDescriptionBody">
         <div id="itemDescriptionCenter">
           <img src={props.currentPlate.imageURL}></img>
           <div id="itemDescriptionCenterQuantity">
-            <QuantityCalc currentPrice={price} setPrice={handleSetPrice} quantity={quantity} handleClick={handleClick} />
+            <QuantityCalc
+              handleQuantityClick={props.handleQuantityClick}
+              quantity={props.quantity}
+            />
             <div id="addToCart">
-              <button id="addToCart" type="button" onClick={() => { return props.handleAddToCart(props.currentPlate, quantity) }}>Add to cart</button>
+              <button id="addToCart" type="button"
+                onClick={() => { return props.handleAddToCart(props.currentPlate, props.quantity); }}>Add to cart
+              </button>
             </div>
           </div>
         </div>
