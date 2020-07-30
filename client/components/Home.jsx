@@ -36,8 +36,19 @@ const Home = () => {
     setCart([...cart]);
   }
 
+
   function handleShowCart() {
     setCartShow(!showCart);
+  }
+
+  function handleItemQuantityChangeCart(itemToChange, newQuantity) {
+    console.log("new wuantity");
+    cart.map((item, index) => {
+      if (item.id === itemToChange.id) {
+        cart[index].userSelectedQuantity = newQuantity;
+      }
+    });
+    setCart([...cart]);
   }
 
   useEffect(() => {
@@ -66,6 +77,7 @@ const Home = () => {
           <Cart
             cart={cart}
             handleCartRemove={handleCartRemove}
+            handleItemQuantityChangeCart={handleItemQuantityChangeCart}
           />
           : ''}
         {plates ?

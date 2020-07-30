@@ -209,6 +209,10 @@ Cart
   margin-right: 60px;
 }
 
+.cartItem{
+  display: flex;
+}
+
 /*
 UserProfile
 */
