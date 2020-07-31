@@ -159,9 +159,9 @@ Cart
 */
 #cartContainer{
   position: fixed;
-  width: 750px;
-  height: 423px;
-  margin: 80px auto;
+  width: 90%;
+  height: 100%;
+  margin: 5px auto;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
@@ -176,6 +176,13 @@ Cart
   color: #5E6977;
   font-size: 18px;
   font-weight: 400;
+}
+
+#cartEmpty{
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20%;
 }
 
 .image {

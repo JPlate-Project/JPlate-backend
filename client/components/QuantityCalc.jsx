@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { calculate } from '../utils/utilsFunctions';
 
 const QuantityCalc = (props) => {
+
   let amount = props.quantity;
   let setAmount = props.onChange;
 

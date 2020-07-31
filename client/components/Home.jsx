@@ -4,13 +4,18 @@ import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Cart from './Cart';
 import Axios from 'axios';
-import { calculate } from '../utils/utilsFunctions';
 
 const Home = () => {
   const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
   const [quantity, setQuantity] = useState(1);
+
+  // Cart Functions
+
+  function handleShowCart() {
+    setCartShow(!showCart);
+  }
 
   function handleAddToCart(itemToAdd, passedQuantity) {
     let push = true;
@@ -36,13 +41,7 @@ const Home = () => {
     setCart([...cart]);
   }
 
-
-  function handleShowCart() {
-    setCartShow(!showCart);
-  }
-
   function handleItemQuantityChangeCart(itemToChange, newQuantity) {
-    console.log("new wuantity");
     cart.map((item, index) => {
       if (item.id === itemToChange.id) {
         cart[index].userSelectedQuantity = newQuantity;
@@ -51,12 +50,13 @@ const Home = () => {
     setCart([...cart]);
   }
 
+  // Get the plates from the API
+
   useEffect(() => {
     let mount = true;
     async function dataFetch() {
       try {
         const response = await Axios.get('/getPlates');
-
         setPlates(response.data);
       } catch (err) {
         console.error(err);

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import QuantityCalc from './QuantityCalc';
+import React, { useState } from 'react';
+import QuantitySelector from './QuantitySelector';
 
 const CartItem = (props) => {
   const [amount, setAmount] = useState(props.item.userSelectedQuantity);
@@ -11,9 +11,10 @@ const CartItem = (props) => {
   return (
     <div className="cartItem">
       {props.item.name}
-      <QuantityCalc
-        quantity={amount}
-        onChange={handleChange}
+      <QuantitySelector
+        item={props.item}
+        handleItemQuantityChangeCart={props.handleItemQuantityChangeCart}
+        handleCartRemove={props.handleCartRemove}
       />
       <button type="button" id="removeFromCart" onClick={() => {
         props.handleCartRemove(props.item);

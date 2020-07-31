@@ -1,5 +1,5 @@
 export const calculate = (currentQuantity, mathOperation) => {
-  console.log(currentQuantity, mathOperation);
+
   if (mathOperation === 'add') {
     if (currentQuantity === 15) {
       return 15;
@@ -13,5 +13,6 @@ export const calculate = (currentQuantity, mathOperation) => {
       return currentQuantity - 1;
     }
   }
+
 };
 
