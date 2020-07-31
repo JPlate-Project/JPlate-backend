@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { calculate } from '../utils/utilsFunctions';
 
 const QuantityCalc = (props) => {
 
+  let amount = props.quantity;
+  let setAmount = props.onChange;
+
   return (
-    <>
-      $ {props.currentPrice * props.quantity}
-      <button
-        id="minus"
-        type="button"
-        style={{ height: '30px', width: '30px' }}
-        onClick={() => { props.handleClick('minus'); }}>
-        -
-      </button>
-      {props.quantity}
-      <button
-        id="add"
-        type="button"
-        style={{ height: '30px', width: '30px' }}
-        onClick={() => { props.handleClick('add'); }}>
-        +
-      </button>
-    </>
+    <div id="quantityCalc">
+      {amount}
+      <div className="quantityBtn">
+        <button
+          id="add"
+          type="button"
+          onClick={() => {
+            setAmount(calculate(amount, 'add'));
+          }}>+
+        </button>
+        <button
+          id="minus"
+          type="button"
+          onClick={() => {
+            setAmount(calculate(amount, 'minus'));
+          }}>-
+        </button>
+      </div>
+    </div>
   );
 };
 

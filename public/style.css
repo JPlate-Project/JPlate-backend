@@ -12,6 +12,8 @@ button{
   text-align: center;
   border: none;
   float: right;
+  height: 20px;
+  width: 20px;
 }
 
 body {
@@ -157,13 +159,12 @@ Cart
 */
 #cartContainer{
   position: fixed;
-  width: 750px;
-  height: 423px;
-  margin: 80px auto;
+  width: 90%;
+  height: 100%;
+  margin: 5px auto;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
-
   display: flex;
   flex-direction: column;
 }
@@ -176,37 +177,14 @@ Cart
   font-size: 18px;
   font-weight: 400;
 }
-.item {
-  padding: 20px 30px;
-  height: 120px;
-  display: flex;
+
+#cartEmpty{
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20%;
 }
 
-.item:nth-child(3) {
-  border-top:  1px solid #E1E8EE;
-  border-bottom:  1px solid #E1E8EE;
-}
-.delete-btn,
-.like-btn {
-  display: inline-block;
-  Cursor: pointer;
-}
-.delete-btn {
-  width: 18px;
-  height: 17px;
-  background: url(&amp;quot;delete-icn.svg&amp;quot;) no-repeat center;
-}
-
-.like-btn {
-  position: absolute;
-  top: 9px;
-  left: 15px;
-  background: url('twitter-heart.png');
-  width: 60px;
-  height: 60px;
-  background-size: 2900%;
-  background-repeat: no-repeat;
-}
 .image {
   margin-right: 50px;
 }
@@ -237,26 +215,9 @@ Cart
   padding-top: 30px;
   margin-right: 60px;
 }
-.delete-btn,
-.like-btn {
-  display: inline-block;
-  Cursor: pointer;
-}
-.delete-btn {
-  width: 18px;
-  height: 17px;
-  background: url(&amp;quot;delete-icn.svg&amp;quot;) no-repeat center;
-}
 
-.like-btn {
-  position: absolute;
-  top: 9px;
-  left: 15px;
-  background: url('twitter-heart.png');
-  width: 60px;
-  height: 60px;
-  background-size: 2900%;
-  background-repeat: no-repeat;
+.cartItem{
+  display: flex;
 }
 
 /*

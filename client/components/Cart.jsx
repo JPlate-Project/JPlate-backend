@@ -1,36 +1,45 @@
 import React, { useState } from 'react';
-import { setItemQuantity } from '../utils/utilsFunctions';
-import QuantityCalc from './QuantityCalc';
-import { connectAdvanced } from 'react-redux';
+import CartItem from './CartItem';
+import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils';
 
 const Cart = (props) => {
 
-  return (
-    <div id="cartContainer">
-      <div className="cartTitle">
-        Cart
+  let sum = 0;
+
+  props.cart.map(item => {
+    sum += item.price * item.userSelectedQuantity;
+  });
+
+  if (props.cart[0]) {
+    return (
+
+      <div id="cartContainer">
+        <div className="cartTitle">
+          Cart
+        </div>
+        {props.cart.map(item => {
+          return (
+            <CartItem
+              key={Math.random()}
+              item={item}
+              handleCartRemove={props.handleCartRemove}
+              handleItemQuantityChangeCart={props.handleItemQuantityChangeCart}
+            />);
+        })}
+        Subtotal: ${sum}
+      </div >
+    );
+
+  } else {
+    return (
+      <div id="cartContainer">
+        <div id="cartEmpty">
+          Cart is empty, start shopping!
+        </div>
       </div>
-      {props.cart ? props.cart.map(item => {
-        return (
-          <div key={Math.random()} className="item">
-            {item.name}
-            <div className="buttons">
-              <span className="delete-btn"><button type="button" onClick={() => { props.handleCartRemove(item); }}>X</button></span>
-            </div>
-            <div className="image">
-              <img src={item.imageURL} alt="" />
-            </div>
-            <div className="description">
-              {item.description}
-            </div>
-            <div className="quantity">
-              <QuantityCalc currentPrice={item.price} quantity={item.userSelectedQuantity} />
-            </div>
-          </div>
-        );
-      }) : "There are no items in the cart"}
-    </div >
-  );
+    );
+  }
+
 };
 
 export default Cart;

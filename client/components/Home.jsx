@@ -9,47 +9,54 @@ const Home = () => {
   const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
-  function handleQuantityClick() {
-    setCart([...cart]);
+  // Cart Functions
+
+  function handleShowCart() {
+    setCartShow(!showCart);
   }
 
-  function handleAddToCart(itemToAdd, quantity) {
+  function handleAddToCart(itemToAdd, passedQuantity) {
     let push = true;
     cart.map((item, index) => {
       if (item.id === itemToAdd.id) {//if item is already in cart, update the quantity
-        cart[index].userSelectedQuantity = quantity + cart[index].userSelectedQuantity;
+        cart[index].userSelectedQuantity = passedQuantity + cart[index].userSelectedQuantity;
         push = false;
       }
     });
     if (push) {
-      itemToAdd.userSelectedQuantity = quantity;
+      itemToAdd.userSelectedQuantity = passedQuantity;
       cart.push(itemToAdd);
     }
     setCart([...cart]);
   }
 
   function handleCartRemove(itemToRemove) {
-
     cart.map((item, index) => {
       if (item.id === itemToRemove.id) {
         cart.splice(index, 1);
       }
     });
-
     setCart([...cart]);
   }
 
-  function handleShowCart() {
-    setCartShow(!showCart);
+  function handleItemQuantityChangeCart(itemToChange, newQuantity) {
+    cart.map((item, index) => {
+      if (item.id === itemToChange.id) {
+        cart[index].userSelectedQuantity = newQuantity;
+      }
+    });
+    setCart([...cart]);
   }
+
+  // Get the plates from the API
 
   useEffect(() => {
     let mount = true;
     async function dataFetch() {
       try {
         const response = await Axios.get('/getPlates');
-
         setPlates(response.data);
       } catch (err) {
         console.error(err);
@@ -61,12 +68,29 @@ const Home = () => {
 
   return (
     <>
-      <Header cart={cart} handleShowCart={handleShowCart} />
+      <Header
+        cart={cart}
+        handleShowCart={handleShowCart}
+      />
       <div className="plateContainer" >
-        {showCart ? <Cart cart={cart} handleCartRemove={handleCartRemove} handleQuantityClick={handleQuantityClick} /> : ''}
-        {plates ? plates.map(plate => {
-          return (<Plate key={Math.random()} currentPlate={plate} handleAddToCart={handleAddToCart} />);
-        }) : ''}
+        {showCart ?
+          <Cart
+            cart={cart}
+            handleCartRemove={handleCartRemove}
+            handleItemQuantityChangeCart={handleItemQuantityChangeCart}
+          />
+          : ''}
+        {plates ?
+          plates.map(plate => {
+            return (
+              <Plate
+                key={Math.random()}
+                currentPlate={plate}
+                handleAddToCart={handleAddToCart}
+                quantity={quantity}
+              />
+            );
+          }) : ''}
       </div>
       <Footer />
     </>
