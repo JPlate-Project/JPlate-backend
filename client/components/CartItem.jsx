@@ -10,12 +10,19 @@ const CartItem = (props) => {
 
   return (
     <div className="cartItem">
-      {props.item.name}
+      <div className="itemTitle">
+        {props.item.name}
+      </div>
       <QuantitySelector
         item={props.item}
         handleItemQuantityChangeCart={props.handleItemQuantityChangeCart}
         handleCartRemove={props.handleCartRemove}
       />
+      <div className="itemPrice">
+        ${props.item.price}
+      </div>
+      <img src={props.item.imageURL} className="cartImg" />
+
       <button type="button" id="removeFromCart" onClick={() => {
         props.handleCartRemove(props.item);
       }}>

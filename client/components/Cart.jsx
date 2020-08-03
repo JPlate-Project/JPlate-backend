@@ -15,7 +15,7 @@ const Cart = (props) => {
 
       <div id="cartContainer">
         <div className="cartTitle">
-          Cart
+          Shopping Cart
         </div>
         {props.cart.map(item => {
           return (
@@ -26,7 +26,13 @@ const Cart = (props) => {
               handleItemQuantityChangeCart={props.handleItemQuantityChangeCart}
             />);
         })}
-        Subtotal: ${sum}
+        <div id="cartSubTotal">
+          Subtotal: ${sum}
+        </div>
+        <div id="cartProceedButton">
+          <button type="button" className="cartProceedButton">Proceed to checkout</button>
+        </div>
+
       </div >
     );
 
