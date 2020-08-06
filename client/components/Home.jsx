@@ -30,7 +30,6 @@ const Home = () => {
   }
 
   function handleCartRemove(itemToRemove) {
-
     cart.map((item, index) => {
       if (item.id === itemToRemove.id) {
         cart.splice(index, 1);

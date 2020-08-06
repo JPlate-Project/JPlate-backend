@@ -15,23 +15,34 @@ const ItemDescription = (props) => {
   }
 
   return (
-    < div id="itemDescriptionContainer" >
+    <div id="itemDescriptionContainer" >
       <div id="itemDescriptionHeader">
         {props.currentPlate.name}
-        <button type="button" onClick={() => {
-          return props.toggleItemDescription(!props.showItemDescription);
-        }}>
-          <img src="https://static.thenounproject.com/png/1600389-200.png"></img>
+        <button
+          type="button"
+          onClick={() => {
+            return props.toggleItemDescription(!props.showItemDescription);
+          }}>
+          <img src="https://static.thenounproject.com/png/1600389-200.png" />
         </button>
       </div>
       <hr />
       <div id="itemDescriptionBody">
         <div id="itemDescriptionCenter">
-          <img src={props.currentPlate.imageURL}></img>
+          <img src={props.currentPlate.imageURL} />
           <div id="itemDescriptionCenterQuantity">
-            <QuantityCalc currentPrice={price} setPrice={handleSetPrice} quantity={quantity} handleClick={handleClick} />
+            <QuantityCalc
+              currentPrice={price}
+              setPrice={handleSetPrice}
+              quantity={quantity}
+              handleClick={handleClick}
+            />
             <div id="addToCart">
-              <button id="addToCart" type="button" onClick={() => { return props.handleAddToCart(props.currentPlate, quantity) }}>Add to cart</button>
+              <button
+                id="addToCart"
+                type="button"
+                onClick={() => { return props.handleAddToCart(props.currentPlate, quantity); }}>Add to cart
+              </button>
             </div>
           </div>
         </div>

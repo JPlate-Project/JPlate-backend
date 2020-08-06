@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { setItemQuantity } from '../utils/utilsFunctions';
+import React from 'react';
 import QuantityCalc from './QuantityCalc';
-import { connectAdvanced } from 'react-redux';
 
 const Cart = (props) => {
-
   return (
     <div id="cartContainer">
       <div className="cartTitle">
@@ -28,7 +25,7 @@ const Cart = (props) => {
             </div>
           </div>
         );
-      }) : "There are no items in the cart"}
+      }) : 'There are no items in the cart'}
     </div >
   );
 };

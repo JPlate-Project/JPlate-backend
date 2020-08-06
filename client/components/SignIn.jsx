@@ -17,8 +17,8 @@ const SignIn = () => {
     // If sign in fails, show message "Email or Password is incorrect."
     event.preventDefault();
 
-    console.log('This is useRef---', formRef.current[0].value);
-    console.log('useRef Stuff---', formRef.current[1].value);
+    // console.log('This is useRef---', formRef.current[0].value);
+    // console.log('useRef Stuff---', formRef.current[1].value);
   }
 
   return (
