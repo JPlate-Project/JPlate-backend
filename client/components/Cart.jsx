@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import CartItem from './CartItem';
+import { Link } from 'react-router-dom';
+
+
 import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils';
 
 const Cart = (props) => {
@@ -30,12 +33,18 @@ const Cart = (props) => {
           Subtotal: ${sum}
         </div>
         <div id="cartProceedButton">
-          <button type="button" className="cartProceedButton">Proceed to checkout</button>
+          <Link to={{
+            pathname: '/checkout',
+            state: {
+              cart: props.cart,
+              // handleCartRemove: props.handleCartRemove
+            },
+          }}>
+            <button type="button" className="cartProceedButton">Proceed to checkout</button>
+          </Link>
         </div>
-
       </div >
     );
-
   } else {
     return (
       <div id="cartContainer">

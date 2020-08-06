@@ -15,4 +15,3 @@ export const calculate = (currentQuantity, mathOperation) => {
   }
 
 };
-

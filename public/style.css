@@ -231,6 +231,27 @@ CartItem
   border-radius: 50%;
 }
 
+/*
+Checkout
+*/
+
+#checkoutContainer{
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+}
+
+.signInContainerSmall {
+  margin-top: 50px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  height: 400px;
+  align-items: center;
+  border-radius: 20px;
+  border: solid white 1px;
+}
 
 /*
 UserProfile
@@ -292,7 +313,6 @@ input {
 }
 
 input[type=text], select {
-  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;

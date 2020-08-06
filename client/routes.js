@@ -4,6 +4,7 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Checkout from './components/Checkout';
 
 
 const Routes = () => {
@@ -14,6 +15,7 @@ const Routes = () => {
       <Route exact path="/profile" component={UserProfile} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/checkout" component={Checkout} />
     </BrowserRouter>
   );
 };

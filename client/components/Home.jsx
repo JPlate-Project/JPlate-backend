@@ -32,6 +32,7 @@ const Home = () => {
     setCart([...cart]);
   }
 
+
   function handleCartRemove(itemToRemove) {
     cart.map((item, index) => {
       if (item.id === itemToRemove.id) {
