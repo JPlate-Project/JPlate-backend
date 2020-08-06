@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -17,8 +17,8 @@ const SignIn = () => {
     // If sign in fails, show message "Email or Password is incorrect."
     event.preventDefault();
 
-    console.log('This is useRef---', formRef.current[0].value);
-    console.log('useRef Stuff---', formRef.current[1].value);
+    // console.log('This is useRef---', formRef.current[0].value);
+    // console.log('useRef Stuff---', formRef.current[1].value);
   }
 
   return (

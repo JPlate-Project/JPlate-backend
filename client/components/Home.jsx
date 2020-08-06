@@ -11,8 +11,6 @@ const Home = () => {
   const [showCart, setCartShow] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
-  // Cart Functions
-
   function handleShowCart() {
     setCartShow(!showCart);
   }
@@ -32,7 +30,6 @@ const Home = () => {
     setCart([...cart]);
   }
 
-
   function handleCartRemove(itemToRemove) {
     cart.map((item, index) => {
       if (item.id === itemToRemove.id) {
@@ -50,8 +47,6 @@ const Home = () => {
     });
     setCart([...cart]);
   }
-
-  // Get the plates from the API
 
   useEffect(() => {
     let mount = true;

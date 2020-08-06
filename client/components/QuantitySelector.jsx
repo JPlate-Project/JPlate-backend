@@ -16,15 +16,15 @@ const QuantitySelector = (props) => {
 
   return (
     <div>
-      <select name="quantitySelector"
+      <select
+        name="quantitySelector"
         ref={selectorRef}
         onChange={handleSelect}
-        defaultValue={currentQuantity}>
-
+        defaultValue={currentQuantity}
+      >
         {validQuantityRange.map(num => {
           return <option key={Math.random()} value={num}>{num}</option>;
         })}
-
       </select>
     </div >
   );

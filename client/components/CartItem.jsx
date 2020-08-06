@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import QuantitySelector from './QuantitySelector';
 
 const CartItem = (props) => {
-  const [amount, setAmount] = useState(props.item.userSelectedQuantity);
-
-  function handleChange(num) {
-    setAmount(num);
-  }
+  // const [amount, setAmount] = useState(props.item.userSelectedQuantity);
 
   return (
     <div className="cartItem">
@@ -22,10 +18,12 @@ const CartItem = (props) => {
         ${props.item.price}
       </div>
       <img src={props.item.imageURL} className="cartImg" />
-
-      <button type="button" id="removeFromCart" onClick={() => {
-        props.handleCartRemove(props.item);
-      }}>
+      <button
+        type="button"
+        id="removeFromCart"
+        onClick={() => {
+          props.handleCartRemove(props.item);
+        }}>
         X
       </button>
     </div>

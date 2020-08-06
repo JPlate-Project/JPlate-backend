@@ -8,13 +8,13 @@ const SignUp = () => {
   const passwordRef = useRef(null);
   const [passwordMatch, setPasswordMatch] = useState(false);
 
-  function handleFormSubmit() {
+  async function handleFormSubmit() {
     event.preventDefault();
     const userData = formRef.current;
     //May need to add a function that checks if the user already exists beforeCreate... seems like a back end function.
     if (passwordMatch === true) {
       try {
-        Axios.post('/users', {
+        await Axios.post('/users', {
           firstName: userData[0].value,
           lastName: userData[1].value,
           email: userData[2].value,

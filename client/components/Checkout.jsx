@@ -4,7 +4,7 @@ import Footer from './Footer';
 import SignInSmall from './SignInSmall';
 
 const Checkout = (props) => {
-  { console.log(props.location) }
+
   return (
     <div>
       <Header

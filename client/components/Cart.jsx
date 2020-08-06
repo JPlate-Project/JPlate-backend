@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
 
-
-import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils';
+// import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils';
 
 const Cart = (props) => {
-
   let sum = 0;
-
   props.cart.map(item => {
     sum += item.price * item.userSelectedQuantity;
   });

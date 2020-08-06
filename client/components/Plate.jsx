@@ -15,7 +15,7 @@ const Plate = (props) => {
           showItemDescription={showItemDescription}
           quantity={props.quantity}
         />
-      : ''}
+        : ''}
       <img src={props.currentPlate.imageURL} alt="cannot display" />
       <br />
       <h4>{props.currentPlate.name}</h4>
