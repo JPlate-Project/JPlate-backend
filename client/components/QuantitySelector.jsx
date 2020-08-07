@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { removeFromCart, itemQuantityChange } from '../utils/utilsFunctions';
 
 const QuantitySelector = (props) => {
 
@@ -9,9 +10,12 @@ const QuantitySelector = (props) => {
   const handleSelect = () => {
     const selectedQuantity = selectorRef.current.selectedIndex;
     if (selectedQuantity === 0) {
-      props.handleCartRemove(props.item);
+      const newCart = removeFromCart(props.cart, props.item);
+      props.handleSetCart(newCart);
     }
-    props.handleItemQuantityChangeCart(props.item, selectedQuantity);
+    const newCart = itemQuantityChange(props.cart, props.item, selectedQuantity);
+    props.handleSetCart(newCart);
+
   };
 
   return (

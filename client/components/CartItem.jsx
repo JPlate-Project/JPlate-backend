@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import QuantitySelector from './QuantitySelector';
+import { removeFromCart } from '../utils/utilsFunctions';
 
 const CartItem = (props) => {
   const [amount, setAmount] = useState(props.item.userSelectedQuantity);
@@ -14,9 +15,9 @@ const CartItem = (props) => {
         {props.item.name}
       </div>
       <QuantitySelector
+        cart={props.cart}
         item={props.item}
-        handleItemQuantityChangeCart={props.handleItemQuantityChangeCart}
-        handleCartRemove={props.handleCartRemove}
+        handleSetCart={props.handleSetCart}
       />
       <div className="itemPrice">
         ${props.item.price}
@@ -24,7 +25,8 @@ const CartItem = (props) => {
       <img src={props.item.imageURL} className="cartImg" />
 
       <button type="button" id="removeFromCart" onClick={() => {
-        props.handleCartRemove(props.item);
+        const newCart = removeFromCart(props.cart, props.item);
+        props.handleSetCart(newCart);
       }}>
         X
       </button>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import QuantityCalc from './QuantityCalc';
+import { addToCart } from '../utils/utilsFunctions';
 
 const ItemDescription = (props) => {
-  const [amount, setAmount] = useState(props.quantity);
+  const [amount, setAmount] = useState(1);
 
   function handleChange(num) {
     setAmount(num);
@@ -11,12 +12,12 @@ const ItemDescription = (props) => {
   return (
     <div id="itemDescriptionContainer" >
       <div id="itemDescriptionHeader">
-        {props.currentPlate.name}
+        {props.plate.name}
       </div>
       <hr />
       <div id="itemDescriptionBody">
         <div id="itemDescriptionCenter">
-          <img src={props.currentPlate.imageURL} />
+          <img src={props.plate.imageURL} />
           <div id="itemDescriptionCenterQuantity">
             <QuantityCalc
               quantity={amount}
@@ -27,13 +28,14 @@ const ItemDescription = (props) => {
                 id="addToCart"
                 type="button"
                 onClick={() => {
-                  return props.handleAddToCart(props.currentPlate, amount);
+                  const newCart = addToCart(props.cart, props.plate, amount);
+                  props.handleSetCart(newCart);
                 }}>Add to cart
               </button>
             </div>
           </div>
         </div>
-        <div>{props.currentPlate.description}</div>
+        <div>{props.plate.description}</div>
       </div>
     </div >
   );

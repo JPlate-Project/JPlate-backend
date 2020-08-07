@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
 
-
-import { supportsGoWithoutReloadUsingHash } from 'history/DOMUtils';
-
 const Cart = (props) => {
 
   let sum = 0;
@@ -24,9 +21,11 @@ const Cart = (props) => {
           return (
             <CartItem
               key={Math.random()}
+              cart={props.cart}
+              handleSetCart={props.handleSetCart}
               item={item}
-              handleCartRemove={props.handleCartRemove}
-              handleItemQuantityChangeCart={props.handleItemQuantityChangeCart}
+              handleRemoveFromCart={props.handleRemoveFromCart}
+              handleItemQuantityChange={props.handleItemQuantityChange}
             />);
         })}
         <div id="cartSubTotal">
@@ -37,7 +36,6 @@ const Cart = (props) => {
             pathname: '/checkout',
             state: {
               cart: props.cart,
-              // handleCartRemove: props.handleCartRemove
             },
           }}>
             <button type="button" className="cartProceedButton">Proceed to checkout</button>
@@ -54,7 +52,6 @@ const Cart = (props) => {
       </div>
     );
   }
-
 };
 
 export default Cart;

@@ -6,49 +6,19 @@ import Cart from './Cart';
 import Axios from 'axios';
 
 const Home = () => {
+
   const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
-  const [quantity, setQuantity] = useState(1);
 
-  // Cart Functions
+  // Cart Handle Functions
 
   function handleShowCart() {
     setCartShow(!showCart);
   }
 
-  function handleAddToCart(itemToAdd, passedQuantity) {
-    let push = true;
-    cart.map((item, index) => {
-      if (item.id === itemToAdd.id) {//if item is already in cart, update the quantity
-        cart[index].userSelectedQuantity = passedQuantity + cart[index].userSelectedQuantity;
-        push = false;
-      }
-    });
-    if (push) {
-      itemToAdd.userSelectedQuantity = passedQuantity;
-      cart.push(itemToAdd);
-    }
-    setCart([...cart]);
-  }
-
-
-  function handleCartRemove(itemToRemove) {
-    cart.map((item, index) => {
-      if (item.id === itemToRemove.id) {
-        cart.splice(index, 1);
-      }
-    });
-    setCart([...cart]);
-  }
-
-  function handleItemQuantityChangeCart(itemToChange, newQuantity) {
-    cart.map((item, index) => {
-      if (item.id === itemToChange.id) {
-        cart[index].userSelectedQuantity = newQuantity;
-      }
-    });
-    setCart([...cart]);
+  function handleSetCart(newCart) {
+    setCart([...newCart]);
   }
 
   // Get the plates from the API
@@ -77,8 +47,7 @@ const Home = () => {
         {showCart ?
           <Cart
             cart={cart}
-            handleCartRemove={handleCartRemove}
-            handleItemQuantityChangeCart={handleItemQuantityChangeCart}
+            handleSetCart={handleSetCart}
           />
           : ''}
         {plates ?
@@ -86,9 +55,9 @@ const Home = () => {
             return (
               <Plate
                 key={Math.random()}
-                currentPlate={plate}
-                handleAddToCart={handleAddToCart}
-                quantity={quantity}
+                cart={cart}
+                plate={plate}
+                handleSetCart={handleSetCart}
               />
             );
           }) : ''}

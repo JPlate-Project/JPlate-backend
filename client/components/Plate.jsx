@@ -8,19 +8,18 @@ const Plate = (props) => {
     <div className="singlePlate">
       {showItemDescription ?
         <ItemDescription
-          currentCart={props.currentCart}
-          handleAddToCart={props.handleAddToCart}
-          currentPlate={props.currentPlate}
+          cart={props.cart}
+          handleSetCart={props.handleSetCart}
+          plate={props.plate}
           toggleItemDescription={setShowItemDescription}
           showItemDescription={showItemDescription}
-          quantity={props.quantity}
         />
-      : ''}
-      <img src={props.currentPlate.imageURL} alt="cannot display" />
+        : ''}
+      <img src={props.plate.imageURL} alt="cannot display" />
       <br />
-      <h4>{props.currentPlate.name}</h4>
+      <h4>{props.plate.name}</h4>
       <hr />
-      {props.currentPlate.description}
+      {props.plate.description}
       <br />
       <button
         type="button"
@@ -29,7 +28,7 @@ const Plate = (props) => {
         }}>
         <img id="cartButton" src="https://image.flaticon.com/icons/svg/25/25619.svg" />
       </button>
-      {`$${props.currentPlate.price}`}
+      {`$${props.plate.price}`}
     </div>
   );
 };
