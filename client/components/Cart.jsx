@@ -1,43 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CartItem from './CartItem';
-import { Link } from 'react-router-dom';
+import Checkout from './Checkout';
 
 const Cart = (props) => {
+
+  const [checkout, setCheckout] = useState(false);
+
+  function handleShowCheckout() {
+
+    setCheckout(!checkout);
+  }
+
   let sum = 0;
   props.cart.map(item => {
     sum += item.price * item.userSelectedQuantity;
   });
 
+  if(checkout){
+    return(
+      <Checkout />
+    )
+  }
+
   if (props.cart[0]) {
     return (
-
-      <div id="cartContainer">
+      <div id="cartContainer" >
         <div className="cartTitle">
           Shopping Cart
         </div>
-        {props.cart.map(item => {
-          return (
-            <CartItem
-              key={Math.random()}
-              cart={props.cart}
-              handleSetCart={props.handleSetCart}
-              item={item}
-              handleRemoveFromCart={props.handleRemoveFromCart}
-              handleItemQuantityChange={props.handleItemQuantityChange}
-            />);
-        })}
+        {
+          props.cart.map(item => {
+            return (
+              <CartItem
+                key={Math.random()}
+                cart={props.cart}
+                handleSetCart={props.handleSetCart}
+                item={item}
+                handleRemoveFromCart={props.handleRemoveFromCart}
+                handleItemQuantityChange={props.handleItemQuantityChange}
+              />);
+          })
+        }
         <div id="cartSubTotal">
           Subtotal: ${sum}
         </div>
         <div id="cartProceedButton">
-          <Link to={{
-            pathname: '/checkout',
-            state: {
-              cart: props.cart,
-            },
-          }}>
-            <button type="button" className="cartProceedButton">Proceed to checkout</button>
-          </Link>
+
+          <button type="button" className="cartProceedButton" onClick={handleShowCheckout}> Proceed to checkout</button>
+
         </div>
       </div >
     );
