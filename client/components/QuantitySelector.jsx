@@ -27,7 +27,12 @@ const QuantitySelector = (props) => {
         defaultValue={currentQuantity}
       >
         {validQuantityRange.map(num => {
-          return <option key={Math.random()} value={num}>{num}</option>;
+          return (
+            <option
+              key={Math.random()}
+              value={num}>{num}
+            </option>
+          );
         })}
       </select>
     </div >

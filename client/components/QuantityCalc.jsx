@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { calculate } from '../utils/utilsFunctions';
 
 const QuantityCalc = (props) => {

@@ -7,9 +7,7 @@ const Checkout = (props) => {
 
   return (
     <div>
-      <Header
-        cart={props.location.state.cart}
-      />
+      <Header cart={props.location.state.cart} />
       <div id="checkoutContainer">
         <SignInSmall />
       </div>

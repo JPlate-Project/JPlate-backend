@@ -19,10 +19,13 @@ const CartItem = (props) => {
       </div>
       <img src={props.item.imageURL} className="cartImg" />
 
-      <button type="button" id="removeFromCart" onClick={() => {
-        const newCart = removeFromCart(props.cart, props.item);
-        props.handleSetCart(newCart);
-      }}>
+      <button
+        type="button"
+        id="removeFromCart"
+        onClick={() => {
+          const newCart = removeFromCart(props.cart, props.item);
+          props.handleSetCart(newCart);
+        }}>
         X
       </button>
     </div>
