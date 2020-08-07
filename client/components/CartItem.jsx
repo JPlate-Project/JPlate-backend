@@ -3,7 +3,6 @@ import QuantitySelector from './QuantitySelector';
 import { removeFromCart } from '../utils/utilsFunctions';
 
 const CartItem = (props) => {
-  // const [amount, setAmount] = useState(props.item.userSelectedQuantity);
 
   return (
     <div className="cartItem">

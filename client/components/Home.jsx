@@ -11,8 +11,6 @@ const Home = () => {
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
 
-  // Cart Handle Functions
-
   function handleShowCart() {
     setCartShow(!showCart);
   }
