@@ -21,8 +21,6 @@ const Home = () => {
     setCart([...newCart]);
   }
 
-  // Get the plates from the API
-
   useEffect(() => {
     let mount = true;
     async function dataFetch() {
