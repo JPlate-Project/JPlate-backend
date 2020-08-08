@@ -44,6 +44,7 @@ const Home = () => {
           <Cart
             cart={cart}
             handleSetCart={handleSetCart}
+
           />
           : ''}
         {plates ?

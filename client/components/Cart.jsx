@@ -7,7 +7,6 @@ const Cart = (props) => {
   const [checkout, setCheckout] = useState(false);
 
   function handleShowCheckout() {
-
     setCheckout(!checkout);
   }
 
@@ -16,10 +15,14 @@ const Cart = (props) => {
     sum += item.price * item.userSelectedQuantity;
   });
 
-  if(checkout){
-    return(
-      <Checkout />
-    )
+  if (checkout) {
+    return (
+      <Checkout
+        cart={props.cart}
+        handleSetCart={props.handleSetCart}
+        sum={sum}
+      />
+    );
   }
 
   if (props.cart[0]) {
@@ -36,8 +39,6 @@ const Cart = (props) => {
                 cart={props.cart}
                 handleSetCart={props.handleSetCart}
                 item={item}
-                handleRemoveFromCart={props.handleRemoveFromCart}
-                handleItemQuantityChange={props.handleItemQuantityChange}
               />);
           })
         }
