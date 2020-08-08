@@ -161,7 +161,6 @@ Cart
   position: fixed;
   width: 90%;
   height: 500px;
-
   overflow: scroll;
   margin: 5px auto;
   background: #FFFFFF;
@@ -236,14 +235,24 @@ Checkout
 */
 
 #checkoutContainer{
-  display: flex;
+  background-color: white;
+  position: fixed;
+  border-radius: 6px;
+  width: 90%;
+  height: 550px;
+  overflow: scroll;
+}
+
+#checkoutBody{
+  display:flex;
   justify-content: space-between;
-  height: 500px;
+  background-color: white;
 }
 
 .signInContainerSmall {
   margin-top: 50px;
   margin-right: 50px;
+  background-color: black;
   display: flex;
   flex-direction: column;
   width: 25vw;
