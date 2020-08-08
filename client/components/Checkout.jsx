@@ -1,18 +1,38 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
 import SignInSmall from './SignInSmall';
+import UserDataFrom from './UserDataForm';
+import CartItem from './CartItem';
 
 const Checkout = (props) => {
 
   return (
-    <div>
-      <Header cart={props.location.state.cart} />
-      <div id="checkoutContainer">
-        <SignInSmall />
+    <div id="checkoutContainer">
+      <div className="cartTitle">
+        Checkout
       </div>
-      <Footer />
+      <div id="checkoutBody">
+        <div>
+          {
+            props.cart.map(item => {
+              return (
+                <CartItem
+                  key={Math.random()}
+                  cart={props.cart}
+                  handleSetCart={props.handleSetCart}
+                  item={item}
+                />
+              );
+            })
+          }
+          <div id="cartSubTotal">
+            Subtotal: ${props.sum}
+          </div>
+        </div>
+        <UserDataFrom />
+        {/* <SignInSmall /> */}
+      </div>
     </div>
+
   );
 };
 
