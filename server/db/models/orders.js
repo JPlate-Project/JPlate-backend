@@ -14,6 +14,7 @@ const Order = db.define('order', {
   items: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: false,
+
   },
   total: {
     type: Sequelize.FLOAT,

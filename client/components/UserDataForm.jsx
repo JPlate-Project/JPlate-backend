@@ -1,16 +1,23 @@
 import React, { useRef } from 'react';
+import Axios from 'axios';
 
-const UserDataForm = () => {
+const UserDataForm = (props) => {
 
   const formRef = useRef(null);
 
-  function handleSubmit() {
+  async function handleSubmit() {
     event.preventDefault();
-    const orderObj = {
-      
+    try {
+      await Axios.post('/submitOrder', {
+        name: formRef.current[0].value,
+        email: formRef.current[1].value,
+        shippingAddress: formRef.current[2].value,
+        items: props.cart,
+        total: props.total
+      })
+    } catch (err) {
+      console.error(err);
     }
-    console.log(formRef.current[0].value)
-    console.log('hello')
   }
   return (
     <div>

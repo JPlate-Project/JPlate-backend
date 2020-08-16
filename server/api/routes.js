@@ -2,6 +2,7 @@ const router = require('express').Router();
 const db = require('../db/db');
 const Product = require('../db/models/products');
 const User = require('../db/models/users');
+const Order = require("../db/models/orders");
 
 router.get('/getPlates', async (req, res, next) => {
   try {
@@ -34,5 +35,15 @@ router.post('/users', async (req, res, next) => {
     console.error(err);
   }
 });
+
+router.post('/submitOrder', async (req, res, next) => {
+
+  await Order.create({
+    items: req.body.items,
+    total: req.body.total,
+    userId: req.body.email,
+    date: (new Date()).toLocaleDateString()
+  })
+})
 
 module.exports = router;

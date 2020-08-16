@@ -28,7 +28,7 @@ const Checkout = (props) => {
             Subtotal: ${props.sum}
           </div>
         </div>
-        <UserDataFrom />
+        <UserDataFrom cart={props.cart} total={props.sum} />
         {/* <SignInSmall /> */}
       </div>
     </div>
