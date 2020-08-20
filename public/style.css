@@ -234,6 +234,18 @@ CartItem
 Checkout
 */
 
+.orderSubmitted {
+  position: fixed;
+  width: 90%;
+  height: 500px;
+  overflow: scroll;
+  margin: 5px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
 .submitOrderButton{
   height: 40px;
   color: white;

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SignInSmall from './SignInSmall';
 import UserDataFrom from './UserDataForm';
 import CartItem from './CartItem';
+import OrderSubmitted from './OrderSubmitted';
 
 const Checkout = (props) => {
+
+  const [orderSubmitted, setOrderSubmitted] = useState(false);
+
+  function handleOrderSubmitted() {
+    setOrderSubmitted(!orderSubmitted);
+  }
 
   return (
     <div id="checkoutContainer">
@@ -28,7 +35,7 @@ const Checkout = (props) => {
             Subtotal: ${props.sum}
           </div>
         </div>
-        <UserDataFrom cart={props.cart} total={props.sum} />
+        <UserDataFrom cart={props.cart} total={props.sum} handleOrderSubmitted={handleOrderSubmitted} />
         {/* <SignInSmall /> */}
       </div>
     </div>

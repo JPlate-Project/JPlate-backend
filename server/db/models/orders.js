@@ -12,14 +12,14 @@ const Order = db.define('order', {
     allowNull: false,
   },
   items: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
+    type: Sequelize.ARRAY(Sequelize.DataTypes.JSON),
     allowNull: false,
 
   },
   total: {
     type: Sequelize.FLOAT,
     allowNull: false,
-  },
+  }
 });
 
 module.exports = Order;

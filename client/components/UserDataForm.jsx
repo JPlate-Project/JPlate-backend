@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import OrderSubmitted from './OrderSubmitted';
 import Axios from 'axios';
 
 const UserDataForm = (props) => {
@@ -14,7 +15,9 @@ const UserDataForm = (props) => {
         shippingAddress: formRef.current[2].value,
         items: props.cart,
         total: props.total
-      })
+      }).then(onSuccess => {
+        <OrderSubmitted />
+      });
     } catch (err) {
       console.error(err);
     }

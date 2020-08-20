@@ -43,7 +43,10 @@ router.post('/submitOrder', async (req, res, next) => {
     total: req.body.total,
     userId: req.body.email,
     date: (new Date()).toLocaleDateString()
-  })
-})
+  }).then(success => {
+    res.sendStatus(201);
+  });
+
+});
 
 module.exports = router;

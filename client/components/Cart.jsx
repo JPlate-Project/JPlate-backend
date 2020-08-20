@@ -5,9 +5,14 @@ import Checkout from './Checkout';
 const Cart = (props) => {
 
   const [checkout, setCheckout] = useState(false);
+  const [orderSubmitted, setOrderSubmitted] = useState(false);
 
   function handleShowCheckout() {
     setCheckout(!checkout);
+  }
+
+  function handleOrderSubmitted() {
+    setOrderSubmitted(!orderSubmitted);
   }
 
   let sum = 0;
@@ -21,6 +26,7 @@ const Cart = (props) => {
         cart={props.cart}
         handleSetCart={props.handleSetCart}
         sum={sum}
+        handleOrderSubmitted={handleOrderSubmitted}
       />
     );
   }
