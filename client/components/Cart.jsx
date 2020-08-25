@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CartItem from './CartItem';
 import Checkout from './Checkout';
+import OrderSubmitted from './OrderSubmitted';
 
 const Cart = (props) => {
 
@@ -27,11 +28,13 @@ const Cart = (props) => {
         handleSetCart={props.handleSetCart}
         sum={sum}
         handleOrderSubmitted={handleOrderSubmitted}
+        handleShowCheckout={handleShowCheckout}
       />
     );
   }
 
-  if (props.cart[0]) {
+  if (props.cart[0] && orderSubmitted === false) {
+
     return (
       <div id="cartContainer" >
         <div className="cartTitle">
@@ -52,11 +55,13 @@ const Cart = (props) => {
           Subtotal: ${sum}
         </div>
         <div id="cartProceedButton">
-
           <button type="button" className="cartProceedButton" onClick={handleShowCheckout}> Proceed to checkout</button>
-
         </div>
       </div >
+    );
+  } else if (orderSubmitted) {
+    return (
+      <OrderSubmitted handleOrderSubmitted={handleOrderSubmitted} />
     );
   } else {
     return (

@@ -47,6 +47,23 @@ router.post('/submitOrder', async (req, res, next) => {
     res.sendStatus(201);
   });
 
+  for (let i = 0; i < req.body.items.length; i++) {
+
+    const updatedQuantity = {
+      quantity: req.body.items[i].quantity - req.body.items[i].userSelectedQuantity
+    };
+
+    const currentItem = {
+      where: {
+        id: req.body.items[i].id
+      }
+    };
+
+    await Product.update(updatedQuantity, currentItem).then(result => {
+      console.log(result);
+    });
+  }
+
 });
 
 module.exports = router;
