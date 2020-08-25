@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const morgan = require('morgan');
 const routes = require('./api/routes');
 const PORT = process.env.PORT || 8092;
@@ -14,6 +15,14 @@ const createApp = () => {
   // body parsing middleware
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
+
+  //user login sessions
+  app.use(session({
+    secret: 'somebodycomegeeter',
+    resave: false,
+    saveUninitialized: true,
+  }));
+
   app.use(routes);
 
   // static file-serving middleware

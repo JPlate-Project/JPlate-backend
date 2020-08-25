@@ -1,24 +1,35 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import Axios from 'axios';
 
 const SignIn = () => {
   const [checkBox, setCheckBox] = useState(false);
   const formRef = useRef(null);
+  const history = useHistory();
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
   }
 
-  function handleSubmit() {
-    //take email and password, check DB to see if user exists and if password matches the user's account.
-    // If sign in successful, send the user back to their origin window.location.
-    // If sign in fails, show message "Email or Password is incorrect."
+  async function handleSubmit() {
     event.preventDefault();
+    const userData = {
+      email: formRef.current[0].value,
+      password: formRef.current[1].value
+    };
+    try {
+      const login = await Axios.post('/login', userData);
+      if (login) {
+        history.push('/');
+      } else {
+        console.log('login UN-successful');
+      }
+    } catch (err) {
+      console.error(err);
+    }
 
-    // console.log('This is useRef---', formRef.current[0].value);
-    // console.log('useRef Stuff---', formRef.current[1].value);
   }
 
   return (

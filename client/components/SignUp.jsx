@@ -2,13 +2,13 @@ import React, { useState, useRef } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const SignUp = () => {
+  const history = useHistory();
   const formRef = useRef(null);
   const passwordRef = useRef(null);
   const [passwordMatch, setPasswordMatch] = useState(false);
-  const [toHome, setToHome] = useState(false);
 
   async function handleFormSubmit() {
     event.preventDefault();
@@ -21,7 +21,7 @@ const SignUp = () => {
           lastName: userData[1].value,
           email: userData[2].value,
           password: userData[4].value,
-        }).then(() => setToHome(!toHome));
+        }).then(() => history.push('/'));
       } catch (err) {
         console.error(err);
       }
@@ -43,7 +43,6 @@ const SignUp = () => {
 
   return (
     <>
-      {toHome ? <Redirect to="/" /> : null}
       <Header />
       <h1>Make An Account</h1>
       <div className="signUpForm">
