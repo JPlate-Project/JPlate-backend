@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const db = require('../db/db');
+const MD5 = require('md5');
 const Product = require('../db/models/products');
 const User = require('../db/models/users');
-const MD5 = require('md5');
+const Order = require('../db/models/orders');
 
 router.get('/getPlates', async (req, res, next) => {
   try {
@@ -63,6 +64,36 @@ router.post('/login', async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+router.post('/submitOrder', async (req, res, next) => {
+
+  await Order.create({
+    items: req.body.items,
+    total: req.body.total,
+    userId: req.body.email,
+    date: (new Date()).toLocaleDateString()
+  }).then(() => {
+    res.sendStatus(201);
+  });
+
+  for (let i = 0; i < req.body.items.length; i++) {
+
+    const updatedQuantity = {
+      quantity: req.body.items[i].quantity - req.body.items[i].userSelectedQuantity
+    };
+
+    const currentItem = {
+      where: {
+        id: req.body.items[i].id
+      }
+    };
+
+    await Product.update(updatedQuantity, currentItem).then(result => {
+      console.log(result);
+    });
+  }
+
 });
 
 module.exports = router;

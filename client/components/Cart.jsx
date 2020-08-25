@@ -1,45 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CartItem from './CartItem';
-import { Link } from 'react-router-dom';
+import Checkout from './Checkout';
+import OrderSubmitted from './OrderSubmitted';
 
 const Cart = (props) => {
+
+  const [checkout, setCheckout] = useState(false);
+  const [orderSubmitted, setOrderSubmitted] = useState(false);
+
+  function handleShowCheckout() {
+    setCheckout(!checkout);
+  }
+
+  function handleOrderSubmitted() {
+    setOrderSubmitted(!orderSubmitted);
+  }
+
   let sum = 0;
   props.cart.map(item => {
     sum += item.price * item.userSelectedQuantity;
   });
 
-  if (props.cart[0]) {
+  if (checkout) {
     return (
+      <Checkout
+        cart={props.cart}
+        handleSetCart={props.handleSetCart}
+        sum={sum}
+        handleOrderSubmitted={handleOrderSubmitted}
+        handleShowCheckout={handleShowCheckout}
+      />
+    );
+  }
 
-      <div id="cartContainer">
+  if (props.cart[0] && orderSubmitted === false) {
+
+    return (
+      <div id="cartContainer" >
         <div className="cartTitle">
           Shopping Cart
         </div>
-        {props.cart.map(item => {
-          return (
-            <CartItem
-              key={Math.random()}
-              cart={props.cart}
-              handleSetCart={props.handleSetCart}
-              item={item}
-              handleRemoveFromCart={props.handleRemoveFromCart}
-              handleItemQuantityChange={props.handleItemQuantityChange}
-            />);
-        })}
+        {
+          props.cart.map(item => {
+            return (
+              <CartItem
+                key={Math.random()}
+                cart={props.cart}
+                handleSetCart={props.handleSetCart}
+                item={item}
+              />);
+          })
+        }
         <div id="cartSubTotal">
           Subtotal: ${sum}
         </div>
         <div id="cartProceedButton">
-          <Link to={{
-            pathname: '/checkout',
-            state: {
-              cart: props.cart,
-            },
-          }}>
-            <button type="button" className="cartProceedButton">Proceed to checkout</button>
-          </Link>
+          <button type="button" className="cartProceedButton" onClick={handleShowCheckout}> Proceed to checkout</button>
         </div>
       </div >
+    );
+  } else if (orderSubmitted) {
+    return (
+      <OrderSubmitted handleOrderSubmitted={handleOrderSubmitted} />
     );
   } else {
     return (
