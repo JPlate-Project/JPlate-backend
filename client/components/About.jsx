@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from './Header';
 
 const About = () => {
   return (
     <>
-      <h1>About Page</h1>
+      <Header />
+      <h1> About Page</h1>
     </>
   );
 };
