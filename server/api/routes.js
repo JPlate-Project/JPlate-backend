@@ -55,8 +55,12 @@ router.post('/login', async (req, res, next) => {
       if (passwordMatch) {
         if (!req.session.counter) req.session.counter = 0;
         console.log('counter', ++req.session.counter);
-        console.log(req.session);
-        res.status(200).send('Log In Successful');
+        req.session.firstName = emailFound[0].dataValues.firstName;
+        req.session.lastName = emailFound[0].dataValues.lastName;
+        req.session.email = emailFound[0].dataValues.email;
+        req.session.userId = emailFound[0].dataValues.id;
+        // console.log(req.session);
+        res.status(200).send(req.session);
       } else {
         res.status(400).json('Authentication failed');
       }

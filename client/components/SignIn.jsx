@@ -22,7 +22,8 @@ const SignIn = () => {
     try {
       const login = await Axios.post('/login', userData);
       if (login) {
-        history.push('/');
+        console.log(login)
+        // history.push('/');
       } else {
         console.log('login UN-successful');
       }
