@@ -8,6 +8,8 @@ const SignIn = () => {
   const [checkBox, setCheckBox] = useState(false);
   const formRef = useRef(null);
   const history = useHistory();
+  const [signedIn, setSignedIn] = useState(false);
+  let allUserData = {};
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
@@ -22,7 +24,8 @@ const SignIn = () => {
     try {
       const login = await Axios.post('/login', userData);
       if (login) {
-        console.log(login)
+        setSignedIn(true);
+        allUserData = login.data;
         // history.push('/');
       } else {
         console.log('login UN-successful');
@@ -37,6 +40,7 @@ const SignIn = () => {
     <div>
       <Header />
       <h1>Sign In</h1>
+      {signedIn ? "Welcome back!" : ''}
       <form onSubmit={handleSubmit} ref={formRef}>
         <div className="signInContainer">
           <label>Email</label>
@@ -48,6 +52,7 @@ const SignIn = () => {
           <button className="signInSubmit" type="submit">Submit</button>
           <label>Don't have an account?</label>
           <Link to="/signup">Sign Up Here</Link>
+
         </div>
       </form>
       <Footer />

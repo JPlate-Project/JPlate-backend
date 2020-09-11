@@ -25,7 +25,7 @@ const Header = (props) => {
         </div>
         {!signIn ?
           (<div className="linkItem">
-            <h2><Link to="/signin">Sign In</Link></h2>
+            <h2><Link to="/signin" >Sign In</Link></h2>
           </div>) :
           (<div className="linkItem">
             <h2><Link to="/profile" >Profile</Link></h2>

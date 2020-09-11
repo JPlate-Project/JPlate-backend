@@ -59,7 +59,6 @@ router.post('/login', async (req, res, next) => {
         req.session.lastName = emailFound[0].dataValues.lastName;
         req.session.email = emailFound[0].dataValues.email;
         req.session.userId = emailFound[0].dataValues.id;
-        // console.log(req.session);
         res.status(200).send(req.session);
       } else {
         res.status(400).json('Authentication failed');
