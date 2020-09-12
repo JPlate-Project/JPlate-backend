@@ -5,6 +5,11 @@ const Product = require('../db/models/products');
 const User = require('../db/models/users');
 const Order = require('../db/models/orders');
 
+router.get('/getSession', async (req, res, next) => {
+  res.send(req.session)
+  // res.send(req.session.counter)
+})
+
 router.get('/getPlates', async (req, res, next) => {
   try {
     const plates = await Product.findAll();
@@ -53,13 +58,15 @@ router.post('/login', async (req, res, next) => {
         }
       });
       if (passwordMatch) {
-        if (!req.session.counter) req.session.counter = 0;
-        console.log('counter', ++req.session.counter);
-        req.session.firstName = emailFound[0].dataValues.firstName;
-        req.session.lastName = emailFound[0].dataValues.lastName;
-        req.session.email = emailFound[0].dataValues.email;
-        req.session.userId = emailFound[0].dataValues.id;
-        res.status(200).send(req.session);
+        const session = req.session;
+        if (!session.counter) session.counter = 0;
+        ++session.counter;
+        session.cookie.maxAge = 60 * 60 * 24 * 7;
+        session.firstName = emailFound[0].dataValues.firstName;
+        session.lastName = emailFound[0].dataValues.lastName;
+        session.email = emailFound[0].dataValues.email;
+        session.userId = emailFound[0].dataValues.id;
+        res.status(200).send(session);
       } else {
         res.status(400).json('Authentication failed');
       }

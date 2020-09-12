@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../app';
 
 const Header = (props) => {
-  const [signIn, setSignIn] = useState(false);
-
+  const [auth] = useContext(AuthContext);
   let sum = 0;
   if (props.cart) {
     props.cart.map(item => {
@@ -23,12 +23,13 @@ const Header = (props) => {
         <div className="linkItem">
           <h2><Link to="/about">About</Link></h2>
         </div>
-        {!signIn ?
-          (<div className="linkItem">
-            <h2><Link to="/signin" >Sign In</Link></h2>
-          </div>) :
+        {auth || window.localStorage.cookie ?
           (<div className="linkItem">
             <h2><Link to="/profile" >Profile</Link></h2>
+          </div>)
+          :
+          (<div className="linkItem">
+            <h2><Link to="/signin" >Sign In</Link></h2>
           </div>)
         }
       </div>

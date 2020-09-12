@@ -1,15 +1,15 @@
 import React, { useState, useRef, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { LoggedInContext } from '../app';
+import { AuthContext } from '../app';
 import Header from './Header';
 import Footer from './Footer';
 import Axios from 'axios';
 
-function SignIn(props) {
+const SignIn = () => {
+  const [, setAuth] = useContext(AuthContext);
   const [checkBox, setCheckBox] = useState(false);
   const formRef = useRef(null);
-  // const history = useHistory();
-  const [auth, setAuth] = useContext(LoggedInContext);
+  const history = useHistory();
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
@@ -24,8 +24,11 @@ function SignIn(props) {
     try {
       const login = await Axios.post('/login', userData);
       if (login) {
-        setAuth(true);
-        // history.push('/');
+        if (!window.localStorage.firstName) {
+          setAuth(true);
+          window.localStorage.setItem('cookie', JSON.stringify(login.data));
+        }
+        history.push('/profile');
       } else {
         console.log('login UN-successful');
       }

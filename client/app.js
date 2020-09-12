@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import Routes from './routes';
-export const LoggedInContext = React.createContext();
+
+export const AuthContext = createContext();
 
 const App = () => {
   const [auth, setAuth] = useState(false);
 
   return (
-    <LoggedInContext.Provider value={[auth, setAuth]}>
+    <AuthContext.Provider value={[auth, setAuth]}>
       <Routes />
-    </LoggedInContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
