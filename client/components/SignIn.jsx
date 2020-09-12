@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { LoggedInContext } from '../app';
 import Header from './Header';
 import Footer from './Footer';
 import Axios from 'axios';
 
-const SignIn = () => {
+function SignIn(props) {
   const [checkBox, setCheckBox] = useState(false);
   const formRef = useRef(null);
-  const history = useHistory();
-  const [signIn, setSignIn] = useState(false);
-  const [allUserData, setAllUserData] = useState(false);
+  // const history = useHistory();
+  const [auth, setAuth] = useContext(LoggedInContext);
 
   function handleCheckBox() {
     setCheckBox(!checkBox);
@@ -24,9 +24,7 @@ const SignIn = () => {
     try {
       const login = await Axios.post('/login', userData);
       if (login) {
-        setSignIn(true);
-        setAllUserData(login.data);
-        console.log(allUserData.firstName)
+        setAuth(true);
         // history.push('/');
       } else {
         console.log('login UN-successful');
@@ -41,7 +39,6 @@ const SignIn = () => {
     <div>
       <Header />
       <h1>Sign In</h1>
-      {signIn ? `Welcome back, ${allUserData.firstName}` : ''}
       <form onSubmit={handleSubmit} ref={formRef}>
         <div className="signInContainer">
           <label>Email</label>
@@ -53,7 +50,6 @@ const SignIn = () => {
           <button className="signInSubmit" type="submit">Submit</button>
           <label>Don't have an account?</label>
           <Link to="/signup">Sign Up Here</Link>
-
         </div>
       </form>
       <Footer />
