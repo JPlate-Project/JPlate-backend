@@ -5,11 +5,6 @@ const Product = require('../db/models/products');
 const User = require('../db/models/users');
 const Order = require('../db/models/orders');
 
-router.get('/getSession', async (req, res, next) => {
-  res.send(req.session)
-  // res.send(req.session.counter)
-})
-
 router.get('/getPlates', async (req, res, next) => {
   try {
     const plates = await Product.findAll();
@@ -99,9 +94,7 @@ router.post('/submitOrder', async (req, res, next) => {
       }
     };
 
-    await Product.update(updatedQuantity, currentItem).then(result => {
-      console.log(result);
-    });
+    await Product.update(updatedQuantity, currentItem).then(result => { });
   }
 
 });

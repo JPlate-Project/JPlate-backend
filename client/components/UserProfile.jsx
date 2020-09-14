@@ -4,6 +4,7 @@ import Footer from './Footer';
 import { Redirect } from 'react-router-dom';
 
 const UserProfile = () => {
+
   const user = JSON.parse(window.localStorage.getItem('cookie'));
 
   return (

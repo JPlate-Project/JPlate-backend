@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../app';
 
 const Header = (props) => {
-  const [auth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
   let sum = 0;
   if (props.cart) {
     props.cart.map(item => {
       sum += item.userSelectedQuantity;
     });
+  }
+
+  function handleSignOut() {
+    setAuth(false);
+    window.localStorage.removeItem('cookie');
+    location.reload();
   }
 
   return (
@@ -26,11 +32,18 @@ const Header = (props) => {
         {auth || window.localStorage.cookie ?
           (<div className="linkItem">
             <h2><Link to="/profile" >Profile</Link></h2>
-          </div>)
+          </div>
+          )
           :
           (<div className="linkItem">
-            <h2><Link to="/signin" >Sign In</Link></h2>
+            <h2><Link to="/signin">Sign in</Link></h2>
           </div>)
+        }
+        {auth || window.localStorage.cookie ?
+          (<div className="linkItem">
+            <h2><Link to="/home" onClick={handleSignOut}>Sign out</Link></h2>
+          </div>)
+          : ''
         }
       </div>
     </div>
