@@ -16,6 +16,10 @@ const Order = db.define('order', {
     allowNull: false,
 
   },
+  userEmail: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
   total: {
     type: Sequelize.FLOAT,
     allowNull: false,

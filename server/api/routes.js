@@ -5,6 +5,19 @@ const Product = require('../db/models/products');
 const User = require('../db/models/users');
 const Order = require('../db/models/orders');
 
+router.get('/getOrders/:userEmail', async (req, res, next) => {
+  try {
+    const allOrders = await Order.findAll({
+      where: {
+        userEmail: req.params.userEmail
+      }
+    });
+    res.send(allOrders);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/getPlates', async (req, res, next) => {
   try {
     const plates = await Product.findAll();
@@ -76,7 +89,7 @@ router.post('/submitOrder', async (req, res, next) => {
   await Order.create({
     items: req.body.items,
     total: req.body.total,
-    userId: req.body.email,
+    userEmail: req.body.email,
     date: (new Date()).toLocaleDateString()
   }).then(() => {
     res.sendStatus(201);
