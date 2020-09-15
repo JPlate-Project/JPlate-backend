@@ -69,7 +69,7 @@ Footer
 #footer {
   width: 100vw;
   height: 5em;
-  position: relative;
+  position: bottom;
   margin-left: -1em;
   text-align: center;
   padding-top: 2em;
@@ -344,6 +344,7 @@ input {
   width: 15em;
   height: 3em;
   color: white;
+  background-color: lightseagreen;
   font-size: 1em;
 }
 
@@ -359,8 +360,27 @@ input[type=text], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid white;
+  height: 20rem;
+  width: 25rem;
+  padding: 1rem;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgb(22, 20, 20);
+  color: beige;
+  height: 3rem;
+  width: 24rem;
+  padding-left: 1rem;
+}
