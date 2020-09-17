@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import OrderHistoryItem from './OrderHistoryItem';
 import { Redirect } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -31,10 +32,14 @@ const UserProfile = () => {
           <Header />
           <div className="welcomeText">Hello {user.firstName}!</div>
           <div className="pastOrders">Past Orders
-            {console.log(orderHistory[0])}
+            {orderHistory.map(order => {
+            return (
+              <OrderHistoryItem
+                key={Math.random()}
+                order={order} />
+            );
+          })}
           </div>
-          <div className="favorite">Favorite</div>
-
           <Footer />
         </div>}
     </>

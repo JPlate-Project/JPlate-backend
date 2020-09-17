@@ -308,8 +308,9 @@ UserProfile
 }
 
 .pastOrders {
-  height: 200px;
-  width: 200px;
+  display: flex;
+  height: auto;
+  width: auto;
   border: solid white 1px;
   background-color: black;
   text-align: center;
@@ -321,6 +322,10 @@ UserProfile
   border: solid white 1px;
   background-color: black;
   text-align: center;
+}
+
+.orderHistoryItem {
+
 }
 
 /*
