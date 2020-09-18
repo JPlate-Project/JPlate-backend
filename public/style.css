@@ -307,13 +307,28 @@ UserProfile
   padding-bottom: 1em;
 }
 
-.pastOrders {
-  display: flex;
+.pastOrdersContainer {
+  width: 90%;
   height: auto;
-  width: auto;
-  border: solid white 1px;
-  background-color: black;
-  text-align: center;
+  margin: 5px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pastOrderHeader {
+  display: flex;
+  font-size: 20px;
+  color:black;
+  width: 100%;
+}
+
+.pastOrderSubHeader{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .favorite {
@@ -322,10 +337,6 @@ UserProfile
   border: solid white 1px;
   background-color: black;
   text-align: center;
-}
-
-.orderHistoryItem {
-
 }
 
 /*

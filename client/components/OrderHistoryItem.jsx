@@ -11,12 +11,15 @@ const OrderHistoryItem = (props) => {
 
   return (
     <div className="orderHistoryItem">
-      {console.log(props.order)}
-      <label>Date: {(new Date(props.order.createdAt).toDateString())}</label>
-      <label>TotalItems: {total} </label>
-      <label>Subtotal: {props.order.total}</label>
-      <img src={firstItemImage} />
-    </div>
+      <div className="pastOrderSubHeader">
+        <label>Date: {(new Date(props.order.createdAt).toDateString())}</label>
+        <label>TotalItems: {total} </label>
+        <label>Subtotal: {props.order.total}</label>
+      </div>
+      <img src={firstItemImage} className="cartImg" />
+      <label>Dookie</label>
+      <label>dooki</label>
+    </div >
   );
 };
 

@@ -31,14 +31,17 @@ const UserProfile = () => {
         <div>
           <Header />
           <div className="welcomeText">Hello {user.firstName}!</div>
-          <div className="pastOrders">Past Orders
+          <div className="pastOrdersContainer">
+            <div className="pastOrderHeader">
+              Past Orders
+            </div>
             {orderHistory.map(order => {
-            return (
-              <OrderHistoryItem
-                key={Math.random()}
-                order={order} />
-            );
-          })}
+              return (
+                <OrderHistoryItem
+                  key={Math.random()}
+                  order={order} />
+              );
+            })}
           </div>
           <Footer />
         </div>}
