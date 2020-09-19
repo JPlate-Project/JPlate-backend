@@ -7,7 +7,6 @@ import SignUp from './components/SignUp';
 import Checkout from './components/Checkout';
 import About from './components/About';
 
-
 const Routes = () => {
 
   return (

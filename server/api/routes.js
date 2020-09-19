@@ -78,14 +78,12 @@ router.post('/login', async (req, res, next) => {
     if (emailFound) {
       let password = MD5(req.body.password);
 
-      const passwordMatch = await User.findAll({
-        where: {
-          password: password
-        }
-      });
-      console.log(password)
-      console.log(passwordMatch)
-      if (passwordMatch[0]) {
+      let passwordMatch = false;
+      if (password === emailFound[0].dataValues.password) {
+        passwordMatch = true;
+      }
+
+      if (passwordMatch) {
         const session = req.session;
         if (!session.counter) session.counter = 0;
         ++session.counter;
