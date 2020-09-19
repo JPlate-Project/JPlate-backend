@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 import Axios from 'axios';
 
-
 const UserDataForm = (props) => {
-
   const formRef = useRef(null);
 
   async function handleSubmit() {
