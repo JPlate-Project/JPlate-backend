@@ -21,6 +21,6 @@ const OrderHistoryItem = (props) => {
       <label>dooki</label>
     </div >
   );
-};gi
+};
 
 export default OrderHistoryItem;
