@@ -25,7 +25,6 @@ const UserProfile = () => {
     dataFetch();
   }, []);
   const [edit, setEdit] = useState(false);
-  console.log(user);
   const handleSubmit = () => {
     event.preventDefault();
     setEdit(!edit);
@@ -49,7 +48,7 @@ const UserProfile = () => {
               );
             })}
           </div>
-          <div className="welcomeText"><h2>Hello {user.firstName}!</h2></div>
+
           {!edit ? (
             <form className="infoCard">
               First name, Last name:
@@ -58,11 +57,10 @@ const UserProfile = () => {
               <div className="userInfo">{user.email}</div>
               Password:
               <div className="userInfo"> *******</div>
-              <button type="submit" className="signInSubmit" onClick={handleSubmit}>Edit</button>
+              <button type="submit" className="signInSubmit" onClick={handleSubmit}>Change password</button>
             </form>) :
             <EditUserProfile />
           }
-
           <Footer />
         </div>}
     </>

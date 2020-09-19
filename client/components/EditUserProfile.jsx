@@ -1,19 +1,23 @@
-import React from 'react';
-
+import React, { useRef } from 'react';
+import Axios from 'axios';
 
 const EditUserProfile = () => {
   const user = JSON.parse(window.localStorage.getItem('cookie'));
-  console.log(user);
+  const formRef = useRef(null);
+
+  async function handleSubmit() {
+    Axios.patch('/resetPassword', {
+      userId: user.userId,
+      newPassword: formRef.current.password.value
+    });
+  }
+
   return (
-    <div className="infoCard">
-      First Name, Last Name:
-      <input type="text" className="userInfo" placeholder={`Name: ${user.firstName + ' ' + user.lastName}`} />
-      Email Address:
-      <input type="text" className="userInfo" placeholder={`Email: ${user.email}`} />
-      New Password:
-      <input type="text" className="userInfo" placeholder="Change your password" />
-      <button type="submit" className="signInSubmit">Save Changes</button>
-    </div>
+    <form className="infoCard" onSubmit={handleSubmit} ref={formRef}>
+      Change Password:
+      <input type="password" id="password" className="userInfo" defaultValue="*******" />
+      <button type="submit" className="signInSubmit" onClick={handleSubmit}>Save Changes</button>
+    </form>
   );
 };
 

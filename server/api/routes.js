@@ -18,6 +18,23 @@ router.get('/getOrders/:userEmail', async (req, res, next) => {
   }
 });
 
+router.patch('/resetPassword', async (req, res, next) => {
+
+  const updatedPassword = {
+    password: await MD5(req.body.newPassword)
+  };
+
+  const currentUser = {
+    where: {
+      id: req.body.userId
+    }
+  };
+
+  await User.update(updatedPassword, currentUser).then(result => { console.log(result) });
+  res.send('200')
+
+});
+
 router.get('/getPlates', async (req, res, next) => {
   try {
     const plates = await Product.findAll();
@@ -60,12 +77,15 @@ router.post('/login', async (req, res, next) => {
 
     if (emailFound) {
       let password = MD5(req.body.password);
+
       const passwordMatch = await User.findAll({
         where: {
           password: password
         }
       });
-      if (passwordMatch) {
+      console.log(password)
+      console.log(passwordMatch)
+      if (passwordMatch[0]) {
         const session = req.session;
         if (!session.counter) session.counter = 0;
         ++session.counter;
