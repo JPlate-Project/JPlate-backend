@@ -33,6 +33,7 @@
     "body-parser": "^1.19.0",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "md5": "^2.3.0",
