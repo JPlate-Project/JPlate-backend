@@ -3,12 +3,14 @@ const express = require('express');
 const app = express();
 const session = require('express-session');
 const morgan = require('morgan');
-const routes = require('./api/routes');
-const PORT = process.env.PORT || 8092;
+const PORT = process.env.PORT || 4000;
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
+const routes = require('./api/routes');
 
 const createApp = () => {
+  //Allow cors
+  app.use(cors());
   // logging middleware
   app.use(morgan('dev'));
 
@@ -17,11 +19,13 @@ const createApp = () => {
   app.use(bodyParser.json());
 
   //user login sessions
-  app.use(session({
-    secret: 'somebodycomegeeter',
-    resave: false,
-    saveUninitialized: true,
-  }));
+  app.use(
+    session({
+      secret: 'somebodycomegeeter',
+      resave: false,
+      saveUninitialized: true,
+    })
+  );
 
   app.use(routes);
 
@@ -32,7 +36,6 @@ const createApp = () => {
   app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'));
   });
-
 
   // error handling endware
   app.use((err, req, res, next) => {
@@ -45,8 +48,8 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`));
-
+    console.log(`Mixing it up on port ${PORT}`)
+  );
 };
 
 async function bootApp() {

@@ -9,8 +9,8 @@ router.get('/getOrders/:userEmail', async (req, res, next) => {
   try {
     const allOrders = await Order.findAll({
       where: {
-        userEmail: req.params.userEmail
-      }
+        userEmail: req.params.userEmail,
+      },
     });
     res.send(allOrders);
   } catch (err) {
@@ -19,20 +19,18 @@ router.get('/getOrders/:userEmail', async (req, res, next) => {
 });
 
 router.patch('/resetPassword', async (req, res, next) => {
-
   const updatedPassword = {
-    password: await MD5(req.body.newPassword)
+    password: MD5(req.body.newPassword),
   };
 
   const currentUser = {
     where: {
-      id: req.body.userId
-    }
+      id: req.body.userId,
+    },
   };
 
-  await User.update(updatedPassword, currentUser).then(result => { console.log(result) });
-  res.send('200')
-
+  await User.update(updatedPassword, currentUser).then((result) => {});
+  res.send('200');
 });
 
 router.get('/getPlates', async (req, res, next) => {
@@ -48,8 +46,8 @@ router.post('/users', async (req, res, next) => {
   try {
     const newUser = await User.findAll({
       where: {
-        email: req.body.email
-      }
+        email: req.body.email,
+      },
     });
     if (!newUser[0]) {
       await User.create({
@@ -71,8 +69,8 @@ router.post('/login', async (req, res, next) => {
   try {
     const emailFound = await User.findAll({
       where: {
-        email: req.body.email
-      }
+        email: req.body.email,
+      },
     });
 
     if (emailFound) {
@@ -103,31 +101,29 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.post('/submitOrder', async (req, res, next) => {
-
   await Order.create({
     items: req.body.items,
     total: req.body.total,
     userEmail: req.body.email,
-    date: (new Date()).toLocaleDateString()
+    date: new Date().toLocaleDateString(),
   }).then(() => {
     res.sendStatus(201);
   });
 
   for (let i = 0; i < req.body.items.length; i++) {
-
     const updatedQuantity = {
-      quantity: req.body.items[i].quantity - req.body.items[i].userSelectedQuantity
+      quantity:
+        req.body.items[i].quantity - req.body.items[i].userSelectedQuantity,
     };
 
     const currentItem = {
       where: {
-        id: req.body.items[i].id
-      }
+        id: req.body.items[i].id,
+      },
     };
 
-    await Product.update(updatedQuantity, currentItem).then(result => { });
+    await Product.update(updatedQuantity, currentItem).then((result) => {});
   }
-
 });
 
 module.exports = router;
