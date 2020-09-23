@@ -1,8 +1,8 @@
 const db = require('./db');
-const Address = require('./models/address');
-const Orders = require('./models/orders');
-const Products = require('./models/products');
-const Users = require('./models/users');
+const { Address } = require('./models/address');
+const { Orders } = require('./models/orders');
+const { Products } = require('./models/products');
+const { Users } = require('./models/users');
 const productDummyData = require('./productDummyData');
 
 Users.hasMany(Address);
@@ -12,17 +12,21 @@ Orders.belongsTo(Users);
 Orders.hasMany(Products);
 
 async function seed() {
-  db.sync();
-  console.log('db synced!');
+  try {
+    db.sync({ force: true });
+    console.log('db synced!');
+  } catch (err) {
+    console.error(err);
+  } finally {
+    const products = await Promise.all(
+      productDummyData.map((product) => {
+        return Products.create(product);
+      })
+    );
 
-  const products = await Promise.all(
-    productDummyData.map((product) => {
-      return Products.create(product);
-    })
-  );
-
-  console.log(`${products.length} products`);
-  console.log(`seeded successfully`);
+    console.log(`${products.length} products`);
+    console.log(`seeded successfully`);
+  }
 }
 
 async function runSeed() {
