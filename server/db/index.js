@@ -1,8 +1,8 @@
 const db = require('./db');
-const { Address } = require('./models/address');
-const { Orders } = require('./models/orders');
-const { Products } = require('./models/products');
-const { Users } = require('./models/users');
+const Address = require('./models/address');
+const Orders = require('./models/orders');
+const Products = require('./models/products');
+const Users = require('./models/users');
 const productDummyData = require('./productDummyData');
 
 Users.hasMany(Address);
