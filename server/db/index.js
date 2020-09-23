@@ -10,13 +10,9 @@ Address.belongsTo(Users);
 Users.hasMany(Orders);
 Orders.belongsTo(Users);
 Orders.hasMany(Products);
+db.sync({ force: true });
 
 async function seed() {
-  try {
-    await db.sync({ force: true });
-  } catch (err) {
-    console.log(err);
-  }
   console.log('db synced!');
 
   const products = await Promise.all(
