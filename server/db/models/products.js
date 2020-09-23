@@ -31,4 +31,6 @@ const Product = db.define('product', {
   }
 });
 
+db.sync()
+
 module.exports = Product;

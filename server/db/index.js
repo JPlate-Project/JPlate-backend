@@ -10,9 +10,9 @@ Address.belongsTo(Users);
 Users.hasMany(Orders);
 Orders.belongsTo(Users);
 Orders.hasMany(Products);
-db.sync({ force: true });
 
 async function seed() {
+  db.sync();
   console.log('db synced!');
 
   const products = await Promise.all(
@@ -40,8 +40,9 @@ async function runSeed() {
   }
 }
 
-// Execute the `seed` function, IF we ran this module directly (`node seed`).
-// `Async` functions always return a promise, so we can use `catch` to handle
-if (module === require.main) runSeed();
+// // Execute the `seed` function, IF we ran this module directly (`node seed`).
+// // `Async` functions always return a promise, so we can use `catch` to handle
+// if (module === require.main)
+runSeed();
 
 module.exports = seed;
