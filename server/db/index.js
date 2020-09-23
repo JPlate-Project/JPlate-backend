@@ -16,7 +16,7 @@ async function seed() {
   console.log('db synced!');
 
   const products = await Promise.all(
-    productDummyData.map(product => {
+    productDummyData.map((product) => {
       return Products.create(product);
     })
   );
@@ -30,6 +30,7 @@ async function runSeed() {
   try {
     await seed();
   } catch (err) {
+    console.log('hello from catch');
     console.error(err);
     process.exitCode = 1;
   } finally {
