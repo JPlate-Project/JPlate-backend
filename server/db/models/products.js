@@ -23,12 +23,14 @@ const Product = db.define('product', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isUrl: true
-    }
+      isUrl: true,
+    },
   },
   description: {
-    type: Sequelize.TEXT
-  }
+    type: Sequelize.TEXT,
+  },
 });
 
+db.sync();
+console.log(' I synced');
 module.exports = Product;
