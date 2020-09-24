@@ -8,7 +8,11 @@ async function runSeed() {
     const products = await Promise.all(
       productDummyData.map((product) => {
         console.log(product.name);
-        return Products.create(product);
+        try {
+          return Products.create(product);
+        } catch (err) {
+          console.log(err);
+        }
       })
     );
     console.log(`${products.length} products`);

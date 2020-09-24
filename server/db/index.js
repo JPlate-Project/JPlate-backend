@@ -5,7 +5,7 @@ const Orders = require('./models/orders');
 const Products = require('./models/products');
 const Users = require('./models/users');
 
-console.log(Address);
+console.log(Address.hasMany);
 
 try {
   Users.hasMany(Address);
