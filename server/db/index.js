@@ -1,4 +1,7 @@
 const db = require('./db');
-require('./models');
+const models = require('./models');
 
+models.sequelize.sync.then(() => {
+  console.log('synced');
+});
 module.exports = db;
