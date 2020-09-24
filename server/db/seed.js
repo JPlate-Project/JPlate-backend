@@ -9,7 +9,7 @@ async function runSeed() {
       productDummyData.map((product) => {
         console.log(product.name);
         try {
-          return Products.create(product);
+          Products.create(product);
         } catch (err) {
           console.log(err);
         }
