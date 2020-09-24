@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const db = require('./db');
 const session = require('express-session');
 const morgan = require('morgan');
 const PORT = process.env.PORT || 4000;
@@ -52,7 +53,10 @@ const startListening = () => {
   );
 };
 
+const syncDb = () => db.sync();
+
 async function bootApp() {
+  await syncDb();
   await createApp();
   await startListening();
 }

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const dbUrl = process.env.DATABASE_URL;
+const dbUrl = process.env.DATABASE_URL || 'postgres://localhost:5432/jplate';
 const db = new Sequelize(dbUrl, { logging: false });
-console.log('from db', db);
+
 module.exports = db;

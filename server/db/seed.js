@@ -1,24 +1,28 @@
 const db = require('./db');
-const Products = require('./models/products');
+const { Product } = require('./models/index');
 const productDummyData = require('./productDummyData');
 
-console.log('from seed', db);
+async function seed() {
+  await db.sync({ force: true });
+  console.log('db synced!');
+  const products = await Promise.all(
+    productDummyData.map((product) => {
+      console.log(product.name);
+      try {
+        return Product.create(product);
+      } catch (err) {
+        console.log(err);
+      }
+    })
+  );
+
+  console.log(`seeded ${products.length} plates successfully!`);
+}
 
 async function runSeed() {
   console.log('...seeding');
   try {
-    const products = await Promise.all(
-      productDummyData.map((product) => {
-        console.log(product.name);
-        try {
-          return Products.create(product);
-        } catch (err) {
-          console.log(err);
-        }
-      })
-    );
-    console.log(`${products.length} products`);
-    console.log(`seeded successfully`);
+    await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
@@ -30,4 +34,5 @@ async function runSeed() {
 }
 
 runSeed();
-db.sync();
+
+module.exports = seed;
