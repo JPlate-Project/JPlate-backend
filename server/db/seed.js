@@ -2,6 +2,8 @@ const db = require('./db');
 const Products = require('./models/products');
 const productDummyData = require('./productDummyData');
 
+console.log('from seed', db);
+
 async function runSeed() {
   console.log('...seeding');
   try {
@@ -9,7 +11,7 @@ async function runSeed() {
       productDummyData.map((product) => {
         console.log(product.name);
         try {
-          Products.create(product);
+          return Products.create(product);
         } catch (err) {
           console.log(err);
         }
