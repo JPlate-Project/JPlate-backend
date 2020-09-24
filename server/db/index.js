@@ -16,7 +16,17 @@ try {
 } catch (err) {
   console.log(err);
 }
-db.sync();
+
+async function sync() {
+  try {
+    const result = await db.sync();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+sync();
 module.exports = {
   Address,
   Orders,
