@@ -3,11 +3,8 @@ const { Product } = require('./models/index');
 const productDummyData = require('./productDummyData');
 
 async function seed() {
-  try {
-    await db.sync({ force: true });
-  } catch (err) {
-    console.log(err);
-  }
+  await db.sync({ force: true });
+
   console.log('db synced!');
   const products = await Promise.all(
     productDummyData.map((product) => {
