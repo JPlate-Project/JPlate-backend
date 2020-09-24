@@ -1,5 +1,4 @@
-import { Address, Users, Orders, Products } from './index';
-import Product from './models/products';
+const { Address, Users, Orders, Products } = require('./index');
 
 console.log(Address);
-console.log(Product);
+console.log(Products);
