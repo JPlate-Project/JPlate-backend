@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
-
-const db = new Sequelize(process.env.DATABASE_URL, {
-  logging: false,
-});
+const dbUrl = process.env.DATABASE_URL;
+const db = new Sequelize(dbUrl, { logging: false });
 
 module.exports = db;
