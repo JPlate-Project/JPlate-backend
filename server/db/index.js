@@ -14,6 +14,9 @@ try {
   console.log(err);
 }
 
-db.sync({
-  force: true,
-});
+module.exports = {
+  Address,
+  Orders,
+  Products,
+  Users,
+};

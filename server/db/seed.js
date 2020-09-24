@@ -4,10 +4,10 @@ const productDummyData = require('./productDummyData');
 
 async function runSeed() {
   console.log('...seeding');
-  console.log(productDummyData);
   try {
     const products = await Promise.all(
       productDummyData.map((product) => {
+        console.log(product.name);
         return Products.create(product);
       })
     );
