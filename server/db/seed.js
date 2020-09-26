@@ -8,10 +8,10 @@ function seed() {
 
   console.log('db synced!');
   const products = Promise.all(
-    productDummyData.map((product) => {
+    productDummyData.map(async (product) => {
       console.log(product.name);
       try {
-        return Product.create(product);
+        return await Product.create(product);
       } catch (err) {
         console.log(err);
       }
