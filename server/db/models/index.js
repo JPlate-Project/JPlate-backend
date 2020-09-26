@@ -1,5 +1,4 @@
 const db = require('../db');
-console.log(db)
 const User = require('./users');
 const Address = require('./address');
 const Orders = require('./orders');
@@ -11,11 +10,11 @@ User.hasMany(Orders);
 Orders.belongsTo(User);
 Orders.hasMany(Product);
 
-async function testSeed() {
-  await db.sync();
-}
+db.sync().then(() => {
+  console.log("woah woah woah")
+});
 
-testSeed();
+
 module.exports = {
   User,
   Address,
