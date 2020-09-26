@@ -1,11 +1,13 @@
 const Sequelize = require('sequelize');
 const dbUrl = process.env.DATABASE_URL || 'postgres://localhost:5432/jplate';
 
-const db = new Sequelize(dbUrl, {
-  logging: (...msg) => console.log(msg),
-  dialect: 'postgres',
-  protocol: 'postgres'
-});
+const db = new Sequelize('d72c74ufbebm9m', 'iivmgedzvwjbnl', 'fa3d5e57a7e1fe5088ab0d2a0f002d95608b0caf0635b9f1ab77917777dd52da',
+  {
+    host: 'ec2-34-198-243-120.compute-1.amazonaws.com',
+    logging: console.log,
+    dialect: 'postgres',
+    protocol: 'postgres'
+  });
 
 function testDb() {
   console.log('right before connecting');
