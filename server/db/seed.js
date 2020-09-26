@@ -2,16 +2,16 @@ const db = require('./db');
 const { Product } = require('./models/index');
 const productDummyData = require('./productDummyData');
 
-function seed() {
+async function seed() {
   db.authenticate()
   db.sync({ force: true });
 
   console.log('db synced!');
-  const products = Promise.all(
-    productDummyData.map(async (product) => {
+  const products = await Promise.all(
+    productDummyData.map((product) => {
       console.log(product.name);
       try {
-        return await Product.create(product);
+        return Product.create(product);
       } catch (err) {
         console.log(err);
       }
