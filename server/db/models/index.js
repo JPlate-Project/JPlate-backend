@@ -10,6 +10,7 @@ User.hasMany(Orders);
 Orders.belongsTo(User);
 Orders.hasMany(Product);
 
+console.log(db.sync())
 db.sync().then(() => {
   console.log("woah woah woah")
 });
