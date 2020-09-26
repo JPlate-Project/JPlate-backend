@@ -34,9 +34,9 @@ const User = db.define('user', {
 });
 
 // we should use a beforeCreate function to hash the password
-User.beforeCreate(async (user, options) => {
-  let userPassword = await MD5(user.dataValues.password);
-  user.dataValues.password = userPassword;
-});
+// User.beforeCreate(async (user, options) => {
+//   let userPassword = await MD5(user.dataValues.password);
+//   user.dataValues.password = userPassword;
+// });
 
 module.exports = User;
