@@ -6,7 +6,10 @@ const db = new Sequelize('d72c74ufbebm9m', 'iivmgedzvwjbnl', 'fa3d5e57a7e1fe5088
     host: 'ec2-34-198-243-120.compute-1.amazonaws.com',
     logging: console.log,
     dialect: 'postgres',
-    protocol: 'postgres'
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: true,
+    }
   });
 
 function testDb() {
