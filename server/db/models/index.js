@@ -1,3 +1,5 @@
+const db = require('../db');
+console.log(db)
 const User = require('./users');
 const Address = require('./address');
 const Orders = require('./orders');
