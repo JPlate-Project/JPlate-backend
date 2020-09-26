@@ -11,6 +11,11 @@ User.hasMany(Orders);
 Orders.belongsTo(User);
 Orders.hasMany(Product);
 
+async function testSeed() {
+  await db.sync();
+}
+
+testSeed();
 module.exports = {
   User,
   Address,
