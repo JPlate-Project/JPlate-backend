@@ -2,6 +2,7 @@ const db = require('./db');
 const { Product } = require('./models/index');
 const productDummyData = require('./productDummyData');
 
+console.log(Product);
 async function seed() {
   await db.sync({ force: true });
 
