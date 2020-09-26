@@ -1,11 +1,15 @@
 const Sequelize = require('sequelize');
 const dbUrl = process.env.DATABASE_URL || 'postgres://localhost:5432/jplate';
-const db = new Sequelize(dbUrl, { logging: console.log });
 
-async function testDb() {
-  console.log('right before connecting')
+const db = new Sequelize(dbUrl, {
+  logging: console.log,
+  dialect: 'postgres',
+  protocol: 'postgres'
+});
+
+function testDb() {
+  console.log('right before connecting');
   try {
-    console.log(db.authenticate());
     db.authenticate()
     console.log('Connection has been established successfully.');
   } catch (error) {
