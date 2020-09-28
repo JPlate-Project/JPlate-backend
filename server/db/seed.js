@@ -9,9 +9,9 @@ async function seed() {
   //   })
   // );
   // console.log(`seeded ${products.length} plates successfully!`);
-  const firstOne = productDummyData[0];
-  await Product.create({ firstOne });
-  console.log("i made it here")
+  const { firstOne } = productDummyData[0];
+  await Product.create(firstOne);
+  console.log('i made it here');
 
 }
 
