@@ -3,12 +3,11 @@ const Product = require('./models/products');
 const productDummyData = require('./productDummyData');
 
 async function seed() {
-  db.authenticate()
+  db.authenticate();
 
   console.log('db synced!');
   const products = await Promise.all(
     productDummyData.map((product) => {
-      console.log(product.name);
       try {
         return Product.create(product);
       } catch (err) {
@@ -17,7 +16,7 @@ async function seed() {
     })
   );
 
-  db.sync({ force: true });
+  db.sync();
   console.log(`seeded ${products.length} plates successfully!`);
 }
 

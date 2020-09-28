@@ -12,7 +12,7 @@
     "deploy": "script/deploy",
     "seed": "node server/db/seed.js",
     "dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
-    "start": "nodemon server -e html,js,scss --ignore public --ignore client"
+    "start": "node server/index.js"
   },
   "lint-staged": {
     "*.{js,jsx}": [
