@@ -5,14 +5,9 @@ const productDummyData = require('./productDummyData');
 async function seed() {
   db.authenticate();
 
-  console.log('db synced!');
   const products = await Promise.all(
-    productDummyData.map((product) => {
-      try {
-        return Product.create(product);
-      } catch (err) {
-        console.log(err);
-      }
+    productDummyData.map(product => {
+      return Product.create(product);
     })
   );
   console.log("did i make it here")
