@@ -1,5 +1,5 @@
 const db = require('./db');
-const Product = require('./models/products');
+const { Product } = require('./models/products');
 const productDummyData = require('./productDummyData');
 
 async function seed() {
@@ -9,9 +9,15 @@ async function seed() {
   //   })
   // );
   // console.log(`seeded ${products.length} plates successfully!`);
-  const { firstOne } = productDummyData[0];
-  await Product.create(firstOne);
-  console.log('i made it here');
+
+  await Product.create({
+    name: 'Plain White Plate',
+    price: 25.00,
+    quantity: 100,
+    imageURL: 'https://www.potterybarn.com/pbimgs/ab/images/dp/wcm/202009/3479/img4o.jpg',
+    description: 'Classic round white dining plate.',
+  });
+
 
 }
 
