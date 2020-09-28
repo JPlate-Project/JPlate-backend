@@ -2,7 +2,7 @@ const db = require('./db');
 const { Product } = require('./models/index');
 const productDummyData = require('./productDummyData');
 
-async function seed() {
+function seed() {
   // const products = await Promise.all(
   //   productDummyData.map(product => {
   //     return Product.create(product);
@@ -10,7 +10,7 @@ async function seed() {
   // );
   // console.log(`seeded ${products.length} plates successfully!`);
 
-  await Product.create({
+  Product.create({
     name: 'Plain White Plate',
     price: 25.00,
     quantity: 100,
