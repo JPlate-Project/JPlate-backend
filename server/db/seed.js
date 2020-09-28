@@ -10,14 +10,15 @@ function seed() {
   // );
   // console.log(`seeded ${products.length} plates successfully!`);
 
-  Product.create({
-    name: 'Plain White Plate',
-    price: 25.00,
-    quantity: 100,
-    imageURL: 'https://www.potterybarn.com/pbimgs/ab/images/dp/wcm/202009/3479/img4o.jpg',
-    description: 'Classic round white dining plate.',
-  });
-
+  // Product.create({
+  //   name: 'Plain White Plate',
+  //   price: 25.00,
+  //   quantity: 100,
+  //   imageURL: 'https://www.potterybarn.com/pbimgs/ab/images/dp/wcm/202009/3479/img4o.jpg',
+  //   description: 'Classic round white dining plate.',
+  // });
+  console.log('1', Product);
+  console.log('2', productDummyData);
   console.log('wtf mang!');
 }
 
