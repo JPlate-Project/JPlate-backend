@@ -9,7 +9,7 @@ function seed() {
   //   })
   // );
   // console.log(`seeded ${products.length} plates successfully!`);
-
+  console.log('What is promise?', Promise);
   Promise.all(
     [Product.create({
       name: 'Plain White Plate',
