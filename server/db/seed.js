@@ -4,7 +4,6 @@ const productDummyData = require('./productDummyData');
 
 async function seed() {
   db.authenticate()
-  db.sync({ force: true });
 
   console.log('db synced!');
   const products = await Promise.all(
@@ -18,13 +17,14 @@ async function seed() {
     })
   );
 
+  db.sync({ force: true });
   console.log(`seeded ${products.length} plates successfully!`);
 }
 
 async function runSeed() {
   console.log('...seeding');
   try {
-    seed();
+    await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
