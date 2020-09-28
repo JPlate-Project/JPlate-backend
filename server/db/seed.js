@@ -18,7 +18,7 @@ async function seed() {
     description: 'Classic round white dining plate.',
   });
 
-
+  console.log('wtf mang!');
 }
 
 function runSeed() {
