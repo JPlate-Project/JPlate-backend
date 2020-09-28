@@ -23,12 +23,7 @@ async function seed() {
 
 function runSeed() {
   console.log('...seeding');
-  try {
-    seed();
-  } catch (err) {
-    console.error(err);
-    process.exitCode = 1;
-  }
+  seed();
 }
 
 runSeed();
