@@ -15,8 +15,7 @@ async function seed() {
       }
     })
   );
-
-  db.sync();
+  console.log("did i make it here")
   console.log(`seeded ${products.length} plates successfully!`);
 }
 

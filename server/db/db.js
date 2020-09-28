@@ -13,7 +13,7 @@ const db = new Sequelize('d72c74ufbebm9m', 'iivmgedzvwjbnl', 'fa3d5e57a7e1fe5088
 
 function testDb() {
   try {
-    db.authenticate()
+    db.authenticate();
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

@@ -10,11 +10,6 @@ User.hasMany(Orders);
 Orders.belongsTo(User);
 Orders.hasMany(Product);
 
-db.sync().then(() => {
-  console.log("woah woah woah")
-});
-
-
 module.exports = {
   User,
   Address,
