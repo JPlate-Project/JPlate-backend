@@ -35,10 +35,8 @@ router.patch('/resetPassword', async (req, res, next) => {
 
 router.get('/getPlates', async (req, res, next) => {
   try {
-    console.log("we made it to the api route")
-    const plates = await Product.findAll();
+    const plates =  Product.findAll();
     res.send(plates);
-    console.log('we made it past the await')
   } catch (err) {
     next(err);
   }
