@@ -10,7 +10,10 @@ const routes = require('./api/routes');
 
 const createApp = () => {
   //Allow cors
-  app.use(cors());
+  app.use(cors({
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+  }));
   // logging middleware
   app.use(morgan('dev'));
 
