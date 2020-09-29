@@ -11,6 +11,10 @@ async function establishDB() {
     },
   });
 
+  db.authenticate().then(() => {
+    console.log('authenticated')
+  }).catch(err => console.log(err))
+
   console.log(db)
 
 }
