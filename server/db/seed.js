@@ -2,7 +2,7 @@ const fs = require('fs');
 const { db, Product } = require('../db/db2');
 const productDummyData = require('./productDummyData');
 
-console.log('db from seed file', db);
+console.log('What is? --->', db.sync);
 
 const seed = async () => {
   await db.sync({ force: true });
@@ -16,7 +16,7 @@ const seed = async () => {
   );
 
   console.log(`seeded ${products.length} plates successfully!`);
-  db.close()
+  db.close();
 };
 
 seed().catch(err => {
