@@ -16,14 +16,14 @@ async function establishDB() {
 }
 
 establishDB()
-function authenticateDB(db) {
-  try {
-    db.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-}
-authenticateDB();
+// function authenticateDB(db) {
+//   try {
+//     db.authenticate();
+//     console.log('Connection has been established successfully.');
+//   } catch (error) {
+//     console.error('Unable to connect to the database:', error);
+//   }
+// }
+// authenticateDB();
 
-module.exports = db;
+// module.exports = db;
