@@ -15,7 +15,8 @@ async function establishDB() {
 
 }
 
-function authenticateDB() {
+establishDB()
+function authenticateDB(db) {
   try {
     db.authenticate();
     console.log('Connection has been established successfully.');
