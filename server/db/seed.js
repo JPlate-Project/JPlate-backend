@@ -9,6 +9,7 @@ async function seed() {
   console.log('Hello from the seed function');
   const products = await Promise.all(
     productDummyData.map((product) => {
+      console.log(product);
       return Product.create(product);
     })
   );
