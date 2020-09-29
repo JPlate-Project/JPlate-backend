@@ -3,6 +3,7 @@ const Sequelize = require('sequelize');
 const { Product } = require('./models/index');
 const productDummyData = require('./productDummyData');
 
+console.log(Product);
 async function seed() {
   db.sync();
   console.log('Hello from the seed function');
