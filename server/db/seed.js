@@ -1,5 +1,5 @@
-const fs = require('fs');
-const { db, Product } = require('../db/db2');
+const { db } = require('../db/db2');
+const { Product } = require('./models/products');
 const productDummyData = require('./productDummyData');
 
 console.log('What is? --->', db.sync);
