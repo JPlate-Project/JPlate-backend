@@ -5,9 +5,9 @@ const db = new Sequelize(dbURL, {
   // host: 'ec2-34-198-243-120.compute-1.amazonaws.com',
   dialect: 'postgres',
   protocol: 'postgres',
-  // dialectOptions: {
-  //   ssl: true,
-  // },
+  dialectOptions: {
+    ssl: true,
+  },
 });
 
 function authenticateDB() {
