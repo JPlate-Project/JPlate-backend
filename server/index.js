@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 4000;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./api/routes');
+const { db } = require('./db/db2');
 module.exports = app;
 
 const createApp = () => {
@@ -59,6 +60,7 @@ const startListening = () => {
 };
 
 async function bootApp() {
+  await db.sync();
   await createApp();
   await startListening();
 }

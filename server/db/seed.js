@@ -1,12 +1,14 @@
-const { db } = require('./db');
-const Sequelize = require('sequelize');
-const { Product } = require('./models/index');
+const fs = require('fs');
+const { db, Product } = require('../db/db2');
 const productDummyData = require('./productDummyData');
 
-console.log('hi',db);
-async function seed() {
-  db.sync();
+console.log('db from seed file', db);
+
+const seed = async () => {
+  await db.sync({ force: true });
+
   console.log('Hello from the seed function');
+
   const products = await Promise.all(
     productDummyData.map((product) => {
       return Product.create(product);
@@ -14,13 +16,12 @@ async function seed() {
   );
 
   console.log(`seeded ${products.length} plates successfully!`);
-}
+  db.close()
+};
 
-function runSeed() {
-  console.log('...seeding');
-  seed();
-}
-
-runSeed();
+seed().catch(err => {
+  db.close();
+  console.log('An error has occured.', err);
+});
 
 module.exports = seed;
