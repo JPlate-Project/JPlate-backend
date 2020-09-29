@@ -13,6 +13,7 @@ const db = new Sequelize(dbURL, {
 function authenticateDB() {
   try {
     db.authenticate();
+    console.log(db)
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
