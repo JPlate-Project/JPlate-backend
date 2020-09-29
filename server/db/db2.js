@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const dbURL = process.env.DATABASE_URL || 'postgres://localhost:5432/jplate';
-const db = new Sequelize(dbURL);
+const db = new Sequelize(dbURL, {
+  logging: console.log
+});
 
 const Product = db.define('product', {
   id: {
@@ -35,4 +37,4 @@ const Product = db.define('product', {
 module.exports = {
   db,
   Product,
-}
+};
