@@ -7,13 +7,16 @@ const PORT = process.env.PORT || 4000;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./api/routes');
+module.exports = app;
 
 const createApp = () => {
   //Allow cors
-  app.use(cors({
-    origin: 'http://localhost:3000/',
-    optionsSuccessStatus: 200
-  }));
+  app.use(
+    cors({
+      origin: 'http://localhost:3000/',
+      optionsSuccessStatus: 200,
+    })
+  );
   // logging middleware
   app.use(morgan('dev'));
 
@@ -51,7 +54,8 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`));
+    console.log(`Mixing it up on port ${PORT}`)
+  );
 };
 
 async function bootApp() {
