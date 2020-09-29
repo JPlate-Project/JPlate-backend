@@ -1,7 +1,8 @@
 const db = require('./db');
-const { Product } = require('./models/index');
+const Sequelize = require('sequelize');
+// const { Product } = require('./models/index');
 const { User } = require('./models/index');
-const productDummyData = require('./productDummyData');
+// const productDummyData = require('./productDummyData');
 
 async function seed() {
   // const products = await Promise.all(
