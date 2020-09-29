@@ -11,7 +11,7 @@ const routes = require('./api/routes');
 const createApp = () => {
   //Allow cors
   app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000/',
     optionsSuccessStatus: 200
   }));
   // logging middleware
@@ -51,8 +51,7 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`)
-  );
+    console.log(`Mixing it up on port ${PORT}`));
 };
 
 async function bootApp() {
