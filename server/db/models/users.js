@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const MD5 = require('md5');
-const db = require('../db');
+const { db } = require('../db');
 
 const User = db.define('user', {
   id: {

@@ -11,8 +11,8 @@
     "build-client-watch": "webpack -w",
     "deploy": "script/deploy",
     "seed": "node server/db/seed.js",
-    "dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development'",
-    "start": "node server/index.js"
+    "dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' ",
+    "start": "nodemon server/index.js"
   },
   "lint-staged": {
     "*.{js,jsx}": [

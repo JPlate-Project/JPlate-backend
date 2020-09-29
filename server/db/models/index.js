@@ -1,4 +1,4 @@
-const db = require('../db');
+const { db } = require('../db');
 const Sequelize = require('sequelize');
 const User = require('./users');
 const Address = require('./address');
@@ -12,6 +12,7 @@ Orders.belongsTo(User);
 Orders.hasMany(Product);
 
 module.exports = {
+  db,
   User,
   Address,
   Orders,

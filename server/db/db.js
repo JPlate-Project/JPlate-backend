@@ -20,4 +20,4 @@ function authenticateDB() {
 }
 authenticateDB();
 
-module.exports = db;
+module.exports = { db };

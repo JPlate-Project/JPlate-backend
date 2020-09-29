@@ -1,9 +1,9 @@
-const db = require('./db');
+const { db } = require('./db');
 const Sequelize = require('sequelize');
 const { Product } = require('./models/index');
 const productDummyData = require('./productDummyData');
 
-console.log(Product);
+console.log('hi',db);
 async function seed() {
   db.sync();
   console.log('Hello from the seed function');
