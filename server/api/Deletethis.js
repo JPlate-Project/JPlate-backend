@@ -2,7 +2,7 @@ const Product = require('../db/models/products');
 
 async function test(){
     console.log('before await')
-    const plates =  await Product.findAll();
+    const plates =  await fetch('https://dog.ceo/api/breeds/image/random');
     console.log('after await')
     console.log(plates)
 }
