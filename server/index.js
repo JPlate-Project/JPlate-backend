@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 4000;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./api/routes');
-const { db } = require('./db/db2');
+const { db } = require('./db/db');
 
 const createApp = () => {
   //Allow cors
@@ -54,11 +54,12 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`));
+    console.log(`Mixing it up on port ${PORT}`)
+  );
 };
 
 async function bootApp() {
-  await db.sync({force: true});
+  await db.sync();
   await createApp();
   await startListening();
 }

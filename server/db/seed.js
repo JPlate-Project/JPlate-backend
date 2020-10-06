@@ -1,8 +1,6 @@
-const { db } = require('../db/db2');
-const { Product } = require('./models/products');
+const { db } = require('../db/db');
+const Product = require('./models/products');
 const productDummyData = require('./productDummyData');
-
-console.log('What is? --->', db.sync);
 
 const seed = async () => {
   await db.sync({ force: true });
@@ -19,7 +17,7 @@ const seed = async () => {
   db.close();
 };
 
-seed().catch(err => {
+seed().catch((err) => {
   db.close();
   console.log('An error has occured.', err);
 });
