@@ -5,5 +5,32 @@
 </head>
 
 <body>
-  <div>This is the backend repo. You must be here for the routes. hehe thanks mang!! </div>
+  <div>
+    This is the backend repo. You must be here for the routes. hehe thanks
+    mang!!
+  </div>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: 'AIzaSyCveq1Y8meOGavENozetDRMBvtqdmQpXXQ',
+      authDomain: 'jplate-9e1dc.firebaseapp.com',
+      databaseURL: 'https://jplate-9e1dc.firebaseio.com',
+      projectId: 'jplate-9e1dc',
+      storageBucket: 'jplate-9e1dc.appspot.com',
+      messagingSenderId: '1027546431634',
+      appId: '1:1027546431634:web:f7d1108508d96a3d4f664b',
+      measurementId: 'G-WPPJZMLSM4',
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </body>
