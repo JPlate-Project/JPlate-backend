@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import SignInSmall from './SignInSmall';
+import React from 'react';
 import UserDataFrom from './UserDataForm';
 import CartItem from './CartItem';
 
@@ -35,7 +34,6 @@ const Checkout = (props) => {
           handleSetCart={props.handleSetCart}
           handleShowCheckout={props.handleShowCheckout}
         />
-        {/* <SignInSmall /> */}
       </div>
     </div>
 
