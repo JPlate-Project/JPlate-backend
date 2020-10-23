@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Plate from './Plate.jsx';
 import Cart from './Cart';
-import Axios from 'axios';
+import plates from '../../server/db/productDummyData';
+// import Axios from 'axios';
 
 const Home = () => {
-  const [plates, setPlates] = useState(null);
+  // const [plates, setPlates] = useState(null);
   const [cart, setCart] = useState([]);
   const [showCart, setCartShow] = useState(false);
 
@@ -18,19 +19,17 @@ const Home = () => {
     setCart([...newCart]);
   }
 
-  let mount = false;
-  useEffect(() => {
-    mount = true;
-    async function dataFetch() {
-      try {
-        const response = await Axios.get('/getPlates');
-        setPlates(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    dataFetch();
-  }, []);
+  // useEffect(() => {
+  //   async function dataFetch() {
+  //     try {
+  //       const response = await Axios.get('/getPlates');
+  //       setPlates(response.data);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   }
+  //   dataFetch();
+  // }, []);
 
   return (
     <>

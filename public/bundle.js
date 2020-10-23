@@ -381,12 +381,13 @@ var EditUserProfile = function EditUserProfile() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch('/resetPassword', {
+              _context.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch('/resetPassword', {
                 userId: user.userId,
                 newPassword: formRef.current.password.value
               });
 
-            case 1:
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -540,12 +541,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Footer.jsx */ "./client/components/Footer.jsx");
 /* harmony import */ var _Plate_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Plate.jsx */ "./client/components/Plate.jsx");
 /* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Cart */ "./client/components/Cart.jsx");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _server_db_productDummyData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../server/db/productDummyData */ "./server/db/productDummyData.js");
+/* harmony import */ var _server_db_productDummyData__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_server_db_productDummyData__WEBPACK_IMPORTED_MODULE_5__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -571,23 +568,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
+ // import Axios from 'axios';
 
 var Home = function Home() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+  // const [plates, setPlates] = useState(null);
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
-      plates = _useState2[0],
-      setPlates = _useState2[1];
+      cart = _useState2[0],
+      setCart = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      cart = _useState4[0],
-      setCart = _useState4[1];
-
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      showCart = _useState6[0],
-      setCartShow = _useState6[1];
+      showCart = _useState4[0],
+      setCartShow = _useState4[1];
 
   function handleShowCart() {
     setCartShow(!showCart);
@@ -595,50 +588,19 @@ var Home = function Home() {
 
   function handleSetCart(newCart) {
     setCart(_toConsumableArray(newCart));
-  }
+  } // useEffect(() => {
+  //   async function dataFetch() {
+  //     try {
+  //       const response = await Axios.get('/getPlates');
+  //       setPlates(response.data);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   }
+  //   dataFetch();
+  // }, []);
 
-  var mount = false;
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    mount = true;
 
-    function dataFetch() {
-      return _dataFetch.apply(this, arguments);
-    }
-
-    function _dataFetch() {
-      _dataFetch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var response;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/getPlates');
-
-              case 3:
-                response = _context.sent;
-                setPlates(response.data);
-                _context.next = 10;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-                console.error(_context.t0);
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[0, 7]]);
-      }));
-      return _dataFetch.apply(this, arguments);
-    }
-
-    dataFetch();
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     cart: cart,
     handleShowCart: handleShowCart
@@ -647,7 +609,7 @@ var Home = function Home() {
   }, showCart ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_4__["default"], {
     cart: cart,
     handleSetCart: handleSetCart
-  }) : '', plates ? plates.map(function (plate) {
+  }) : '', _server_db_productDummyData__WEBPACK_IMPORTED_MODULE_5___default.a ? _server_db_productDummyData__WEBPACK_IMPORTED_MODULE_5___default.a.map(function (plate) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Plate_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: Math.random(),
       cart: cart,
@@ -46159,6 +46121,77 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ "./server/db/productDummyData.js":
+/*!***************************************!*\
+  !*** ./server/db/productDummyData.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = [{
+  name: 'Plain White Plate',
+  price: 25.00,
+  quantity: 100,
+  imageURL: 'https://www.potterybarn.com/pbimgs/ab/images/dp/wcm/202009/3479/img4o.jpg',
+  description: 'Classic round white dining plate.'
+}, {
+  name: 'Golden Plate',
+  price: 55.00,
+  quantity: 100,
+  imageURL: 'https://www.potterybarn.com/pbimgs/ab/images/dp/wcm/202009/2930/img32o.jpg',
+  description: 'Royal gold dining and display plate.'
+}, {
+  name: 'Royal Designed Plate',
+  price: 1000.00,
+  quantity: 100,
+  imageURL: 'https://images.neimanmarcus.com/ca/7/product_assets/G/3/V/Q/S/NMG3VQS_mz.jpg',
+  description: 'Royal design display plate.'
+}, {
+  name: 'Terracotta Plate',
+  price: 55.00,
+  quantity: 100,
+  imageURL: 'https://cb2.scene7.com/is/image/CB2/MaderaCamelSaladPlateSHF19/?$web_product_hero$&190410160835&wid=625&hei=625',
+  description: 'Terracotta dining plate, red hue.'
+}, {
+  name: 'Blue Vine Plate',
+  price: 25.00,
+  quantity: 100,
+  imageURL: 'https://images.neimanmarcus.com/ca/2/product_assets/H/C/5/Z/3/NMHC5Z3_mz.jpg',
+  description: 'Blue garden vine dining plate.'
+}, {
+  name: 'Lime Green Plate',
+  price: 25.00,
+  quantity: 100,
+  imageURL: 'https://cdn.shopify.com/s/files/1/2081/7373/products/467332_1000x_crop_center.jpg?v=1581718983',
+  description: 'Lime green dining plate.'
+}, {
+  name: 'Textured Black Plate',
+  price: 55.00,
+  quantity: 100,
+  imageURL: 'https://images.crateandbarrel.com/is/image/Crate/MarinBlkDinnerPlateSSS20',
+  description: 'Sleek textured black dining plate.'
+}, {
+  name: 'Smooth Black Plate',
+  price: 25.00,
+  quantity: 100,
+  imageURL: 'https://cdn.connox.com/m/100030/223273/media/eva-solo/Nordic-Kitchen/Teller/Eva-Solo-Nordic-Kitchen-Teller-d-20-cm-schwarz-Freisteller.jpg',
+  description: 'Smooth porcelain black dining plate.'
+}, {
+  name: 'Elegant Cream Colored Plate',
+  price: 55.00,
+  quantity: 100,
+  imageURL: 'https://ak1.ostkcdn.com/images/products/6070901/Red-Vanilla-Classic-White-Dinner-Plates-11.25-Set-4-1abed78d-6c5a-43b5-8a89-6ce7f9f12332.jpg',
+  description: 'Classic elegant creamy colored dining plate.'
+}, {
+  name: 'Plain Turquoise Plate',
+  price: 25.00,
+  quantity: 100,
+  imageURL: 'https://www.potterybarn.com/pbimgs/ab/images/dp/wcm/202013/0079/img9o.jpg',
+  description: 'Plain turquiose dining plate.'
+}];
 
 /***/ }),
 
