@@ -7,7 +7,7 @@ const About = () => {
       <Header />
       <h1> About Page</h1>
       <p>
-        This is version 1 of JPlate. We are using React JS, Express, and Postgres for db.
+        This is version 1 of JPlate. We are using React JS, Express, and Postgres for database.
       </p>
     </>
   );
