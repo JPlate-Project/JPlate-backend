@@ -4,7 +4,7 @@ const app = express();
 const session = require('express-session');
 const morgan = require('morgan');
 const routes = require('./api/routes');
-const PORT = process.env.PORT || 8092;
+const PORT = process.env.PORT || 4000;
 const bodyParser = require('body-parser');
 
 
