@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SignInSmall from './SignInSmall';
 import UserDataFrom from './UserDataForm';
 import CartItem from './CartItem';
 
