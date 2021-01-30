@@ -4,4 +4,4 @@ A mock webstore that sells a variety of plates <br />
 ## Site
 ![Site](githubmedia/jplate.gif)
 ## Additional Info
-This is the backend repo the frontend repo is located [Live Site](https://github.com/Penspinner/jplate-frontend)
+This is the backend repo the frontend repo is located [here](https://github.com/Penspinner/jplate-frontend)
